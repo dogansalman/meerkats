@@ -1,0 +1,19 @@
+.table-card{
+  margin-bottom:20px;
+}
+.table-card .mat-card-footer{
+  color:#FFFFFF;
+  font-size:14px;
+  padding:5px;
+}
+.table-card .mat-card-footer.available{
+  background:#80CBC4;
+}
+.table-card .mat-card-footer.busy{
+  background:#FF7D7D;
+}
+.table-card .mat-card-title .busy-time{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: AppComponent
+    loadChildren: '../app/home/home.module#HomeModule'
   },
   {
     path: 'login',

@@ -1,7 +1,5 @@
-.full-width-field
-{
-  width: 100%;
-}
+body { margin:0px;}
+.full-width-field { width: 100%; }
 
 .primary-color {
   color: #3F51B5!important;

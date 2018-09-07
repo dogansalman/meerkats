@@ -1,0 +1,10 @@
+.header{
+  background:#FCFCFC;
+  height: 50px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+.header .logo{
+  width: 40px;
+  height: auto;
+}
