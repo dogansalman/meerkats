@@ -1,0 +1,57 @@
+<div style="height: 100vh;">
+  <mat-toolbar class="header">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="example-spacer"></span>
+
+      <div fxShow="true" fxFlex="100" fxLayout="row" fxLayoutAlign="end">
+
+        <div>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <i class="material-icons">account_circle</i> Doğan SALMAN
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Hesabım</button>
+            <button mat-menu-item>Oturumu Kapat</button>
+          </mat-menu>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a href="#" mat-list-item>
+          <mat-icon>notifications</mat-icon>
+          <span fxShow.sm="false" fxShow.xs="false">Masa Yönetimi</span>
+
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          <span fxShow.sm="false" fxShow.xs="false">Personel</span>
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          <span fxShow.sm="false" fxShow.xs="false">Ürün</span>
+        </a>
+        <a href="#" mat-list-item>
+          <mat-icon>lock</mat-icon>
+          <span fxShow.sm="false" fxShow.xs="false">Rapor & İstatistik</span>
+        </a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+      <mat-sidenav-content>
+        <mat-card>
+          <router-outlet fxFill></router-outlet>
+        </mat-card>
+      </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+<button mat-fab matTooltip="Kasa Modu." class="fab-btn payment_mode_btn"><i class="material-icons">local_printshop</i></button>
+<button mat-fab matTooltip="Mutfak Modu" class="fab-btn kitchen_mode"><i class="material-icons">restaurant</i></button>

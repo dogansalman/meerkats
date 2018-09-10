@@ -1,0 +1,43 @@
+.header{
+  background:#34495e;
+  color:#FFFFFF;
+}
+.header .logo{
+  width: 40px;
+  height: auto;
+}
+.header-fullname{
+  padding:5px;
+}
+.logo{
+  background: url('../../../assets/img/logo.png') !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: block !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  position: absolute !important;
+  left: 50% !important;
+  padding-left: 45px !important;
+}
+.fab-btn{
+  position: absolute !important;
+  z-index: 1 !important;
+
+}
+.payment_mode_btn{
+  background:#FF7D7D !important;
+  color:#FFFFFF;
+  right: 35px !important;
+  bottom: 12px !important
+}
+.kitchen_mode{
+  background: #FCDF2E !important;
+  color:#FFFFFF;
+  right: 35px !important;
+  bottom: 82px !important
+}
+.item-content span{
+  padding:25px !important;
+}
+

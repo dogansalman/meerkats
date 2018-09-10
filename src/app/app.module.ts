@@ -4,12 +4,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { HeaderComponent } from './layouts/header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppMaterialModule } from './app-material.module';
+import { Navbar_layoutComponent } from './layouts/navbar_layout/navbar_layout.component';
+import { Empty_layoutComponent } from './layouts/empty_layout/empty_layout.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
-  imports: [BrowserAnimationsModule, AppRoutingModule, FormsModule,  NgxSpinnerModule, FlexLayoutModule],
+  declarations: [AppComponent,Navbar_layoutComponent, Empty_layoutComponent],
+  imports: [BrowserAnimationsModule, AppRoutingModule, FormsModule,  NgxSpinnerModule, FlexLayoutModule, AppMaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 
