@@ -26,6 +26,10 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: '../app/home/home.module#HomeModule'
+      },
+      {
+        path: 'kitchen',
+        loadChildren: '../app/kitchen/kitchen.module#KitchenModule'
       }
     ]
   }

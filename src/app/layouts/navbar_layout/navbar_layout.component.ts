@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-navbar-layout',
@@ -11,8 +12,11 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 export class Navbar_layoutComponent implements OnInit{
 
-  constructor(){}
+  public currentRoute = null;
+  constructor(private router: Router){}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.currentRoute =  this.router.url.substr(1, this.router.url.length -1);
+  }
 
 }

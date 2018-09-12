@@ -5,53 +5,85 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="example-spacer"></span>
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <i class="material-icons">account_circle</i>  Maya Kafe Restorant
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Hesabım</button>
+          <button mat-menu-item>Oturumu Kapat</button>
+        </mat-menu>
+      </div>
 
       <div fxShow="true" fxFlex="100" fxLayout="row" fxLayoutAlign="end">
-
-        <div>
-          <button mat-button [matMenuTriggerFor]="menu">
-            <i class="material-icons">account_circle</i> Doğan SALMAN
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item>Hesabım</button>
-            <button mat-menu-item>Oturumu Kapat</button>
-          </mat-menu>
-        </div>
+        <div class="logo"></div>
+        <span class="logo-text">Meerkats-POS</span>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav>
-      <mat-divider></mat-divider>
-      <mat-nav-list>
-        <a href="#" mat-list-item>
-          <mat-icon>notifications</mat-icon>
-          <span fxShow.sm="false" fxShow.xs="false">Masa Yönetimi</span>
+       <mat-card fxShow.xs="false" style="transition: none !important; box-shadow: none !important;">
+          <mat-card-header>
+            <img mat-card-avatar src="https://via.placeholder.com/150x150"/>
+            <mat-card-title>Maya Kafe - Restorant</mat-card-title>
+            <mat-card-subtitle>İşletme No: 16235132</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
 
-        </a>
-        <a href="#" mat-list-item>
-          <mat-icon>account_box</mat-icon>
-          <span fxShow.sm="false" fxShow.xs="false">Personel</span>
-        </a>
-        <a href="#" mat-list-item>
-          <mat-icon>account_box</mat-icon>
-          <span fxShow.sm="false" fxShow.xs="false">Ürün</span>
-        </a>
-        <a href="#" mat-list-item>
-          <mat-icon>lock</mat-icon>
-          <span fxShow.sm="false" fxShow.xs="false">Rapor & İstatistik</span>
-        </a>
-
-      </mat-nav-list>
-    </mat-sidenav>
-      <mat-sidenav-content>
-        <mat-card>
-          <router-outlet fxFill></router-outlet>
+          </mat-card-content>
         </mat-card>
+      <mat-divider></mat-divider>
+
+      <mat-nav-list>
+        <a class="navmenu-item" mat-list-item>
+          <mat-icon>notifications</mat-icon>
+          <span class="navbar-menu-title"  fxShow.xs="false">Masa Yönetimi</span>
+        </a>
+        <a class="navmenu-item" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          <span class="navbar-menu-title"  fxShow.xs="false">Personel</span>
+        </a>
+        <a class="navmenu-item" mat-list-item>
+          <mat-icon>account_box</mat-icon>
+          <span class="navbar-menu-title"  fxShow.xs="false">Ürün</span>
+        </a>
+        <a class="navmenu-item" mat-list-item>
+          <mat-icon>lock</mat-icon>
+          <span class="navbar-menu-title"  fxShow.xs="false">Rapor & İstatistik</span>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a routerLink="/cash" mat-list-item matTooltip="Kasa Modu." class="payment_mode_btn">
+          <mat-icon>local_printshop</mat-icon>
+          <span class="navbar-menu-title"  fxShow.xs="false">Kasa Modu</span>
+
+        </a>
+        <a routerLink="/kitchen" mat-list-item matTooltip="Kasa Modu." class="kitchen_mode">
+          <mat-icon>restaurant</mat-icon>
+          <span class="navbar-menu-title"  fxShow.xs="false">Mutfak Modu</span>
+        </a>
+        <div>lorem ipsum</div>
+      </mat-nav-list>
+
+
+
+
+
+
+    </mat-sidenav>
+
+      <mat-sidenav-content fxFlexFill>
+        <mat-card>
+          <router-outlet fxFlexFill></router-outlet>
+
+        </mat-card>
+
       </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
 
 
-<button mat-fab matTooltip="Kasa Modu." class="fab-btn payment_mode_btn"><i class="material-icons">local_printshop</i></button>
-<button mat-fab matTooltip="Mutfak Modu" class="fab-btn kitchen_mode"><i class="material-icons">restaurant</i></button>
+
+

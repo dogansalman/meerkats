@@ -1,6 +1,7 @@
 .header{
-  background:#34495e;
-  color:#FFFFFF;
+  background: #f3f3f3;
+  color: #737373;
+  border-bottom: 1px solid #e0e0e0;
 }
 .header .logo{
   width: 40px;
@@ -13,31 +14,35 @@
   background: url('../../../assets/img/logo.png') !important;
   width: 40px !important;
   height: 40px !important;
-  display: block !important;
   background-repeat: no-repeat !important;
   background-size: contain !important;
-  position: absolute !important;
-  left: 50% !important;
-  padding-left: 45px !important;
+  padding-left: 10px !important;
+}
+.logo-text{
+  padding: 5px;
+  font-size: 16px;
 }
 .fab-btn{
   position: absolute !important;
   z-index: 1 !important;
-
+}
+.mat-drawer{
+  background: #f3f3f3;
 }
 .payment_mode_btn{
   background:#FF7D7D !important;
-  color:#FFFFFF;
-  right: 35px !important;
-  bottom: 12px !important
+  color: rgba(0, 0, 0, 0.4196078431372549) !important;
 }
 .kitchen_mode{
   background: #FCDF2E !important;
-  color:#FFFFFF;
-  right: 35px !important;
-  bottom: 82px !important
+  color: rgba(0, 0, 0, 0.4196078431372549) !important;
 }
-.item-content span{
+.navbar-menu-title {
   padding:25px !important;
 }
-
+.navmenu-item{
+  color:#666666 !important;
+}
+.mat-drawer{
+  height: 100vh;
+}
