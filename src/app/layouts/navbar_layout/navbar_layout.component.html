@@ -16,8 +16,7 @@
       </div>
 
       <div fxShow="true" fxFlex="100" fxLayout="row" fxLayoutAlign="end">
-        <div class="logo"></div>
-        <span class="logo-text">Meerkats-POS</span>
+        <img routerLink="/home" style="width: 50px; height: 50px; cursor: pointer;" src="https://via.placeholder.com/150x150"/>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -29,9 +28,7 @@
             <mat-card-title>Maya Kafe - Restorant</mat-card-title>
             <mat-card-subtitle>İşletme No: 16235132</mat-card-subtitle>
           </mat-card-header>
-          <mat-card-content>
-
-          </mat-card-content>
+          <mat-card-content></mat-card-content>
         </mat-card>
       <mat-divider></mat-divider>
 
@@ -53,18 +50,17 @@
           <span class="navbar-menu-title"  fxShow.xs="false">Rapor & İstatistik</span>
         </a>
 
-        <mat-divider></mat-divider>
+        <a class="navmenu-item" routerLink="/kitchen" mat-list-item>
+          <mat-icon>restaurant</mat-icon>
+          <span class="navbar-menu-title" fxShow.xs="false">Mutfak Modu</span>
+        </a>
 
-        <a routerLink="/cash" mat-list-item matTooltip="Kasa Modu." class="payment_mode_btn">
+        <a class="navmenu-item" routerLink="/cash" mat-list-item>
           <mat-icon>local_printshop</mat-icon>
           <span class="navbar-menu-title"  fxShow.xs="false">Kasa Modu</span>
+        </a>
 
-        </a>
-        <a routerLink="/kitchen" mat-list-item matTooltip="Kasa Modu." class="kitchen_mode">
-          <mat-icon>restaurant</mat-icon>
-          <span class="navbar-menu-title"  fxShow.xs="false">Mutfak Modu</span>
-        </a>
-        <div>lorem ipsum</div>
+
       </mat-nav-list>
 
 

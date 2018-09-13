@@ -1,0 +1,25 @@
+<mat-card class="card-no-shadow">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <i class="material-icons">
+        lock_open
+      </i>
+    </div>
+    <mat-card-title>Şifremi Unuttum!</mat-card-title>
+    <mat-card-subtitle>Kayıtlı e-posta adresinize gönderilecek ileti ile şifrenizi güncelleyebilirsiniz.</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-form-field class="full-width-field">
+      <input matInput #number maxlength="11" placeholder="İşletme Kodu">
+      <mat-hint align="start"><strong>Lütfen işletme kodunu girin.</strong> </mat-hint>
+      <mat-hint align="end">{{number.value.length}} / 11</mat-hint>
+    </mat-form-field>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="primary" mat-button>TAMAM</button>
+    <button mat-button>KAPAT</button>
+  </mat-card-actions>
+</mat-card>
+

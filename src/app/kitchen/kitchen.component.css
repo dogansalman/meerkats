@@ -1,6 +1,15 @@
 .order-state{
-  color:#FFFFFF;
-  background:#80CBC4;
-  font-size:12px;
-  font-weight: 300;
+  font-size: 12px;
+  font-weight: 400;
+  display: inline-block;
+  padding: 5px;
 }
+.order-state.new {
+  color: #FFFFFF;
+  background: #80CBC4;
+}
+.button-table-row:hover{
+  background: #fbfbfb;
+  cursor: pointer;
+}
+

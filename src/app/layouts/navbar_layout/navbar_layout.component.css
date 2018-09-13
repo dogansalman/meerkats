@@ -10,18 +10,6 @@
 .header-fullname{
   padding:5px;
 }
-.logo{
-  background: url('../../../assets/img/logo.png') !important;
-  width: 40px !important;
-  height: 40px !important;
-  background-repeat: no-repeat !important;
-  background-size: contain !important;
-  padding-left: 10px !important;
-}
-.logo-text{
-  padding: 5px;
-  font-size: 16px;
-}
 .fab-btn{
   position: absolute !important;
   z-index: 1 !important;
@@ -44,5 +32,5 @@
   color:#666666 !important;
 }
 .mat-drawer{
-  height: 100vh;
-}
+    height: 100vh;
+  }

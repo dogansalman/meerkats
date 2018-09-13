@@ -1,17 +1,9 @@
 body { margin:0px; overflow: hidden;}
 .full-width-field { width: 100%; }
 
-.primary-color {
-  color: #3F51B5!important;
-}
-.accent-color {
-  color: #FF4081!important;
-}
-.background-primary-color {
-  background-color: #3F51B5!important;
-}
-.background-accent-color {
-  background-color: #87D458!important;
+.card-no-shadow{
+  transition: none !important;
+  box-shadow: none !important;
 }
 .white-text {
   color: #FFF!important;
@@ -23,3 +15,4 @@ body { margin:0px; overflow: hidden;}
 .mat-form-field-ripple {
   background-color: #666666 !important;
 }
+

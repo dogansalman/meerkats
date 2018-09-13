@@ -1,6 +1,8 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {ForgotComponent} from './forgot/forgot.component';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +13,23 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class LoginComponent implements OnInit, AfterContentInit {
 
 
-  constructor(private spinner : NgxSpinnerService) {
+
+
+  constructor(private spinner : NgxSpinnerService, public dialog: MatDialog) {
     console.log('loaded login com')
   }
 
-  ngOnInit() {
-    //this.spinner.show();
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ForgotComponent, {
+      width: '450px',
+      data: {name: 'name', animal: 'animal'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
   }
 
-  ngAfterContentInit() {
-    // contentChild is set after the content has been initialized
-    console.log('AfterContentInit');
-    this.spinner.hide();
-  }
+  ngOnInit() {this.spinner.show();}
+  ngAfterContentInit() {this.spinner.hide();}
 }
