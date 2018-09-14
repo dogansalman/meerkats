@@ -30,6 +30,10 @@ const routes: Routes = [
       {
         path: 'kitchen',
         loadChildren: '../app/kitchen/kitchen.module#KitchenModule'
+      },
+      {
+        path:'tables',
+        loadChildren: '../app/tables/tables.module#TablesModule'
       }
     ]
   }

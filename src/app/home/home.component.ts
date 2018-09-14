@@ -1,5 +1,6 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {SnackbarService} from '../services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,14 @@ import {NgxSpinnerService} from 'ngx-spinner';
 })
 export class HomeComponent implements OnInit, AfterContentInit {
 
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private spinner: NgxSpinnerService, private snackbarService: SnackbarService) { }
 
-  ngOnInit() { }
-
-  ngAfterContentInit() {
-    this.spinner.hide();
+  ngOnInit() {
+    this.snackbarService.show('Henüz masa oluşturmadınız.','Ekle','success').afterDismissed().subscribe(() => {
+      console.log('data');
+    });
   }
+
+  ngAfterContentInit() { this.spinner.hide(); }
 
 }

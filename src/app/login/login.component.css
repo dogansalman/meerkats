@@ -31,6 +31,7 @@ body:before{
   padding:20px;
   position: relative;
   max-width: 450px;
+  border:1px solid #d2d2d2;
 }
 .logo{
   height: 60px;

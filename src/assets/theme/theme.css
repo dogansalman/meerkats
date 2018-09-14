@@ -1,4 +1,29 @@
-body { margin:0px; overflow: hidden;}
+body {
+  margin:0px; overflow: hidden;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.mat-snack-bar-container.success {
+  background: #80CBC4;
+}
+
+.mat-snack-bar-container.success .mat-simple-snackbar {
+  color: #FFFFFF;
+}
+.mat-snack-bar-container.success .mat-simple-snackbar .mat-button {
+  background: #9ee2dc;
+  padding: 0px !important;
+  width: 50px !important;
+  min-width: 50px !important;
+}
+
+.mat-snack-bar-container.success .mat-simple-snackbar .mat-button-wrapper {
+  color: #4d9a93;
+}
+
 .full-width-field { width: 100%; }
 
 .card-no-shadow{

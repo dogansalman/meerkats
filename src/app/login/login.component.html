@@ -4,7 +4,7 @@
   </div>
   <div fxFlex="100">
     <mat-form-field class="full-width-field">
-      <input matInput #number maxlength="11" placeholder="İşletme Kodu">
+      <input type="number" matInput #number maxlength="11" placeholder="İşletme Kodu">
       <mat-hint align="start"><strong>En fazla 11 karakter olabilir.</strong> </mat-hint>
       <mat-hint align="end">{{number.value.length}} / 11</mat-hint>
     </mat-form-field>
@@ -12,7 +12,7 @@
   </div>
   <div fxFlex="100">
     <mat-form-field class="full-width-field">
-      <input matInput #password maxlength="11" placeholder="Şifreniz">
+      <input type="password" matInput #password maxlength="11" placeholder="Şifreniz">
     </mat-form-field>
 
   </div>

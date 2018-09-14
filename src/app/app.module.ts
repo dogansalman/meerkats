@@ -8,10 +8,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppMaterialModule } from './app-material.module';
 import { Navbar_layoutComponent } from './layouts/navbar_layout/navbar_layout.component';
 import { Empty_layoutComponent } from './layouts/empty_layout/empty_layout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent,Navbar_layoutComponent, Empty_layoutComponent],
-  imports: [BrowserAnimationsModule, AppRoutingModule, FormsModule,  NgxSpinnerModule, FlexLayoutModule, AppMaterialModule],
+  imports: [BrowserAnimationsModule, AppRoutingModule, FormsModule,  NgxSpinnerModule, FlexLayoutModule, AppMaterialModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 

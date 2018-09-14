@@ -7,13 +7,13 @@ export interface DialogData {
 }
 
 @Component({
-  templateUrl: 'forgot.component.html',
-  styleUrls: ['forgot.component.css'],
-  encapsulation: ViewEncapsulation.None
-})
+  templateUrl: 'forgot.component.html'
+  })
 
 export class ForgotComponent{
-  constructor( public dialogRef: MatDialogRef<ForgotComponent>,
-               @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  constructor( public dialogRef: MatDialogRef<ForgotComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
+  closeDialog(data) {
+    this.dialogRef.close(data);
+  }
 }
