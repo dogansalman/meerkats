@@ -17,6 +17,8 @@ export class AppComponent implements OnInit  {
     this.matIconRegistry.addSvgIcon("growth-svg", this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icon/growth.svg"));
     this.matIconRegistry.addSvgIcon("chef-svg", this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icon/chef.svg"));
     this.matIconRegistry.addSvgIcon("pos-svg", this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icon/pos.svg"));
+    this.matIconRegistry.addSvgIcon("add-svg", this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icon/add.svg"));
+    this.matIconRegistry.addSvgIcon("qr-code-svg", this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/icon/qr-code.svg"));
 
 
 

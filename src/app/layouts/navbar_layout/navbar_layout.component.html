@@ -1,4 +1,4 @@
-<div style="height: 100vh;">
+<div style="height: calc(100vh - 64px);">
   <mat-toolbar class="header">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true">
@@ -59,24 +59,10 @@
           <mat-icon svgIcon="pos-svg"></mat-icon>
           <span class="navbar-menu-title"  fxShow.xs="false">Kasa Modu</span>
         </a>
-
-
       </mat-nav-list>
 
-
-
-
-
-
     </mat-sidenav>
-
-      <mat-sidenav-content fxFlexFill>
-        <mat-card>
-          <router-outlet fxFlexFill></router-outlet>
-
-        </mat-card>
-
-      </mat-sidenav-content>
+    <router-outlet class="hidden-router"></router-outlet>
   </mat-sidenav-container>
 </div>
 
