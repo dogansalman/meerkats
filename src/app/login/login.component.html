@@ -8,7 +8,6 @@
       <mat-hint align="start"><strong>En fazla 11 karakter olabilir.</strong> </mat-hint>
       <mat-hint align="end">{{number.value.length}} / 11</mat-hint>
     </mat-form-field>
-
   </div>
   <div fxFlex="100">
     <mat-form-field class="full-width-field">
@@ -19,7 +18,7 @@
 <mat-divider></mat-divider>
   <div fxFlex="row">
     <div fxFlex="50" fxFlexAlign="start">
-      <button color="primary" mat-button>Oturum Aç</button>
+      <button routerLink="/home" color="primary" mat-button>Oturum Aç</button>
     </div>
     <div fxFlex="auto"  fxFlexAlign="end end" style="text-align: right">
       <mat-slide-toggle color="primary">Hatırla!</mat-slide-toggle>
@@ -27,7 +26,7 @@
   </div>
 
   <div fxFill="100" align="right">
-    <button mat-button (click)="openDialog()">Şifremi Unuttum!</button>
+    <button mat-button (click)="forgotModal()">Şifremi Unuttum!</button>
   </div>
 </div>
 

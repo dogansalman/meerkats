@@ -1,4 +1,5 @@
-body{
+
+.app-login{
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11,7 +12,8 @@ body{
   overflow: hidden;
   align-items: center;
 }
-body:before{
+
+.app-login:before{
   content: "";
   background: url(../../assets/img/bg.png) no-repeat center center fixed;
   background-size: cover;

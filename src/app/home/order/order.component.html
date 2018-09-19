@@ -1,0 +1,98 @@
+<div fxLayout="column"></div>
+<h1 mat-dialog-title>Masa 1523415</h1>
+<div mat-dialog-content>
+
+  <mat-tab-group>
+    <mat-tab label="Sıcak İçeçekler">
+      <mat-card>
+        <mat-card-title>Sıcak İçeçekler</mat-card-title>
+        <mat-card-content>
+          <mat-chip-list>
+            <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
+          </mat-chip-list>
+        </mat-card-content>
+      </mat-card>
+
+
+
+    </mat-tab>
+    <mat-tab label="Tatlılar">
+      <mat-card>
+        <mat-card-title>Tatlılar</mat-card-title>
+        <mat-card-content>
+          <mat-chip-list>
+            <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+          </mat-chip-list>
+
+        </mat-card-content>
+      </mat-card>
+
+    </mat-tab>
+    <mat-tab label="Alkollü İçecekler">
+      <mat-card>
+        <mat-card-title>Alkollü İçecekler</mat-card-title>
+        <mat-card-content>
+          <mat-chip-list>
+            <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
+            <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
+            <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
+          </mat-chip-list>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+
+
+
+
+  <mat-list role="list">
+
+
+    <mat-list-item role="listitem">
+
+      <div fxLayout="row">
+        <div><button mat-button>+</button></div>
+        <div>
+          <button mat-button>1 <b>Adet</b></button>
+        </div>
+        <div><button mat-button>-</button></div>
+        <div>Demleme Çay</div>
+      </div>
+
+
+    </mat-list-item>
+
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">No Thanks</button>
+  <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+</div>
