@@ -17,7 +17,5 @@ import {OrderComponent} from './order/order.component';
 })
 
 export class HomeModule {
-
   constructor(){ }
-
 }
