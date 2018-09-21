@@ -1,168 +1,271 @@
-<h1 mat-dialog-title>Masa 1523415
-<button style="float: right" [mat-dialog-close]="true" mat-icon-button>
-  <mat-icon aria-label="Example icon-button with a heart icon">clear</mat-icon>
-</button>
-</h1>
-<div mat-dialog-content>
-  <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Ürün Seçin
-        </mat-panel-title>
-        <mat-panel-description fxShow.xs="false" fxShow.sm="false">
-          Siparişe eklemek istediğiniz ürün
-        </mat-panel-description>
-      </mat-expansion-panel-header>
+<div fxLayout="column" style="height: 95vh;">
 
-      <mat-tab-group>
-        <mat-tab label="Sıcak İçeçekler">
-          <mat-card>
-            <mat-card-title>Sıcak İçeçekler</mat-card-title>
-            <mat-card-content>
-              <mat-chip-list>
-                <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
-              </mat-chip-list>
-            </mat-card-content>
-          </mat-card>
-        </mat-tab>
-        <mat-tab label="Tatlılar">
-          <mat-card>
-            <mat-card-title>Tatlılar</mat-card-title>
-            <mat-card-content>
-              <mat-chip-list>
-                <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-              </mat-chip-list>
-
-            </mat-card-content>
-          </mat-card>
-
-        </mat-tab>
-        <mat-tab label="Alkollü İçecekler">
-          <mat-card>
-            <mat-card-title>Alkollü İçecekler</mat-card-title>
-            <mat-card-content>
-              <mat-chip-list>
-                <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
-                <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
-                <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
-              </mat-chip-list>
-
-            </mat-card-content>
-          </mat-card>
-        </mat-tab>
-      </mat-tab-group>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Sipariş Listesi
-        </mat-panel-title>
-        <mat-panel-description fxShow.xs="false" fxShow.sm="false">
-          Masaya ait mevcut sipariş listesi
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <table mat-table [dataSource]="dataSource" fxFill="100">
-        <ng-container matColumnDef="process">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <div fxLayout="row wrap" fxLayoutGap="5px">
-              <div fxFlex="50" fxFlex.sm="100" fxFlex.xs="100" >
-                <button color="primary" mat-stroked-button> <mat-icon svgIcon="add-svg"></mat-icon> </button>
-              </div>
-              <div fxFlex="50" fxFlex.sm="100" fxFlex.xs="100">
-                <button mat-stroked-button color="warn"><i class="material-icons">remove</i></button>
-              </div>
-            </div>
-          </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="unit">
-          <th mat-header-cell *matHeaderCellDef> Adet </th>
-          <td mat-cell *matCellDef="let element">
-            <h2>2</h2>
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Ürün </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Fiyat </th>
-          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-
-<div mat-dialog-actions class="order-footer">
-
-  <div fxLayout="row" fxFill fxFlexFill fxLayoutGap="10px">
-
-    <div fxFlex="auto">
-      <mat-card>
-        <mat-card-title>Toplam Tutar</mat-card-title>
-        <mat-card-content>
-          <h2>200.00 TL</h2>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-    <div fxFlex="auto">
-      <mat-card>
-        <mat-card-title>Tahsil Edilen Tutar</mat-card-title>
-        <mat-card-content>
-          <h2>200.00 TL</h2>
-        </mat-card-content>
-      </mat-card>
-
-    </div>
-    <div fxFlex="auto">
-      <mat-card>
-        <mat-card-title>Kalan Tutar</mat-card-title>
-        <mat-card-content>
-          <h2>200.00 TL</h2>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <div>
+    <h1 mat-dialog-title>Masa 1523415
+      <button style="float: right" [mat-dialog-close]="true" mat-icon-button>
+        <mat-icon aria-label="Example icon-button with a heart icon">clear</mat-icon>
+      </button>
+    </h1>
   </div>
 
+  <div  mat-dialog-content>
+    <mat-tab-group>
+      <mat-tab label="Sipariş & Masa">
+        <mat-card>
+          <mat-card-content>
+            <mat-accordion>
+              <mat-expansion-panel [expanded]="true">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Yeni Sipariş
+                  </mat-panel-title>
+                  <mat-panel-description></mat-panel-description>
+                </mat-expansion-panel-header>
+                <mat-tab-group>
+                  <mat-tab label="Sıcak İçeçekler">
+                    <mat-card>
+                      <mat-card-title>Sıcak İçeçekler</mat-card-title>
+                      <mat-card-content>
+                        <mat-chip-list>
+                          <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Demleme Çay-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
+                        </mat-chip-list>
+                      </mat-card-content>
+                    </mat-card>
+                  </mat-tab>
+                  <mat-tab label="Tatlılar">
+                    <mat-card>
+                      <mat-card-title>Tatlılar</mat-card-title>
+                      <mat-card-content>
+                        <mat-chip-list>
+                          <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
+                        </mat-chip-list>
 
+                      </mat-card-content>
+                    </mat-card>
 
+                  </mat-tab>
+                  <mat-tab label="Alkollü İçecekler">
+                    <mat-card>
+                      <mat-card-title>Alkollü İçecekler</mat-card-title>
+                      <mat-card-content>
+                        <mat-chip-list>
+                          <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
+                          <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
+                          <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
+                        </mat-chip-list>
+
+                      </mat-card-content>
+                    </mat-card>
+                  </mat-tab>
+                </mat-tab-group>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Siparişler
+                  </mat-panel-title>
+                  <mat-panel-description></mat-panel-description>
+                </mat-expansion-panel-header>
+                <table mat-table [dataSource]="dataSource" fxFill="100">
+                  <ng-container matColumnDef="unit">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                      <div fxLayout="row wrap">
+                        <div fxFlex="auto" fxFlexOrder="1">
+                          <button color="primary"  mat-icon-button>
+                            <i class="material-icons">add</i>
+                          </button>
+                        </div>
+                        <div fxFlex="auto" fxFlexOrder="2">
+                          <h2>2</h2>
+                        </div>
+                        <div fxFlex="auto" fxFlexOrder="3">
+                          <button color="warn"  mat-icon-button>
+                            <i class="material-icons">remove</i>
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Ürün </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> Fiyat </th>
+                    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="process">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                      <button color="warn"  mat-icon-button>
+                        <i class="material-icons">delete</i>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-card-content>
+        </mat-card>
+
+      </mat-tab>
+      <mat-tab label="Hesap & Ödeme">
+          <mat-card>
+             <mat-card-content>
+               <mat-accordion >
+                 <mat-expansion-panel [expanded]="true">
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                       Siparişler
+                     </mat-panel-title>
+                     <mat-panel-description></mat-panel-description>
+                   </mat-expansion-panel-header>
+                   <table mat-table [dataSource]="dataSource" fxFill="100">
+                     <ng-container matColumnDef="unit">
+                       <th mat-header-cell *matHeaderCellDef></th>
+                       <td mat-cell *matCellDef="let element">
+                         <div fxLayout="row wrap">
+                           <div fxFlex="auto" fxFlexOrder="1">
+                             <button color="primary"  mat-icon-button>
+                               <i class="material-icons">add</i>
+                             </button>
+                           </div>
+                           <div fxFlex="auto" fxFlexOrder="2">
+                             <h2>2</h2>
+                           </div>
+                           <div fxFlex="auto" fxFlexOrder="3">
+                             <button color="warn"  mat-icon-button>
+                               <i class="material-icons">remove</i>
+                             </button>
+                           </div>
+                         </div>
+                       </td>
+                     </ng-container>
+                     <ng-container matColumnDef="name">
+                       <th mat-header-cell *matHeaderCellDef> Ürün </th>
+                       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                     </ng-container>
+                     <ng-container matColumnDef="price">
+                       <th mat-header-cell *matHeaderCellDef> Fiyat </th>
+                       <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                     </ng-container>
+                     <ng-container matColumnDef="process">
+                       <th mat-header-cell *matHeaderCellDef></th>
+                       <td mat-cell *matCellDef="let element">
+                         <button color="warn"  mat-icon-button>
+                           <i class="material-icons">delete</i>
+                         </button>
+                       </td>
+                     </ng-container>
+                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                   </table>
+                 </mat-expansion-panel>
+                 <mat-expansion-panel>
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                       Ödeme
+                     </mat-panel-title>
+                     <mat-panel-description></mat-panel-description>
+                   </mat-expansion-panel-header>
+                   <div fxLayout="column" fxLayoutGap="20px">
+                     <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                       <mat-form-field style="width: 400px">
+                         <mat-select placeholder="Ödeme Şekli">
+                           <mat-option value="Nakit">Nakit</mat-option>
+                           <mat-option value="Kredi Kartı">Kredi Kartı</mat-option>
+                           <mat-option value="Ticket">Ticket</mat-option>
+                         </mat-select>
+                       </mat-form-field>
+                     </div>
+                     <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                       <mat-checkbox formControlName="hideRequired">İndirim Uygula</mat-checkbox>
+                     </div>
+                     <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                       <mat-form-field style="width: 400px">
+                         <mat-select placeholder="İndirim">
+                           <mat-option value="%">Yüzdelik</mat-option>
+                           <mat-option value="Tutar">Tutar</mat-option>
+                         </mat-select>
+                       </mat-form-field>
+                     </div>
+                     <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                       <mat-form-field style="width: 400px">
+                         <input matInput placeholder="Tutar veya Oran" type="number" value="0">
+                       </mat-form-field>
+                     </div>
+                     <div fxFlex="100">
+                       <button color="primary" mat-button>TAMAM</button>
+                       <button mat-button [mat-dialog-close]="true">KAPAT</button>
+                     </div>
+                   </div>
+                 </mat-expansion-panel>
+               </mat-accordion>
+             </mat-card-content>
+          </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div fxFlex fxShrink="0" fxGrow="1"></div>
+  <div mat-dialog-actions class="order-footer">
+    <div fxLayout="row" fxFill fxFlexFill fxLayoutGap="10px">
+      <div fxFlex="auto">
+        <mat-card>
+          <mat-card-title>Toplam Tutar</mat-card-title>
+          <mat-card-content>
+            <h2>200.00 TL</h2>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+      <div fxFlex="auto">
+        <mat-card>
+          <mat-card-title>Tahsil Edilen Tutar</mat-card-title>
+          <mat-card-content>
+            <h2>200.00 TL</h2>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+      <div fxFlex="auto">
+        <mat-card>
+          <mat-card-title>Kalan Tutar</mat-card-title>
+          <mat-card-content>
+            <h2>200.00 TL</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </div>

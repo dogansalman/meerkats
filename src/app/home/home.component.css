@@ -1,6 +1,9 @@
 .table-card{
   margin-bottom:20px;
+  width: 250px;
+  height: 220px;
 }
+
 .table-card .mat-card-footer{
   color:#FFFFFF;
   font-size:14px;

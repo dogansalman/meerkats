@@ -19,13 +19,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {unit: 1,name: 'Limonata', price: 20.1797},
 ];
 
+
 @Component({
   templateUrl:'order.component.html',
   styleUrls: ['order.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 
+
 export class OrderComponent{
-  displayedColumns: string[] = ['process','unit','name', 'price', ];
+
+  displayedColumns: string[] = ['unit','name', 'price','process' ];
   dataSource = ELEMENT_DATA;
+
+  constructor(){}
+
 }
