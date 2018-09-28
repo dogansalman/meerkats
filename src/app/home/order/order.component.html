@@ -141,18 +141,18 @@
                    <table mat-table [dataSource]="dataSource" fxFill="100">
                      <ng-container matColumnDef="unit">
                        <th mat-header-cell *matHeaderCellDef></th>
-                       <td mat-cell *matCellDef="let element">
+                       <td mat-cell *matCellDef="let element;  let i = index">
                          <div fxLayout="row wrap">
                            <div fxFlex="auto" fxFlexOrder="1">
-                             <button color="primary"  mat-icon-button>
+                             <button (click)="onUpdatePaymentItem(+1,i)" color="primary"  mat-icon-button>
                                <i class="material-icons">add</i>
                              </button>
                            </div>
                            <div fxFlex="auto" fxFlexOrder="2">
-                             <h2>0</h2>
+                             <h2>{{element.unit}}</h2>
                            </div>
                            <div fxFlex="auto" fxFlexOrder="3">
-                             <button color="warn"  mat-icon-button>
+                             <button (click)="onUpdatePaymentItem(-1,i)" color="warn"  mat-icon-button>
                                <i class="material-icons">remove</i>
                              </button>
                            </div>
@@ -161,7 +161,7 @@
                      </ng-container>
                      <ng-container matColumnDef="name">
                        <th mat-header-cell *matHeaderCellDef> Ürün </th>
-                       <td mat-cell *matCellDef="let element" class="no-select"> {{element.name}} </td>
+                       <td mat-cell *matCellDef="let element" ngClass="element.unit === 0 ? 'no-select' : ''"> {{element.name}} </td>
                      </ng-container>
                      <ng-container matColumnDef="price">
                        <th mat-header-cell *matHeaderCellDef> Fiyat </th>

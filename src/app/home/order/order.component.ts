@@ -40,4 +40,9 @@ export class OrderComponent{
     console.log('tested');
     this.showPriceDown = this.showPriceDown ? false : true;
   }
+  onUpdatePaymentItem(params: number, index: number): void {
+    var unit = this.dataSource[index].unit + params;
+    if(unit < 0) return;
+    this.dataSource[index].unit = unit;
+  }
 }
