@@ -37,12 +37,14 @@ export class OrderComponent{
   constructor(){}
 
   onChangePriceDown(): void {
-    console.log('tested');
     this.showPriceDown = this.showPriceDown ? false : true;
   }
   onUpdatePaymentItem(params: number, index: number): void {
     var unit = this.dataSource[index].unit + params;
     if(unit < 0) return;
     this.dataSource[index].unit = unit;
+  }
+  removeItem(item): void {
+    this.dataSource.find(itm => itm == item).unit = 0;
   }
 }
