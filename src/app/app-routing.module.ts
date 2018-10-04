@@ -36,8 +36,8 @@ const routes: Routes = [
         loadChildren: '../app/tables/tables.module#TablesModule'
       },
       {
-        path: 'person',
-        loadChildren: '../app/person/person.module#PersonModule'
+        path: 'employees',
+        loadChildren: '../app/employees/employees.module#EmployeesModule'
       }
     ]
   }

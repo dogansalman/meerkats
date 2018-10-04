@@ -29,6 +29,10 @@ input[type=number]::-webkit-outer-spin-button {
   background: #dadbdc;
 }
 
+.button-table-row:hover{
+  background: #fbfbfb;
+  cursor: pointer;
+}
 
 .mat-nav-list .mat-list-item:disabled{
   opacity: 0.5 !important;

@@ -1,6 +1,6 @@
 import {Component, OnInit, AfterContentInit,  ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {AddTableComponent} from './add-table/add-table.component';
+import {AddTableComponent} from './add/add-table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 
