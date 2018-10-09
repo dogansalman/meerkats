@@ -1,4 +1,6 @@
 import {Component, ViewEncapsulation} from '@angular/core';
+import {MatDialog} from '@angular/material';
+import {QuantityComponent} from '../../components/quantity/quantity.component';
 
 export interface PeriodicElement {
   unit:number,
@@ -34,8 +36,11 @@ export class OrderComponent{
   displayedColumns: string[] = ['unit','name', 'price','process' ];
   dataSource = ELEMENT_DATA;
 
-  constructor(){}
+  constructor(private dialog: MatDialog){}
 
+  onQuantityModal(): void {
+    this.dialog.open(QuantityComponent, {width:'300px', height:'300px', data: {title:'Adet Seçimi', message: 'Lütfen adet seçinizi belirtin.'}});
+  }
   onChangePriceDown(): void {
     this.showPriceDown = this.showPriceDown ? false : true;
   }
