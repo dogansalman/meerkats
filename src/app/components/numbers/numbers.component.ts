@@ -17,10 +17,12 @@ export class NumbersComponent{
 
   onClickNumb(numb: number): void {
     let changedNumb = Number(this.quantity.toString() + numb);
-    if(changedNumb > 999 || changedNumb <= 0) return;
+    if(changedNumb > 999 ) return;
+    if(changedNumb <= 0) { this.quantity = 1;  return;}
     this.quantity = changedNumb;
   }
   onDeleteNumb(): void {
-    
+    let changedNumb =  Number(this.quantity.toString().substr(0,this.quantity.toString().length -1));
+    this.quantity = changedNumb <= 0 ? 0 : changedNumb;
   }
 }
