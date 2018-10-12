@@ -1,6 +1,8 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {personInterface} from '../interfaces/person';
+import {MatDialog} from '@angular/material';
+import {EmployeeComponent} from './employee/employee.component';
 
 const ELEMENT_DATA: personInterface[] = [
   {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
@@ -27,7 +29,7 @@ export class EmployeesComponent implements OnInit, AfterContentInit{
   displayedColumns: string[] = ['name', 'lastname', 'username'];
   dataSource = ELEMENT_DATA;
 
-  constructor(private spinner: NgxSpinnerService) {}
+  constructor(private spinner: NgxSpinnerService, private dialog: MatDialog) {}
 
 
   ngOnInit(): void { }
@@ -36,6 +38,6 @@ export class EmployeesComponent implements OnInit, AfterContentInit{
   }
 
   onPersonModal(): void {
-    alert('alerts');
+    this.dialog.open(EmployeeComponent, {width:'450px', height: '600px'});
   }
 }

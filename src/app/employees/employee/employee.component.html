@@ -1,0 +1,42 @@
+<mat-card class="card-no-shadow">
+  <mat-card-header>
+    <mat-card-title></mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+
+
+    <div fxFill fxLayoutAlign="center">
+      <img mat-card-sm-image src="https://via.placeholder.com/150x150" />
+    </div>
+
+
+    <mat-form-field class="full-width-field">
+      <input type="text" matInput #fullname maxlength="255" placeholder="Ad Soyad">
+      <mat-hint align="start"> </mat-hint>
+      <mat-hint align="end">{{fullname.value.length}} / 255</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width-field">
+      <input type="text" matInput #username maxlength="255" placeholder="Kullanıcı Adı">
+      <mat-hint align="start"> </mat-hint>
+      <mat-hint align="end">{{username.value.length}} / 255</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field class="full-width-field">
+      <input type="password" matInput #password maxlength="255" placeholder="Şifre">
+      <mat-hint align="start"> </mat-hint>
+      <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
+    </mat-form-field>
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="primary" mat-button>TAMAM</button>
+    <button mat-button [mat-dialog-close]="true">KAPAT</button>
+  </mat-card-actions>
+</mat-card>
+

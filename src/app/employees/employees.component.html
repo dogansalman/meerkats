@@ -31,7 +31,5 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr (click)="onPersonModal()" mat-row class="button-table-row" *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      <button mat-fab class="fab-btn" color="primary" (click)="onPersonModal()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
     </table>
-
+    <button mat-fab class="fab-btn" color="primary" (click)="onPersonModal()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
