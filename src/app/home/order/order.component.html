@@ -8,10 +8,10 @@
     </h1>
   </div>
 
-  <div  mat-dialog-content>
+  <div mat-dialog-content>
     <mat-tab-group>
       <mat-tab label="Yeni Sipariş">
-        <mat-card>
+        <mat-card class="no-padding">
           <mat-card-content>
           <mat-tab-group>
             <mat-tab label="Sıcak İçeçekler">
@@ -94,7 +94,7 @@
                       </button>
                     </div>
                     <div fxFlex="auto" fxFlexOrder="2">
-                      <h2>2</h2>
+                      <h2 class="centered-text" >2</h2>
                     </div>
                     <div fxFlex="auto" fxFlexOrder="3">
                       <button color="warn"  mat-icon-button>
@@ -106,7 +106,7 @@
               </ng-container>
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Ürün </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.name}}  </td>
               </ng-container>
               <ng-container matColumnDef="price">
                 <th mat-header-cell *matHeaderCellDef> Fiyat </th>
@@ -128,10 +128,10 @@
 
       </mat-tab>
       <mat-tab label="Ödeme">
-          <mat-card>
+          <mat-card class="no-padding">
              <mat-card-content>
                <mat-accordion >
-                 <mat-expansion-panel [expanded]="true">
+                 <mat-expansion-panel [expanded]="false">
                    <mat-expansion-panel-header>
                      <mat-panel-title>
                        Siparişler
@@ -139,6 +139,7 @@
                      <mat-panel-description></mat-panel-description>
                    </mat-expansion-panel-header>
                    <table mat-table [dataSource]="dataSource" fxFill="100">
+
                      <ng-container matColumnDef="unit">
                        <th mat-header-cell *matHeaderCellDef></th>
                        <td mat-cell *matCellDef="let element;  let i = index">
@@ -149,7 +150,7 @@
                              </button>
                            </div>
                            <div fxFlex="auto" fxFlexOrder="2">
-                             <h2>{{element.unit}}</h2>
+                             <h2 class="centered-text">{{element.unit}}</h2>
                            </div>
                            <div fxFlex="auto" fxFlexOrder="3">
                              <button (click)="onUpdatePaymentItem(-1,i)" color="warn"  mat-icon-button>
@@ -175,6 +176,7 @@
                          </button>
                        </td>
                      </ng-container>
+
                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                    </table>
@@ -189,7 +191,7 @@
 
                    <div fxLayout="column" fxLayoutGap="20px">
                      <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
-                       <mat-form-field style="width: 400px">
+                       <mat-form-field>
                          <mat-select placeholder="Ödeme Şekli">
                            <mat-option value="Nakit">Nakit</mat-option>
                            <mat-option value="Kredi Kartı">Kredi Kartı</mat-option>
@@ -201,7 +203,7 @@
                        <mat-checkbox (change)="onChangePriceDown()" formControlName="hideRequired">İndirim Uygula</mat-checkbox>
                      </div>
                      <div *ngIf="showPriceDown"  fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
-                       <mat-form-field style="width: 400px">
+                       <mat-form-field>
                          <mat-select placeholder="İndirim">
                            <mat-option value="%">Yüzdelik</mat-option>
                            <mat-option value="Tutar">Tutar</mat-option>
@@ -239,34 +241,48 @@
     </mat-tab-group>
   </div>
   <div fxFlex fxShrink="0" fxGrow="1"></div>
-  <div mat-dialog-actions class="order-footer">
-    <div fxLayout="row" fxFill fxFlexFill fxLayoutGap="10px">
-      <div fxFlex="auto">
-        <mat-card>
-          <mat-card-title>Toplam Tutar</mat-card-title>
-          <mat-card-content>
-            <h2>200.00 TL</h2>
-          </mat-card-content>
-        </mat-card>
 
-      </div>
-      <div fxFlex="auto">
-        <mat-card>
-          <mat-card-title>Tahsil Edilen Tutar</mat-card-title>
-          <mat-card-content>
-            <h2>200.00 TL</h2>
-          </mat-card-content>
-        </mat-card>
 
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Hesap Özeti
+        </mat-panel-title>
+        <mat-panel-description></mat-panel-description>
+      </mat-expansion-panel-header>
+      <div mat-dialog-actions class="order-footer">
+        <div fxLayout="row wrap" fxFill fxFlexFill fxLayoutGap="10px">
+          <div fxFlex="25" fxFlex.xs="100" fxFlex.sm="100">
+            <mat-card class="card-no-shadow">
+              <mat-card-title>Toplam Tutar</mat-card-title>
+              <mat-card-content>
+                <h2>200.00 TL</h2>
+              </mat-card-content>
+            </mat-card>
+
+          </div>
+          <div fxFlex="auto">
+            <mat-card class="card-no-shadow">
+              <mat-card-title>Tahsil Edilen Tutar</mat-card-title>
+              <mat-card-content>
+                <h2>200.00 TL</h2>
+              </mat-card-content>
+            </mat-card>
+
+          </div>
+          <div fxFlex="auto">
+            <mat-card class="card-no-shadow">
+              <mat-card-title>Kalan Tutar</mat-card-title>
+              <mat-card-content>
+                <h2>200.00 TL</h2>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
       </div>
-      <div fxFlex="auto">
-        <mat-card>
-          <mat-card-title>Kalan Tutar</mat-card-title>
-          <mat-card-content>
-            <h2>200.00 TL</h2>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div>
-  </div>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
 </div>

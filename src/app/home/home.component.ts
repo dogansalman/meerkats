@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
   ngAfterContentInit() { this.spinner.hide(); }
 
   orderModal(): void {
-    const dialogRef =  this.dialog.open(OrderComponent, {width:'100vh', height:'100vh'});
+    const dialogRef =  this.dialog.open(OrderComponent, {width:'100vh', height:'100vh', panelClass:'fullpanel'});
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     })
