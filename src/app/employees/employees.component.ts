@@ -38,6 +38,6 @@ export class EmployeesComponent implements OnInit, AfterContentInit{
   }
 
   onPersonModal(): void {
-    this.dialog.open(EmployeeComponent, {width:'450px', height: '600px'});
+    this.dialog.open(EmployeeComponent, {width: '400px', height: 'auto'});
   }
 }

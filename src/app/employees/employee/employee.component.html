@@ -1,6 +1,6 @@
-<mat-card class="card-no-shadow">
+<mat-card mat-dialog-content class="card-no-shadow">
   <mat-card-header>
-    <mat-card-title></mat-card-title>
+    <mat-card-title>Personel Düzenle</mat-card-title>
     <mat-card-subtitle></mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
@@ -34,9 +34,10 @@
 
 
   </mat-card-content>
-  <mat-card-actions>
-    <button color="primary" mat-button>TAMAM</button>
-    <button mat-button [mat-dialog-close]="true">KAPAT</button>
-  </mat-card-actions>
+
 </mat-card>
 
+<div mat-dialog-actions>
+  <button color="primary" mat-button>TAMAM</button>
+  <button mat-button [mat-dialog-close]="true">KAPAT</button>
+</div>
