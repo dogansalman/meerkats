@@ -1,6 +1,6 @@
 import {Component, OnInit, AfterContentInit,  ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {AddTableComponent} from './add/add-table.component';
+import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 
@@ -18,7 +18,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
   ngAfterContentInit(){ this.spinner.hide() }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddTableComponent, {
+    const dialogRef = this.dialog.open(TableComponent, {
       width: '450px'
     });
 

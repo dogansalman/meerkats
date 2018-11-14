@@ -3,15 +3,15 @@ import {MatDialogRef} from '@angular/material';
 import {FormControl} from '@angular/forms';
 
 @Component({
-  templateUrl: 'add-table.component.html'
+  templateUrl: 'table.component.html'
 })
 
-export class AddTableComponent {
+export class TableComponent {
 
   myControl = new FormControl();
   options: string[] = ['Bahçe', 'Giriş Alanı', 'Kapalı Alan'];
 
-  constructor(public dialogRef: MatDialogRef<AddTableComponent>) {}
+  constructor(public dialogRef: MatDialogRef<TableComponent>) {}
 
 
   closeDialog(data) {

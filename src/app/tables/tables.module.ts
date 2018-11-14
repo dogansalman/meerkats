@@ -4,15 +4,15 @@ import {TablesComponent} from './tables.component';
 import {AppMaterialModule} from '../app-material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {TablesRoutingModule} from './tables-routing.module';
-import {AddTableComponent} from './add/add-table.component';
-import {AddTableModule} from './add/add-table.module';
+import {TableComponent} from './table/table.component';
+import {TableModule} from './table/table.module';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {ConfirmModule} from '../components/confirm/confirm.module';
 
 @NgModule({
-  imports:[AppMaterialModule,FlexLayoutModule, CommonModule, TablesRoutingModule, AddTableModule, ConfirmModule],
+  imports:[AppMaterialModule,FlexLayoutModule, CommonModule, TablesRoutingModule, TableModule, ConfirmModule],
   declarations:[TablesComponent],
-  entryComponents:[AddTableComponent, ConfirmComponent]
+  entryComponents:[TableComponent, ConfirmComponent]
 
 })
 

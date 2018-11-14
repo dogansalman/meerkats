@@ -7,16 +7,16 @@
       <span class="example-spacer"></span>
       <div>
         <button mat-button [matMenuTriggerFor]="menu">
-          <i class="material-icons">account_circle</i>  Maya Kafe Restorant
+            Maya Kafe Restorant
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Hesabım</button>
-          <button mat-menu-item>Oturumu Kapat</button>
+          <button mat-menu-item> <mat-icon>assignment_ind</mat-icon> Hesabım</button>
+          <button mat-menu-item><mat-icon>exit_to_app</mat-icon> Oturumu Kapat</button>
         </mat-menu>
       </div>
 
       <div fxShow="true" fxFlex="100" fxLayout="row" fxLayoutAlign="end">
-        <img routerLink="/home" style="width: 50px; height: 50px; cursor: pointer;" src="https://via.placeholder.com/150x150"/>
+        <img routerLink="/home" style="height: 40px; cursor: pointer;" src="./assets/img/meerkats_logo.png"/>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -55,7 +55,7 @@
           <span class="navbar-menu-title" fxShow.xs="false">Mutfak Modu</span>
         </a>
 
-        <a class="navmenu-item" style="opacity: 0.5;" routerLink="/cash" mat-list-item>
+        <a  class="navmenu-item"  routerLink="/home" mat-list-item>
           <mat-icon svgIcon="pos-svg"></mat-icon>
           <span class="navbar-menu-title" fxShow.xs="false">Kasa Modu</span>
         </a>
