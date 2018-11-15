@@ -9,7 +9,9 @@ input[type=number]::-webkit-outer-spin-button {
 .fullpanel{
   max-width: 100vw !important;
 }
-
+.fab-btn.mat-fab{
+  position:  fixed !important;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
