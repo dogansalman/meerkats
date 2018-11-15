@@ -8,10 +8,18 @@
 <mat-dialog-content>
   <mat-card mat-dialog-content class="card-no-shadow">
     <mat-card-content>
-      <div fxFill fxLayoutAlign="center">
-        <img mat-card-sm-image src="https://via.placeholder.com/150x150" />
-      </div>
 
+      <mat-form-field class="full-width-field">
+        <mat-select placeholder="İzinler"  multiple>
+          <mat-option value="0">Ürün Yönetimi</mat-option>
+          <mat-option value="0">Sipariş Yönetimi</mat-option>
+          <mat-option value="0">Masa Yönetimi</mat-option>
+          <mat-option value="0">Kasa Yönetimi</mat-option>
+          <mat-option value="0">Rapor İstatistik</mat-option>
+          <mat-option value="0">Mutfak</mat-option>
+          <mat-option value="0">Tam Yetkili (Yönetici)</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <mat-form-field class="full-width-field">
         <input type="text" matInput #fullname maxlength="255" placeholder="Ad Soyad">

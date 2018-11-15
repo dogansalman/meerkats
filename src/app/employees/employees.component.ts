@@ -5,16 +5,20 @@ import {MatDialog} from '@angular/material';
 import {EmployeeComponent} from './employee/employee.component';
 
 const ELEMENT_DATA: personInterface[] = [
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan'}
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Tam Yetkili(Yönetici)'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+
 ];
 
 @Component({
@@ -26,7 +30,7 @@ const ELEMENT_DATA: personInterface[] = [
 
 export class EmployeesComponent implements OnInit, AfterContentInit{
 
-  displayedColumns: string[] = ['name', 'lastname', 'username'];
+  displayedColumns: string[] = ['name', 'lastname', 'username', 'permissions'];
   dataSource = ELEMENT_DATA;
 
   constructor(private spinner: NgxSpinnerService, private dialog: MatDialog) {}
@@ -38,6 +42,6 @@ export class EmployeesComponent implements OnInit, AfterContentInit{
   }
 
   onPersonModal(): void {
-    this.dialog.open(EmployeeComponent, {width: '400px', height: 'auto'});
+    this.dialog.open(EmployeeComponent, {width: '600px', height: '450px'});
   }
 }
