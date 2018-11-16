@@ -1,10 +1,10 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {personInterface} from '../interfaces/person';
+import {employeeInterface} from '../interfaces/employee';
 import {MatDialog} from '@angular/material';
 import {EmployeeComponent} from './employee/employee.component';
 
-const ELEMENT_DATA: personInterface[] = [
+const ELEMENT_DATA: employeeInterface[] = [
   {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
   {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
   {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi'},

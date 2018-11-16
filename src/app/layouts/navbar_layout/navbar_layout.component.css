@@ -41,3 +41,6 @@
 .mat-drawer{
     height: 100vh;
   }
+.main-logo-btn{
+  transition: none !important; box-shadow: none !important; cursor: pointer; outline: 1px solid #666666; outline: 0px auto -webkit-focus-ring-color;
+}

@@ -1,4 +1,4 @@
-export interface personInterface {
+export interface employeeInterface {
   id: number,
   name: string,
   lastname: string,

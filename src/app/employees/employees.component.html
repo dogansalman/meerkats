@@ -1,5 +1,6 @@
+<mat-card>
+  <mat-card-content>
     <table mat-table [dataSource]="dataSource" fxFlex="100">
-
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Ad </th>
@@ -33,4 +34,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr (click)="onPersonModal()" mat-row class="button-table-row" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <button mat-fab class="fab-btn" color="primary" (click)="onPersonModal()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
+  </mat-card-content>
+</mat-card>
+<button mat-fab class="fab-btn" color="primary" (click)="onPersonModal()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
