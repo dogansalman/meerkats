@@ -22,9 +22,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
       width: '450px'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-    });
+    dialogRef.afterClosed().subscribe(result => { });
   }
 
   Confirm(): void {

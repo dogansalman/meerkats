@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
       data: {name: 'name', animal: 'animal'}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-    });
+    dialogRef.afterClosed().subscribe(result => { });
   }
 
   ngOnInit() {

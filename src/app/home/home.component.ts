@@ -15,17 +15,13 @@ export class HomeComponent implements OnInit, AfterContentInit {
   constructor(private spinner: NgxSpinnerService, private snackbarService: SnackbarService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.snackbarService.show('Henüz masa oluşturmadınız.','Ekle','success').afterDismissed().subscribe(() => {
-      console.log('data');
-    });
+    this.snackbarService.show('Henüz masa oluşturmadınız.','Ekle','success').afterDismissed().subscribe(() => {});
   }
 
   ngAfterContentInit() { this.spinner.hide(); }
 
   orderModal(): void {
     const dialogRef =  this.dialog.open(OrderComponent, {width:'100vh', height:'100vh', panelClass:'fullpanel'});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    })
+    dialogRef.afterClosed().subscribe(result => { });
   }
 }

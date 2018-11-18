@@ -1,6 +1,8 @@
 import {Component, AfterViewInit} from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {productInterface} from '../interfaces/product';
+import {MatDialog} from '@angular/material';
+import {ProductComponent} from './product/product.component';
 
 const ELEMENT_DATA: productInterface[] = [
   {
@@ -109,7 +111,11 @@ export class ProductsComponent implements AfterViewInit{
   displayedColumns: string[] = ['image', 'name', 'category', 'price'];
   dataSource = ELEMENT_DATA;
 
-  constructor(private spinner: NgxSpinnerService) { }
+  constructor(private spinner: NgxSpinnerService, private dialog: MatDialog) { }
 
-  ngAfterViewInit(): void { this.spinner.hide() }
+  ngAfterViewInit(): void { this.spinner.hide(); }
+
+  onProduct(): void {
+    this.dialog.open(ProductComponent, {width: '450px', height: '600px'});
+  }
 }
