@@ -5,8 +5,11 @@
   </h1>
 
   <mat-dialog-content>
+    <input #uploadBtn fxShow="false" id="input-file-id" multiple type="file" />
     <mat-card mat-dialog-content class="card-no-shadow">
       <mat-card-content>
+
+        <img (click)="uploadBtn.click()" src="https://via.placeholder.com/150" style="height: 150px; margin: auto; display: block; cursor: pointer;">
 
         <mat-form-field class="full-width-field">
           <mat-select placeholder="Kategori">
@@ -18,24 +21,23 @@
         </mat-form-field>
 
         <mat-form-field class="full-width-field">
-          <input type="text" matInput #fullname maxlength="255" placeholder="Ad Soyad">
+          <input type="text" matInput #name maxlength="255" placeholder="Ürün adı">
           <mat-hint align="start"> </mat-hint>
-          <mat-hint align="end">{{fullname.value.length}} / 255</mat-hint>
+          <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
         </mat-form-field>
-
 
         <mat-form-field class="full-width-field">
-          <input type="text" matInput #username maxlength="255" placeholder="Kullanıcı Adı">
+          <input type="text" matInput matInputmaxlength="255" placeholder="Fiyat (KDV Dahil)">
           <mat-hint align="start"> </mat-hint>
-          <mat-hint align="end">{{username.value.length}} / 255</mat-hint>
         </mat-form-field>
-
 
         <mat-form-field class="full-width-field">
-          <input type="password" matInput #password maxlength="255" placeholder="Şifre">
-          <mat-hint align="start"> </mat-hint>
-          <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
+          <mat-select placeholder="Kdv">
+            <mat-option value="0">8</mat-option>
+            <mat-option value="0">18</mat-option>
+          </mat-select>
         </mat-form-field>
+
 
 
       </mat-card-content>
