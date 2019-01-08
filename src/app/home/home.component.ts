@@ -3,6 +3,13 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {SnackbarService} from '../services/snackbar/snackbar.service';
 import {OrderComponent} from './order/order.component';
 import {MatDialog} from '@angular/material';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireList} from '@angular/fire/database';
+
+
+class Book {
+  constructor(public title) { }
+}
 
 @Component({
   selector: 'app-home',
@@ -12,16 +19,26 @@ import {MatDialog} from '@angular/material';
 })
 export class HomeComponent implements OnInit, AfterContentInit {
 
-  constructor(private spinner: NgxSpinnerService, private snackbarService: SnackbarService, private dialog: MatDialog) { }
+  // Firebase List Object
+  storyList: AngularFireList<any>;
 
-  ngOnInit() {
-    this.snackbarService.show('Henüz masa oluşturmadınız.','Ekle','success').afterDismissed().subscribe(() => {});
+  constructor(private spn: NgxSpinnerService, private snack: SnackbarService, private dialog: MatDialog, private db: AngularFireDatabase ) {
+
+    /*
+    Firebase Create example
+    * */
+    this.storyList = this.db.list('stories');
+    this.storyList.push({name: 'doğan', surname: 'salman'});
   }
 
-  ngAfterContentInit() { this.spinner.hide(); }
+  ngOnInit() {
+    this.snack.show('Henüz masa oluşturmadınız.', 'Ekle', 'success').afterDismissed().subscribe(() => {});
+  }
+
+  ngAfterContentInit() { this.spn.hide(); }
 
   orderModal(): void {
-    const dialogRef =  this.dialog.open(OrderComponent, {width:'100vh', height:'100vh', panelClass:'fullpanel'});
+    const dialogRef =  this.dialog.open(OrderComponent, {width: '100vh', height: '100vh', panelClass: 'fullpanel'});
     dialogRef.afterClosed().subscribe(result => { });
   }
 }

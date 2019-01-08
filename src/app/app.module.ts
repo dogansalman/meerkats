@@ -9,14 +9,23 @@ import { AppMaterialModule } from './app-material.module';
 import { Navbar_layoutComponent } from './layouts/navbar_layout/navbar_layout.component';
 import { Empty_layoutComponent } from './layouts/empty_layout/empty_layout.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
-
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent,Navbar_layoutComponent, Empty_layoutComponent],
-  imports: [BrowserAnimationsModule, AppRoutingModule, FormsModule,  NgxSpinnerModule, FlexLayoutModule, AppMaterialModule, HttpClientModule],
+  declarations: [AppComponent, Navbar_layoutComponent, Empty_layoutComponent],
+  imports: [
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    NgxSpinnerModule,
+    FlexLayoutModule,
+    AppMaterialModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase, 'meerkats'),
+    AngularFireDatabaseModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 
