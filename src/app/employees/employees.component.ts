@@ -1,23 +1,23 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {employeeInterface} from '../interfaces/employee';
+import {EmployeeInterface} from '../interfaces/employee';
 import {MatDialog} from '@angular/material';
 import {EmployeeComponent} from './employee/employee.component';
 
-const ELEMENT_DATA: employeeInterface[] = [
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Tam Yetkili(Yönetici)'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {id: 1,name: 'doğan', lastname: 'salman', password: '12312',place_id: 1, username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+const ELEMENT_DATA: EmployeeInterface[] = [
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi',},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Tam Yetkili(Yönetici)'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
+  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
 
 ];
 

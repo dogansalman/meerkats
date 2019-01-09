@@ -1,105 +1,137 @@
 import {Component, AfterViewInit} from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import {productInterface} from '../interfaces/product';
+import {ProductInterface} from '../interfaces/product';
 import {MatDialog} from '@angular/material';
 import {ProductComponent} from './product/product.component';
 
-const ELEMENT_DATA: productInterface[] = [
+const ELEMENT_DATA: ProductInterface[] = [
   {
     category: 1,
     image: '',
     name: 'Coca Cola Zero',
-    price: 8
+    price: 8,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Sütlaç',
-    price: 12
+    price: 12,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Cheesecake',
-    price: 15
+    price: 15,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Tavuklu Salata',
-    price: 25
+    price: 25,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Coca Cola Zero',
-    price: 8
+    price: 8,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Sütlaç',
-    price: 12
+    price: 12,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Cheesecake',
-    price: 15
+    price: 15,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Tavuklu Salata',
-    price: 25
+    price: 25,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Coca Cola Zero',
-    price: 8
+    price: 8,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Sütlaç',
-    price: 12
+    price: 12,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Cheesecake',
-    price: 15
+    price: 15,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Tavuklu Salata',
-    price: 25
+    price: 25,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Coca Cola Zero',
-    price: 8
+    price: 8,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Sütlaç',
-    price: 12
+    price: 12,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Cheesecake',
-    price: 15
+    price: 15,
+    tax: 8,
+    business_id: '1',
   },
   {
     category: 1,
     image: '',
     name: 'Tavuklu Salata',
-    price: 25
+    price: 25,
+    tax: 8,
+    business_id: '1',
   },
 ];
 

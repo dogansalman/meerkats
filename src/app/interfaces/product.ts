@@ -1,6 +1,8 @@
-export interface productInterface {
-  name: string,
-  price: number,
-  category:number
-  image: string
+export interface ProductInterface {
+  name: string;
+  price: number;
+  tax: number;
+  category: number;
+  image: string;
+  business_id: string;
 }

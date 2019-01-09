@@ -1,4 +1,4 @@
-import {order} from '../interfaces/order'
+import {order} from '../interfaces/order';
 
 export interface orders {
 
@@ -7,6 +7,6 @@ export interface orders {
   table_numb: string;
   note: string;
   state: string;
-  order: Array<order>
+  order: Array<order>;
 
 }
