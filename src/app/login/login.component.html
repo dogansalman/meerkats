@@ -18,15 +18,23 @@
 <mat-divider></mat-divider>
   <div fxFlex="row">
     <div fxFlex="50" fxFlexAlign="start">
-      <button routerLink="/home" color="primary" mat-button>Oturum Aç</button>
+      <button routerLink="/home"  mat-raised-button color="primary">Oturum Aç</button>
     </div>
+
     <div fxFlex="auto"  fxFlexAlign="end end" style="text-align: right">
       <mat-slide-toggle color="primary">Hatırla!</mat-slide-toggle>
     </div>
   </div>
 
-  <div fxFill="100" align="right">
-    <button mat-button (click)="forgotModal()">Şifremi Unuttum!</button>
+  <div fxFlex="row" style="margin-top: 30px;">
+    <div fxFlex="50" fxFlexAlign="start">
+      <button (click)="registerModal()" mat-button>Yeni hesap oluştur</button>
+    </div>
+    <div fxFlex="auto" fxFlexAlign="end end" align="right">
+      <button mat-button (click)="forgotModal()">Şifremi Unuttum!</button>
+    </div>
   </div>
+
+
 </div>
 

@@ -1,5 +1,5 @@
-import {Component, Inject, ViewEncapsulation} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {Component, Inject} from '@angular/core';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 export interface DialogData {
   animal: string;
@@ -10,7 +10,7 @@ export interface DialogData {
   templateUrl: 'forgot.component.html'
   })
 
-export class ForgotComponent{
+export class ForgotComponent {
   constructor( public dialogRef: MatDialogRef<ForgotComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   closeDialog(data) {

@@ -3,6 +3,7 @@ import {NgxSpinnerService} from 'ngx-spinner';
 import {ForgotComponent} from './forgot/forgot.component';
 import {MatDialog} from '@angular/material';
 import {Renderer2} from '@angular/core';
+import {RegisterComponent} from './register/register.component';
 
 @Component({
   selector: 'app-login',
@@ -22,13 +23,15 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => { });
   }
-
+  registerModal(): void{
+    const dialogRef = this.dialog.open(RegisterComponent, {width: '100vh', height: '100vh', panelClass: 'fullpanel'});
+  }
   ngOnInit() {
-    this.renderer.addClass(document.body,'app-login');
+    this.renderer.addClass(document.body, 'app-login');
     this.spinner.show();
   }
   ngOnDestroy(){
-    this.renderer.removeClass(document.body,'app-login');
+    this.renderer.removeClass(document.body, 'app-login');
   }
-  ngAfterContentInit() {this.spinner.hide();}
+  ngAfterContentInit() { this.spinner.hide(); }
 }

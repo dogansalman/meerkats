@@ -9,8 +9,6 @@ import {AppMaterialModule} from '../../app-material.module';
     CommonModule,
     FlexLayoutModule,
     AppMaterialModule
-
-
   ],
   declarations: [ForgotComponent],
 })

@@ -1,0 +1,79 @@
+<div>
+  <h1 mat-dialog-title>Yeni Hesap Oluştur
+    <button style="float: right" [mat-dialog-close]="true" mat-icon-button>
+      <mat-icon aria-label="Example icon-button with a heart icon">clear</mat-icon>
+    </button>
+  </h1>
+</div>
+<mat-dialog-content style="height: 95vh;">
+  <mat-horizontal-stepper linear >
+    <mat-step>
+      <ng-template matStepLabel>İşletme & Hesap Bilgileri</ng-template>
+      <mat-card class="card-no-shadow">
+        <mat-card-content>
+          <mat-form-field class="full-width-field">
+            <input matInput #name maxlength="255" placeholder="İşletme Adı">
+            <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-field">
+            <mat-select placeholder="İşletme Sınıfı">
+              <mat-option value="0">Kafe / Restorant</mat-option>
+              <mat-option value="0">Bar / Bistro</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-field">
+            <input matInput #email maxlength="255" type="email" placeholder="E-posta">
+            <mat-hint align="end">{{email.value.length}} / 255</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-field">
+            <input matInput #phone maxlength="255" type="text" placeholder="Telefon">
+            <mat-hint>Ülke kodu ile birlikte. +90</mat-hint>
+            <mat-hint align="end">{{phone.value.length}} / 255</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-field">
+            <input matInput #password maxlength="255" type="password" placeholder="Şifre">
+            <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-field">
+            <input matInput #adress maxlength="255" type="text" placeholder="Adres">
+            <mat-hint align="end">{{adress.value.length}} / 255</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-field">
+            <mat-select placeholder="İl">
+              <mat-option value="0">Tekirdağ</mat-option>
+              <mat-option value="0">İzmir</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="full-width-field">
+            <mat-select placeholder="İlçe">
+              <mat-option value="0">Çorlu</mat-option>
+              <mat-option value="0">Bornova</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </mat-card-content>
+      </mat-card>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Konum Bilgisi</ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Onay</ng-template>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</mat-dialog-content>
+
+<mat-dialog-content>
+  <button color="primary" mat-raised-button>Devam</button>
+</mat-dialog-content>
+
+
+
