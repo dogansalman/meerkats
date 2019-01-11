@@ -4,6 +4,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonModule} from '@angular/common';
 import {RegisterComponent} from './register.component';
 
+
+
 @NgModule({
   imports: [
     AppMaterialModule,
@@ -13,4 +15,6 @@ import {RegisterComponent} from './register.component';
   declarations: [RegisterComponent]
 })
 
-export class RegisterModule { }
+export class RegisterModule {
+
+}
