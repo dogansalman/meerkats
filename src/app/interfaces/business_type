@@ -1,4 +1,0 @@
-export interface BusinessTypeInterface {
-  id: string;
-  name: string;
-}

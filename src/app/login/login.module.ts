@@ -8,7 +8,8 @@ import {ForgotModule} from './forgot/forgot.module';
 import {ForgotComponent} from './forgot/forgot.component';
 import {RegisterModule} from './register/register.module';
 import {RegisterComponent} from './register/register.component';
-
+import {BussinessTypeServices} from '../models/bussinessType/bussinessType.services';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   imports: [
@@ -17,8 +18,10 @@ import {RegisterComponent} from './register/register.component';
     FlexLayoutModule,
     AppMaterialModule,
     ForgotModule,
-    RegisterModule
+    RegisterModule,
+    AngularFireDatabaseModule
   ],
+  providers: [BussinessTypeServices],
   declarations: [LoginComponent],
   entryComponents: [
     ForgotComponent,
@@ -27,3 +30,4 @@ import {RegisterComponent} from './register/register.component';
 })
 
 export class LoginModule {}
+

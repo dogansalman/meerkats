@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: '',
     component: Navbar_layoutComponent,
-    children:[
+    children: [
       {
         path: 'home',
         loadChildren: '../app/home/home.module#HomeModule'
@@ -32,7 +32,7 @@ const routes: Routes = [
         loadChildren: '../app/kitchen/kitchen.module#KitchenModule'
       },
       {
-        path:'tables',
+        path: 'tables',
         loadChildren: '../app/tables/tables.module#TablesModule'
       },
       {

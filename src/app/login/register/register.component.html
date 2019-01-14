@@ -6,12 +6,14 @@
   </h1>
 </div>
 <mat-dialog-content style="height: 95vh;">
+
   <mat-horizontal-stepper linear >
     <mat-step>
       <ng-template matStepLabel>İşletme & Hesap Bilgileri</ng-template>
       <mat-card class="card-no-shadow">
         <mat-card-content>
-          <mat-form-field class="full-width-field">
+
+        <mat-form-field class="full-width-field">
             <input matInput #name maxlength="255" placeholder="İşletme Adı">
             <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
           </mat-form-field>

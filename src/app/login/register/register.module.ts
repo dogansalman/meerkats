@@ -3,18 +3,17 @@ import {AppMaterialModule} from '../../app-material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonModule} from '@angular/common';
 import {RegisterComponent} from './register.component';
-
-
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   imports: [
     AppMaterialModule,
     CommonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireDatabaseModule
   ],
-  declarations: [RegisterComponent]
+  declarations: [RegisterComponent],
+  providers: []
 })
 
-export class RegisterModule {
-
-}
+export class RegisterModule { }

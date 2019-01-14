@@ -107,6 +107,6 @@ export class AppMaterialModule {
     return {
       ngModule: AppMaterialModule,
       providers: [  ]
-    }
+    };
   }
 }

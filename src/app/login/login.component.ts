@@ -9,11 +9,12 @@ import {RegisterComponent} from './register/register.component';
   selector: 'app-login',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: []
 })
 export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
 
-  constructor(private spinner : NgxSpinnerService, public dialog: MatDialog, private renderer: Renderer2) {}
+  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private renderer: Renderer2) {}
 
   forgotModal(): void {
     const dialogRef = this.dialog.open(ForgotComponent, {
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
     this.renderer.addClass(document.body, 'app-login');
     this.spinner.show();
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.renderer.removeClass(document.body, 'app-login');
   }
   ngAfterContentInit() { this.spinner.hide(); }
