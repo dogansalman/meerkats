@@ -11,24 +11,20 @@ import {BussinessTypeServices} from '../../models/bussinessType/bussinessType.se
 })
 
 export class RegisterComponent implements OnInit {
-  BusList: BusinessType[];
+  BusinessTypeList: BusinessType[];
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public db: AngularFireDatabase, private busSer: BussinessTypeServices) { }
 
   ngOnInit() {
-    const x = this.busSer.get();
-    // this.GetBussiness();
-  }
-
-  GetBussiness(): any {
-    this.db.list('/stories/').snapshotChanges().subscribe(res => {
-      this.BusList = [];
+    this.busSer.get().snapshotChanges().subscribe(res => {
+      this.BusinessTypeList = [];
       res.forEach(element => {
-        const y = element.payload.toJSON();
-        y['$key'] = element.key;
-        this.BusList.push(y as BusinessType);
+        const item = element.payload.toJSON();
+        item['$key'] = element.key;
+        this.BusinessTypeList.push(item as BusinessType);
       });
-      console.log(this.BusList);
     });
+
   }
 }
 

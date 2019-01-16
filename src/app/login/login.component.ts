@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material';
 import {Renderer2} from '@angular/core';
 import {RegisterComponent} from './register/register.component';
 
+
 @Component({
   selector: 'app-login',
   encapsulation: ViewEncapsulation.None,

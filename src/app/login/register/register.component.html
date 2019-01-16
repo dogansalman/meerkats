@@ -20,8 +20,10 @@
 
           <mat-form-field class="full-width-field">
             <mat-select placeholder="İşletme Sınıfı">
-              <mat-option value="0">Kafe / Restorant</mat-option>
-              <mat-option value="0">Bar / Bistro</mat-option>
+              <mat-option *ngFor="let type of this.BusinessTypeList" [value]="type.$key">
+                {{type.name}}
+              </mat-option>
+
             </mat-select>
           </mat-form-field>
 

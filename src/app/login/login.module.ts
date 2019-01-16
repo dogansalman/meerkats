@@ -8,8 +8,6 @@ import {ForgotModule} from './forgot/forgot.module';
 import {ForgotComponent} from './forgot/forgot.component';
 import {RegisterModule} from './register/register.module';
 import {RegisterComponent} from './register/register.component';
-import {BussinessTypeServices} from '../models/bussinessType/bussinessType.services';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 @NgModule({
   imports: [
@@ -19,9 +17,8 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     AppMaterialModule,
     ForgotModule,
     RegisterModule,
-    AngularFireDatabaseModule
   ],
-  providers: [BussinessTypeServices],
+  providers: [],
   declarations: [LoginComponent],
   entryComponents: [
     ForgotComponent,
