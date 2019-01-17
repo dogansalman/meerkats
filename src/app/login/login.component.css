@@ -12,6 +12,10 @@
   overflow: hidden;
   align-items: center;
 }
+agm-map {
+   height: 100vh;
+  width: 100vh;
+ }
 
 .app-login:before{
   content: "";

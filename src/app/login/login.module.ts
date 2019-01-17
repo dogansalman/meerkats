@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LoginRoutingModule} from './login-routing.module';
 import {LoginComponent} from './login.component';
-import {AppMaterialModule} from '../app-material.module';
+import {AppMaterialModule} from '../modules/material/app-material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ForgotModule} from './forgot/forgot.module';
 import {ForgotComponent} from './forgot/forgot.component';
@@ -16,7 +16,7 @@ import {RegisterComponent} from './register/register.component';
     FlexLayoutModule,
     AppMaterialModule,
     ForgotModule,
-    RegisterModule,
+    RegisterModule
   ],
   providers: [],
   declarations: [LoginComponent],

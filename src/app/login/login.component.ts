@@ -5,13 +5,11 @@ import {MatDialog} from '@angular/material';
 import {Renderer2} from '@angular/core';
 import {RegisterComponent} from './register/register.component';
 
-
 @Component({
   selector: 'app-login',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  providers: []
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
 
@@ -25,7 +23,7 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => { });
   }
-  registerModal(): void{
+  registerModal(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {width: '100vh', height: '100vh', panelClass: 'fullpanel'});
   }
   ngOnInit() {

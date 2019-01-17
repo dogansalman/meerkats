@@ -12,5 +12,6 @@ export const environment = {
     projectId: 'meerkats-40f0a',
     storageBucket: 'meerkats-40f0a.appspot.com',
     messagingSenderId: '1072246567046'
-  }
+  },
+  mapKey: 'AIzaSyBArrMAt0tnZeQpylNvAQFyQpbuspIQW40'
 };

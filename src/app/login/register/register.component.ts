@@ -12,6 +12,8 @@ import {BussinessTypeServices} from '../../models/bussinessType/bussinessType.se
 
 export class RegisterComponent implements OnInit {
   BusinessTypeList: BusinessType[];
+  lat: number = 51.678418;
+  lng: number = 7.809007;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public db: AngularFireDatabase, private busSer: BussinessTypeServices) { }
 
