@@ -6,7 +6,6 @@ import {RegisterComponent} from './register.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AgmCoreModule} from '@agm/core';
 
-
 @NgModule({
   imports: [
     AppMaterialModule,
