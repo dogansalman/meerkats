@@ -3,8 +3,10 @@ import {MAT_DIALOG_DATA} from '@angular/material';
 import {DialogData} from '../forgot/forgot.component';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {BusinessType} from '../../models/bussinessType/businessType';
+import {CityStates} from '../../interfaces/city_states';
 import {BussinessTypeServices} from '../../models/bussinessType/bussinessType.services';
 import {HttpRequestService} from '../../services/httpRequest/httpRequest.service';
+import {Coords} from '../../interfaces/coords';
 
 @Component({
     templateUrl: './register.component.html',
@@ -13,25 +15,37 @@ import {HttpRequestService} from '../../services/httpRequest/httpRequest.service
 
 export class RegisterComponent implements OnInit {
   BusinessTypeList: BusinessType[];
-  public cities: string[];
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  Cities: CityStates[];
+  States: CityStates[];
+  cordi: Coords;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public db: AngularFireDatabase, private bustypeService: BussinessTypeServices, private http: HttpRequestService) { }
 
   ngOnInit() {
 
+    // Default Coordinates
+    this.cordi.latitude = 51.678418;
+    this.cordi.longitude = 7.809007;
+
     // TODO ÜLKE SEÇİMİ İLE BİRLİKTE İL İLÇELER LİSTELENECEK
 
-    /* Get City*/
+    this.getCity();
+
+    this.getBusinessType();
+
+
+  }
+
+  public getCity() {
     this.http.get('http://geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
-      // this.cities =  Object.values(data.result);
-      this.cities =  data.result;
+      this.Cities = [];
+      Object.keys(data.result).forEach(key => {
+        this.Cities.push({id: key, name: data.result[key]} as CityStates);
+      });
+      this.Cities.sort((a, b) => a.name.localeCompare(b.name));
     });
-
-
-    // TODO ilçe api url: http://geodata.solutions/api/api.php?type=getCities&countryId=TR&stateId=%2259%22
-    /* Get Bussines Types */
+  }
+  public getBusinessType() {
     this.bustypeService.get().snapshotChanges().subscribe(res => {
       this.BusinessTypeList = [];
       res.forEach(element => {
@@ -40,7 +54,16 @@ export class RegisterComponent implements OnInit {
         this.BusinessTypeList.push(item as BusinessType);
       });
     });
-
   }
+  public getStates(country_id: string, state_id: string) {
+  this.http.get('http://geodata.solutions/api/api.php?type=getCities&countryId=' + country_id + '&stateId=' + state_id, {}).subscribe(data => {
+      this.States = [];
+      Object.keys(data.result).forEach(key => {
+        this.States.push({id: key, name: data.result[key]} as CityStates);
+      });
+      this.States.sort((a, b) => a.name.localeCompare(b.name));
+    });
+  }
+
 }
 

@@ -7,12 +7,11 @@
 </div>
 <mat-dialog-content style="height: 95vh;">
 
-  <mat-horizontal-stepper linear >
+  <mat-horizontal-stepper #stepper linear >
     <mat-step>
-      <ng-template matStepLabel>İşletme & Hesap Bilgileri</ng-template>
-      <mat-card class="card-no-shadow">
+      <ng-template matStepLabel>İşletme</ng-template>
+      <mat-card class="card-no-shadow no-padding">
         <mat-card-content>
-
         <mat-form-field class="full-width-field">
             <input matInput #name maxlength="255" placeholder="İşletme Adı">
             <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
@@ -33,7 +32,7 @@
           </mat-form-field>
 
           <mat-form-field class="full-width-field">
-            <input matInput #phone maxlength="255" type="text" placeholder="Telefon">
+            <input matInput #phone maxlength="255" type="number" placeholder="Telefon">
             <mat-hint>Ülke kodu ile birlikte. +90</mat-hint>
             <mat-hint align="end">{{phone.value.length}} / 255</mat-hint>
           </mat-form-field>
@@ -49,38 +48,52 @@
           </mat-form-field>
 
           <mat-form-field class="full-width-field">
-            <mat-select placeholder="İl">
-              <mat-option *ngFor="let v of this.cities" [value]="v">
-                {{v}}
+            <mat-select  placeholder="İl" (selectionChange)="this.getStates('TR', $event.value)">
+              <mat-option *ngFor="let city of this.Cities" [value]="city.id">
+                {{city.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-
           <mat-form-field class="full-width-field">
             <mat-select placeholder="İlçe">
-              <mat-option value="0">Çorlu</mat-option>
-              <mat-option value="0">Bornova</mat-option>
+              <mat-option *ngFor="let state of this.States" [value]="state.id">
+                {{state.name}}
+              </mat-option>
             </mat-select>
           </mat-form-field>
 
         </mat-card-content>
+        <mat-card-footer>
+          <div>
+            <button mat-button matStepperNext>İleri</button>
+          </div>
+        </mat-card-footer>
       </mat-card>
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Konum</ng-template>
-      <agm-map [latitude]="lat" [longitude]="lng" style="display: block;"></agm-map>
+      <mat-card class="card-no-shadow no-padding">
+        <mat-card-content>
+          <agm-map [latitude]="lat" [longitude]="lng" style="display: block;"></agm-map>
+        </mat-card-content>
+        <mat-card-footer>
+          <div>
+            <button mat-button matStepperPrevious>Geri</button>
+            <button mat-button matStepperNext>İleri</button>
+          </div>
+        </mat-card-footer>
+      </mat-card>
+
+
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Onay</ng-template>
+      <div>
+        <button mat-button matStepperNext>Tamam</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
     </mat-step>
   </mat-horizontal-stepper>
 
 </mat-dialog-content>
-
-<mat-dialog-content>
-  <button color="primary" mat-raised-button>Devam</button>
-</mat-dialog-content>
-
-
-
