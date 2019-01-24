@@ -56,8 +56,8 @@
           </mat-form-field>
 
           <mat-form-field class="full-width-field">
-            <mat-select placeholder="İlçe">
-              <mat-option *ngFor="let state of this.States" [value]="state.id">
+            <mat-select placeholder="İlçe" (selectionChange)="this.getCordinates($event.value)">
+              <mat-option *ngFor="let state of this.States" [value]="state.name">
                 {{state.name}}
               </mat-option>
             </mat-select>
@@ -75,7 +75,20 @@
       <ng-template matStepLabel>Konum</ng-template>
       <mat-card class="card-no-shadow no-padding">
         <mat-card-content>
-          <agm-map [latitude]="lat" [longitude]="lng" style="display: block;"></agm-map>
+          <agm-map
+            (mapClick)="this.mapClicked($event)"
+            [zoom]="this.zoom"
+            [latitude]="this.cordi.latitude"
+            [longitude]="this.cordi.longitude"
+            style="display: block;">
+            <agm-marker
+              *ngFor="let m of markers; let i = index"
+              [latitude]="m.lat"
+              [longitude]="m.lng"
+              [label]="m.label"
+              [markerDraggable]="m.draggable">
+            </agm-marker>
+          </agm-map>
         </mat-card-content>
         <mat-card-footer>
           <div>
@@ -84,8 +97,6 @@
           </div>
         </mat-card-footer>
       </mat-card>
-
-
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Onay</ng-template>
