@@ -9,11 +9,11 @@ import {RegisterComponent} from './register/register.component';
   selector: 'app-login',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
 
-  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private renderer: Renderer2) {}
+  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private renderer: Renderer2) { }
 
   forgotModal(): void {
     const dialogRef = this.dialog.open(ForgotComponent, {

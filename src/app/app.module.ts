@@ -1,4 +1,4 @@
-import { NgModule} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule} from './modules/routing/app-routing.module';
@@ -13,6 +13,12 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { AgmCoreModule } from '@agm/core';
+import { TranslateService } from './services/translate/translate.service';
+
+
+export function setupTranslateFactory(service: TranslateService): Function {
+  return () => service.use('tr');
+}
 
 @NgModule({
   declarations: [AppComponent, Navbar_layoutComponent, Empty_layoutComponent],
@@ -29,12 +35,17 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: environment.mapKey
     })
-
-
   ],
-  providers: [],
+  providers: [
+    TranslateService,
+    {
+    provide: APP_INITIALIZER,
+    useFactory: setupTranslateFactory,
+    deps: [TranslateService],
+    multi: true
+    }
+  ],
   bootstrap: [AppComponent],
 
 })
 export class AppModule {}
-

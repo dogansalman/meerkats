@@ -8,6 +8,7 @@ import {ForgotModule} from './forgot/forgot.module';
 import {ForgotComponent} from './forgot/forgot.component';
 import {RegisterModule} from './register/register.module';
 import {RegisterComponent} from './register/register.component';
+import {TranslatePipe} from '../services/translate/translate.pipe';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import {RegisterComponent} from './register/register.component';
     RegisterModule
   ],
   providers: [],
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, TranslatePipe],
   entryComponents: [
     ForgotComponent,
     RegisterComponent
