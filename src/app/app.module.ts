@@ -16,8 +16,9 @@ import { AgmCoreModule } from '@agm/core';
 import { TranslateService } from './services/translate/translate.service';
 
 
+
 export function setupTranslateFactory(service: TranslateService): Function {
-  return () => service.use('tr');
+  return () => service.use('en');
 }
 
 @NgModule({
@@ -34,7 +35,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     AngularFireDatabaseModule,
     AgmCoreModule.forRoot({
       apiKey: environment.mapKey
-    })
+    }),
   ],
   providers: [
     TranslateService,

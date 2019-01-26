@@ -3,36 +3,35 @@
     <img class="logo" src="./assets/img/meerkats_logo.png">
   </div>
   <div fxFlex="100">
-    <h2>{{'title' | translate}}</h2>
     <mat-form-field class="full-width-field">
-      <input type="number" matInput #number maxlength="11" placeholder="İşletme Kodu">
-      <mat-hint align="start"><strong>En fazla 11 karakter olabilir.</strong> </mat-hint>
+      <input type="number" matInput #number maxlength="11" placeholder="{{'business_code' | translate}}">
+      <mat-hint align="start"><strong>{{'password_lenght' | translate}}</strong> </mat-hint>
       <mat-hint align="end">{{number.value.length}} / 11</mat-hint>
     </mat-form-field>
   </div>
   <div fxFlex="100">
     <mat-form-field class="full-width-field">
-      <input type="password" matInput #password maxlength="11" placeholder="Şifreniz">
+      <input type="password" matInput #password maxlength="11" placeholder="{{'password' | translate}}">
     </mat-form-field>
 
   </div>
 <mat-divider></mat-divider>
   <div fxFlex="row">
     <div fxFlex="50" fxFlexAlign="start">
-      <button routerLink="/home"  mat-raised-button color="primary">Oturum Aç</button>
+      <button routerLink="/home"  mat-raised-button color="primary">{{'login' | translate}}</button>
     </div>
 
     <div fxFlex="auto"  fxFlexAlign="end end" style="text-align: right">
-      <mat-slide-toggle color="primary">Hatırla!</mat-slide-toggle>
+      <mat-slide-toggle color="primary">{{'remember' | translate}}</mat-slide-toggle>
     </div>
   </div>
 
   <div fxFlex="row" style="margin-top: 30px;">
     <div fxFlex="50" fxFlexAlign="start">
-      <button (click)="registerModal()" mat-button>Yeni hesap oluştur</button>
+      <button (click)="registerModal()" mat-button>{{'create_account' | translate}}</button>
     </div>
     <div fxFlex="auto" fxFlexAlign="end end" align="right">
-      <button mat-button (click)="forgotModal()">Şifremi Unuttum!</button>
+      <button mat-button (click)="forgotModal()">{{'forgot_password' | translate}}</button>
     </div>
   </div>
 

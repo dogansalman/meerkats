@@ -1,3 +1,27 @@
 {
-  "title": "Bu bir deneme mesajıdır."
+  "business_code": "İşletme Kodu",
+  "password": "Şifre",
+  "login": "Oturum Aç",
+  "register": "Kayıt Ol",
+  "remember": "Hatırla",
+  "forgot_password": "Şifremi Unuttum",
+  "password_lenght": "En fazla 11 karakter olabilir.",
+  "create_account": "Yeni hesap oluştur",
+  "forgot_pass_message": "Kayıtlı e-posta adresinize gönderilecek ileti ile şifrenizi güncelleyebilirsiniz.",
+  "enter_business_code": "Lütfen işletme kodunu girin",
+  "ok_button": "Tamam",
+  "back_button": "Geri",
+  "next_button": "İleri",
+  "business": "İşletme",
+  "location": "Konum",
+  "approve": "Onay",
+  "business_name": "İşletme Adı",
+  "business_type": "İşletme Sınıfı",
+  "email": "E-posta",
+  "phone": "Telefon",
+  "adress": "Adres",
+  "country": "Ülke",
+  "state": "İl",
+  "city": "İlçe"
+
 }

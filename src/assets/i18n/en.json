@@ -1,3 +1,27 @@
 {
-  "title": "this is an example message"
+  "business_code": "Business Code",
+  "password": "Password",
+  "login": "Login",
+  "register": "Register",
+  "remember": "Remember Me",
+  "forgot_password": "Forgot Password",
+  "password_lenght": "Up to 11 characters can be.",
+  "create_account": "Create a new account",
+  "forgot_pass_message": "You can update your password with the message to be sent to your registered e-mail address.",
+  "enter_business_code": "Please enter your business code",
+  "ok_button": "Ok",
+  "back_button": "Back",
+  "next_button": "Next",
+  "business": "Business",
+  "location": "Location",
+  "approve": "Approve",
+  "business_name": "Business Name",
+  "business_type": "Business Type",
+  "email": "E-mail",
+  "phone": "Telephone",
+  "adress": "Adress",
+  "country": "Country",
+  "state": "State",
+  "city": "City"
+
 }

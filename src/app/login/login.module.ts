@@ -8,7 +8,7 @@ import {ForgotModule} from './forgot/forgot.module';
 import {ForgotComponent} from './forgot/forgot.component';
 import {RegisterModule} from './register/register.module';
 import {RegisterComponent} from './register/register.component';
-import {TranslatePipe} from '../services/translate/translate.pipe';
+import {PipesModule} from '../modules/shared-pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -17,10 +17,11 @@ import {TranslatePipe} from '../services/translate/translate.pipe';
     FlexLayoutModule,
     AppMaterialModule,
     ForgotModule,
-    RegisterModule
+    RegisterModule,
+    PipesModule
   ],
   providers: [],
-  declarations: [LoginComponent, TranslatePipe],
+  declarations: [LoginComponent],
   entryComponents: [
     ForgotComponent,
     RegisterComponent
