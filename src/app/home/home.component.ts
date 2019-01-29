@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
   ngAfterContentInit() { this.spn.hide(); }
 
   orderModal(): void {
-    const dialogRef =  this.dialog.open(OrderComponent, {width: '100vh', height: '100vh', panelClass: 'fullpanel'});
+    const dialogRef =  this.dialog.open(OrderComponent, {panelClass: 'fullscreen'});
     dialogRef.afterClosed().subscribe(result => { });
   }
 }

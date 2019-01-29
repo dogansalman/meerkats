@@ -5,7 +5,7 @@
     </button>
   </h1>
 </div>
-<mat-dialog-content style="height: 95vh;">
+<mat-dialog-content style="height: 100vh; max-height: 100vh; margin:0px; padding:0px;">
   <mat-horizontal-stepper #stepper linear >
     <mat-step>
       <ng-template matStepLabel>{{'business' | translate}}</ng-template>
@@ -100,7 +100,7 @@
     <mat-step>
       <ng-template matStepLabel>{{'approve' | translate}}</ng-template>
       <div>
-        <button mat-button matStepperNext>{{'ok_button' | translate}}</button>
+        <button mat-button mat-raised-button color="primary">{{'ok_button' | translate}}</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
