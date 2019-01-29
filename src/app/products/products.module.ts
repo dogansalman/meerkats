@@ -6,9 +6,10 @@ import {ProductsRoutingModule} from './products-routing.module';
 import {CommonModule} from '@angular/common';
 import {ProductComponent} from './product/product.component';
 import {ProductModule} from './product/product.module';
+import {TranslateModule} from '../services/translate/translate.module';
 
 @NgModule({
-  imports: [AppMaterialModule, FlexLayoutModule, ProductsRoutingModule, CommonModule, ProductModule],
+  imports: [AppMaterialModule, FlexLayoutModule, ProductsRoutingModule, CommonModule, ProductModule, TranslateModule],
   declarations: [ProductsComponent],
   entryComponents: [ProductComponent]
 })

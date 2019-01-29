@@ -1,4 +1,14 @@
 {
+  "tables_navbar": "Tables",
+  "employee_navbar": "Employees",
+  "product_navbar": "Products",
+  "stats_navbar": "Report & Stats",
+  "kitchen_navbar": "Kitchen Mode",
+  "home_navbar": "Home",
+  "account_navbar": "Account",
+  "logout_navbar": "Logout",
+  "languages_navbar": "Languages",
+
   "business_code": "Business Code",
   "password": "Password",
   "login": "Login",
@@ -9,9 +19,20 @@
   "create_account": "Create a new account",
   "forgot_pass_message": "You can update your password with the message to be sent to your registered e-mail address.",
   "enter_business_code": "Please enter your business code",
+  "sure_message": "Are you sure you want to continue ?",
+  "sure_message_title": "Are you sure ?",
+  "table_add_desc": "To add a new table, please fill in all fields completely.",
+  "table_id": "Table Id",
+  "chair": "Chair",
+  "capacity": "Capacity",
+
   "ok_button": "Ok",
+  "cancel_button": "Cancel",
   "back_button": "Back",
   "next_button": "Next",
+  "edit_button": "Edit",
+  "delete_button": "Delete",
+
   "business": "Business",
   "location": "Location",
   "approve": "Approve",
@@ -22,6 +43,20 @@
   "adress": "Adress",
   "country": "Country",
   "state": "State",
-  "city": "City"
+  "city": "City",
+  "table": "Table",
+  "open_table": "Opened",
+  "closed_table": "Closed",
+
+  "name": "Name",
+  "lastname": "Lastname",
+  "username": "Username",
+  "permission": "Permission",
+
+  "image": "Image",
+  "category": "Category",
+  "price": "Price",
+  "tax": "Tax",
+  "tax_included": "Tax Included"
 
 }

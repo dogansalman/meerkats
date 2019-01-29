@@ -6,9 +6,10 @@ import {EmployeesComponent} from './employees.component';
 import {EmployeesRoutingModule} from './employees-routing.module';
 import {EmployeeComponent} from './employee/employee.component';
 import {EmployeeModule} from './employee/employee.module';
+import {TranslateModule} from '../services/translate/translate.module';
 
 @NgModule({
-  imports: [AppMaterialModule, FlexLayoutModule, CommonModule, EmployeesRoutingModule, EmployeeModule],
+  imports: [AppMaterialModule, FlexLayoutModule, CommonModule, EmployeesRoutingModule, EmployeeModule, TranslateModule],
   declarations: [EmployeesComponent],
   entryComponents: [EmployeeComponent]
 })

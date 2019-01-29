@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import {RegisterComponent} from './register.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AgmCoreModule} from '@agm/core';
-import {PipesModule} from '../../modules/shared-pipes/pipes.module';
+import {TranslateModule} from '../../services/translate/translate.module';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import {PipesModule} from '../../modules/shared-pipes/pipes.module';
     FlexLayoutModule,
     AngularFireDatabaseModule,
     AgmCoreModule,
-    PipesModule
+    TranslateModule
   ],
   declarations: [RegisterComponent],
   providers: [],

@@ -1,4 +1,14 @@
 {
+  "tables_navbar": "Masalar",
+  "employee_navbar": "Personel",
+  "product_navbar": "Ürünler",
+  "stats_navbar": "Rapor & İstatistik",
+  "kitchen_navbar": "Mutfak Modu",
+  "home_navbar": "Ana Ekran",
+  "account_navbar": "Hesap",
+  "logout_navbar": "Çıkış",
+  "languages_navbar": "Dil Seçin",
+
   "business_code": "İşletme Kodu",
   "password": "Şifre",
   "login": "Oturum Aç",
@@ -9,9 +19,20 @@
   "create_account": "Yeni hesap oluştur",
   "forgot_pass_message": "Kayıtlı e-posta adresinize gönderilecek ileti ile şifrenizi güncelleyebilirsiniz.",
   "enter_business_code": "Lütfen işletme kodunu girin",
+  "sure_message": "İşleme devam etmek istediğinize emin misiniz ?",
+  "sure_message_title": "Emin misiniz ?",
+  "table_add_desc": "Yeni masa eklemek için lütfen tüm alanları eksiksiz doldurunuz.",
+  "table_id": "Masa No",
+  "chair": "Sandalye",
+  "capacity": "Kapasite",
+
   "ok_button": "Tamam",
+  "cancel_button": "İptal",
   "back_button": "Geri",
   "next_button": "İleri",
+  "edit_button": "Düzenle",
+  "delete_button": "Sil",
+
   "business": "İşletme",
   "location": "Konum",
   "approve": "Onay",
@@ -22,6 +43,20 @@
   "adress": "Adres",
   "country": "Ülke",
   "state": "İl",
-  "city": "İlçe"
+  "city": "İlçe",
+  "table": "Masa",
+  "open_table": "Açık",
+  "closed_table": "Kapalı",
+
+  "name": "Ad",
+  "lastname": "Soyad",
+  "username": "Kullanıcı Adı",
+  "permission": "İzinler",
+
+  "image": "Görsel",
+  "category": "Kategori",
+  "price": "Fiyat",
+  "tax": "Kdv",
+  "tax_included": "Vergi Dahil"
 
 }

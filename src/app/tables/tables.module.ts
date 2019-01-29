@@ -8,11 +8,12 @@ import {TableComponent} from './table/table.component';
 import {TableModule} from './table/table.module';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {ConfirmModule} from '../components/confirm/confirm.module';
+import {TranslateModule} from '../services/translate/translate.module';
 
 @NgModule({
-  imports:[AppMaterialModule, FlexLayoutModule, CommonModule, TablesRoutingModule, TableModule, ConfirmModule],
-  declarations:[TablesComponent],
-  entryComponents:[TableComponent, ConfirmComponent]
+  imports: [AppMaterialModule, FlexLayoutModule, CommonModule, TablesRoutingModule, TableModule, ConfirmModule, TranslateModule],
+  declarations: [TablesComponent],
+  entryComponents: [TableComponent, ConfirmComponent]
 
 })
 

@@ -10,7 +10,7 @@
     <mat-card-content>
 
       <mat-form-field class="full-width-field">
-        <mat-select placeholder="İzinler"  multiple>
+        <mat-select placeholder="{{'permission' | translate}}"  multiple>
           <mat-option value="0">Ürün Yönetimi</mat-option>
           <mat-option value="0">Sipariş Yönetimi</mat-option>
           <mat-option value="0">Masa Yönetimi</mat-option>
@@ -22,21 +22,21 @@
       </mat-form-field>
 
       <mat-form-field class="full-width-field">
-        <input type="text" matInput #fullname maxlength="255" placeholder="Ad Soyad">
+        <input type="text" matInput #fullname maxlength="255" placeholder="{{'name' | translate}} {{'lastname' | translate}}">
         <mat-hint align="start"> </mat-hint>
         <mat-hint align="end">{{fullname.value.length}} / 255</mat-hint>
       </mat-form-field>
 
 
       <mat-form-field class="full-width-field">
-        <input type="text" matInput #username maxlength="255" placeholder="Kullanıcı Adı">
+        <input type="text" matInput #username maxlength="255" placeholder="{{'username' | translate}}">
         <mat-hint align="start"> </mat-hint>
         <mat-hint align="end">{{username.value.length}} / 255</mat-hint>
       </mat-form-field>
 
 
       <mat-form-field class="full-width-field">
-        <input type="password" matInput #password maxlength="255" placeholder="Şifre">
+        <input type="password" matInput #password maxlength="255" placeholder="{{'password' | translate}}">
         <mat-hint align="start"> </mat-hint>
         <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
       </mat-form-field>
@@ -47,6 +47,6 @@
   </mat-card>
 </mat-dialog-content>
 <div mat-dialog-actions>
-  <button color="primary" mat-button>TAMAM</button>
-  <button mat-button [mat-dialog-close]="true">KAPAT</button>
+  <button color="primary" mat-button>{{'ok_button' | translate}}</button>
+  <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
 </div>

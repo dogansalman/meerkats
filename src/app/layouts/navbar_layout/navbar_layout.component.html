@@ -10,8 +10,8 @@
             Maya Kafe Restorant
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item> <mat-icon>assignment_ind</mat-icon> Hesabım</button>
-          <button mat-menu-item><mat-icon>exit_to_app</mat-icon> Oturumu Kapat</button>
+          <button mat-menu-item> <mat-icon>assignment_ind</mat-icon> {{'account_navbar' | translate}}</button>
+          <button mat-menu-item><mat-icon>exit_to_app</mat-icon> {{'logout_navbar' | translate}}</button>
         </mat-menu>
       </div>
 
@@ -26,37 +26,47 @@
          <mat-card-header>
          <img mat-card-avatar src="https://via.placeholder.com/150x150"/>
          <mat-card-title>Maya Kafe - Restorant</mat-card-title>
-         <mat-card-subtitle>İşletme No: 16235132</mat-card-subtitle>
+         <mat-card-subtitle>{{'business_code' | translate}}: 16235132</mat-card-subtitle>
        </mat-card-header>
         </mat-card>
       <mat-divider></mat-divider>
 
       <mat-nav-list>
+
+        <a  class="navmenu-item"  routerLink="/home" mat-list-item>
+          <i class="material-icons">home</i>
+          <span class="navbar-menu-title" fxShow.xs="false">{{'home_navbar' | translate}}</span>
+        </a>
+
         <a routerLink="/tables" class="navmenu-item" mat-list-item>
-          <mat-icon svgIcon="table-svg"></mat-icon>
-          <span class="navbar-menu-title"  fxShow.xs="false">Masa Yönetimi</span>
+          <i class="material-icons">table_chart</i>
+          <span class="navbar-menu-title"  fxShow.xs="false">{{'tables_navbar' | translate}}</span>
         </a>
         <a routerLink="/employees" class="navmenu-item" mat-list-item>
-          <mat-icon svgIcon="employee-svg"></mat-icon>
-          <span class="navbar-menu-title" fxShow.xs="false">Personel</span>
+         <i class="material-icons">person</i>
+          <span class="navbar-menu-title" fxShow.xs="false">{{'employee_navbar' | translate}}</span>
         </a>
         <a routerLink="/products" class="navmenu-item" mat-list-item>
-          <mat-icon svgIcon="cutlery-svg"></mat-icon>
-          <span class="navbar-menu-title" fxShow.xs="false">Ürün</span>
+          <i class="material-icons">restaurant</i>
+          <span class="navbar-menu-title" fxShow.xs="false">{{'product_navbar' | translate}}</span>
         </a>
         <a class="navmenu-item" style="opacity: 0.5;" mat-list-item>
-          <mat-icon svgIcon="growth-svg"></mat-icon>
-          <span class="navbar-menu-title" fxShow.xs="false">Rapor & İstatistik</span>
+          <i class="material-icons">timeline</i>
+          <span class="navbar-menu-title" fxShow.xs="false">{{'stats_navbar' | translate}}</span>
         </a>
 
         <a class="navmenu-item" routerLink="/kitchen" mat-list-item>
-          <mat-icon svgIcon="chef-svg"></mat-icon>
-          <span class="navbar-menu-title" fxShow.xs="false">Mutfak Modu</span>
+          <i class="material-icons">event_note</i>
+          <span class="navbar-menu-title" fxShow.xs="false">{{'kitchen_navbar' | translate}}</span>
         </a>
 
-        <a  class="navmenu-item"  routerLink="/home" mat-list-item>
-          <mat-icon svgIcon="pos-svg"></mat-icon>
-          <span class="navbar-menu-title" fxShow.xs="false">Kasa Modu</span>
+        <a class="navmenu-item" [matMenuTriggerFor]="languages" mat-list-item>
+          <i class="material-icons">language</i>
+          <span class="navbar-menu-title" fxShow.xs="false">{{'languages_navbar' | translate}}</span>
+        <mat-menu #languages="matMenu">
+          <button (click)="onChangeLang('en')" mat-menu-item> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAflJREFUeNpinDRzn5qN3uFDt16+YWBg+Pv339+KGN0rbVP+//2rW5tf0Hfy/2+mr99+yKpyOl3Ydt8njEWIn8f9zj639NC7j78eP//8739GVUUhNUNuhl8//ysKeZrJ/v7z10Zb2PTQTIY1XZO2Xmfad+f7XgkXxuUrVB6cjPVXef78JyMjA8PFuwyX7gAZj97+T2e9o3d4BWNp84K1NzubTjAB3fH0+fv6N3qP/ir9bW6ozNQCijB8/8zw/TuQ7r4/ndvN5mZgkpPXiis3Pv34+ZPh5t23//79Rwehof/9/NDEgMrOXHvJcrllgpoRN8PFOwy/fzP8+gUlgZI/f/5xcPj/69e/37//AUX+/mXRkN555gsOG2xt/5hZQMwF4r9///75++f3nz8nr75gSms82jfvQnT6zqvXPjC8e/srJQHo9P9fvwNtAHmG4f8zZ6dDc3bIyM2LTNlsbtfM9OPHH3FhtqUz3eXX9H+cOy9ZMB2o6t/Pn0DHMPz/b+2wXGTvPlPGFxdcD+mZyjP8+8MUE6sa7a/xo6Pykn1s4zdzIZ6///8zMGpKM2pKAB0jqy4UE7/msKat6Jw5mafrsxNtWZ6/fjvNLW29qv25pQd///n+5+/fxDDVbcc//P/zx/36m5Ub9zL8+7t66yEROcHK7q5bldMBAgwADcRBCuVLfoEAAAAASUVORK5CYII="/> English </button>
+          <button (click)="onChangeLang('tr')" mat-menu-item> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAIAAAD5gJpuAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAF+SURBVHjaYvzPgAD/UNlYEUAAmuTYBgAYhIEgJJmboZgtHbaJKNK8TvozM8LIllwagEY4sIFV1UD/3swngMAaGBn/P3kCVApS7ebG8O/f/x07/n/6BFL36/f/37/+//oFZDPKygJtAAggkIb/YINBqqOjGUxNQeqUlf93dIDV/QLpAWtg+P0bqAEggJhA7gaqBtqoqMjg5PR/+vT/SUn/N2z4//Xr/+XL//Pwgu2BWgJUCxBATCAn/fgJEnVx/Q+05NgxkNzp0/9XrPgvJPR/zZr/ZmZQDX/+AE0HCCCQhv9//4D89OQxMMT+a2uDnKGm9v/SJZCrHj36v28fRAPESQABxALEjGBLGRYv/s/H97+oCOQYIIiM/P/ly/9Fi6CO+QMy9A8DA0AAgTQwg4MMaMD/rq7/vr7/WVlBrv/8GeROiAf+ADWAQgXoHIAAAmlg+v+fQVISbMxfhpMngToZhYUZ+PkZwAaDEDgMgQioGCCAGL+iRiSeOIYAgAADAO/XO1xGA79vAAAAAElFTkSuQmCC"/> Türkçe </button>
+        </mat-menu>
         </a>
       </mat-nav-list>
 

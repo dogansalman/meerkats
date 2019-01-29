@@ -7,10 +7,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {SnackbarService} from '../services/snackbar/snackbar.service';
 import {OrderModule} from './order/order.module';
 import {OrderComponent} from './order/order.component';
-
+import {TranslateModule} from '../services/translate/translate.module';
 
 @NgModule({
-  imports: [AppMaterialModule, CommonModule, HomeRoutingModule, FlexLayoutModule, OrderModule],
+  imports: [AppMaterialModule, CommonModule, HomeRoutingModule, FlexLayoutModule, OrderModule, TranslateModule],
   declarations: [HomeComponent],
   providers: [SnackbarService],
   entryComponents: [OrderComponent]

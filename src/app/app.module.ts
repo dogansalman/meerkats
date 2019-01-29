@@ -14,7 +14,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import { AgmCoreModule } from '@agm/core';
 import { TranslateService } from './services/translate/translate.service';
-
+import { TranslateModule } from './services/translate/translate.module';
 
 
 export function setupTranslateFactory(service: TranslateService): Function {
@@ -36,6 +36,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     AgmCoreModule.forRoot({
       apiKey: environment.mapKey
     }),
+    TranslateModule
   ],
   providers: [
     TranslateService,

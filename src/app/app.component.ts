@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TranslateService} from './services/translate/translate.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +10,7 @@ import {TranslateService} from './services/translate/translate.service';
 })
 export class AppComponent implements OnInit  {
 
-  constructor(private spinner: NgxSpinnerService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private translate: TranslateService) {
+  constructor(private spinner: NgxSpinnerService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
 
     /* Set Custom Icons */
     this.matIconRegistry.addSvgIcon('table-svg', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icon/table.svg'));
@@ -29,7 +28,4 @@ export class AppComponent implements OnInit  {
     this.spinner.show();
   }
 
-  setLang(lang: string) {
-    this.translate.use(lang);
-  }
 }

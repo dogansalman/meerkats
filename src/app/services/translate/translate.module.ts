@@ -6,4 +6,4 @@ import {TranslatePipe} from '../../services/translate/translate.pipe';
   exports: [TranslatePipe]
 })
 
-export class PipesModule {}
+export class TranslateModule {}

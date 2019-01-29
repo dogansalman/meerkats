@@ -1,4 +1,4 @@
-  <h1 mat-dialog-title>Ürün
+  <h1 mat-dialog-title> Ürün Tanımı
     <button style="float: right" [mat-dialog-close]="true" mat-icon-button>
       <mat-icon>clear</mat-icon>
     </button>
@@ -12,7 +12,7 @@
         <img (click)="uploadBtn.click()" src="https://via.placeholder.com/150" style="height: 150px; margin: auto; display: block; cursor: pointer;">
 
         <mat-form-field class="full-width-field">
-          <mat-select placeholder="Kategori">
+          <mat-select placeholder="{{'category' | translate}}">
             <mat-option value="0">Tatlılar</mat-option>
             <mat-option value="0">İçecekler</mat-option>
             <mat-option value="0">Hamburger</mat-option>
@@ -21,21 +21,18 @@
         </mat-form-field>
 
         <mat-form-field class="full-width-field">
-          <input type="text" matInput #name maxlength="255" placeholder="Ürün adı">
+          <input type="text" matInput #name maxlength="255" placeholder="{{'name' | translate}}">
           <mat-hint align="start"> </mat-hint>
           <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
         </mat-form-field>
 
         <mat-form-field class="full-width-field">
-          <input type="text" matInput matInputmaxlength="255" placeholder="Fiyat (KDV Dahil)">
+          <input type="text" matInput matInputmaxlength="255" placeholder="{{'price' | translate}} ({{'tax_included' | translate}})">
           <mat-hint align="start"> </mat-hint>
         </mat-form-field>
 
         <mat-form-field class="full-width-field">
-          <mat-select placeholder="Kdv">
-            <mat-option value="0">8</mat-option>
-            <mat-option value="0">18</mat-option>
-          </mat-select>
+          <input type="number" matInput matInputmaxlength="11" placeholder="{{'tax' | translate}} (%)">
         </mat-form-field>
 
 
@@ -45,6 +42,6 @@
     </mat-card>
   </mat-dialog-content>
   <div mat-dialog-actions>
-    <button color="primary" mat-button>TAMAM</button>
-    <button mat-button [mat-dialog-close]="true">KAPAT</button>
+    <button color="primary" mat-button>{{'ok_button' | translate}}</button>
+    <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
   </div>
