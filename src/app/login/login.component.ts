@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => { });
   }
   registerModal(): void {
-    const dialogRef = this.dialog.open(RegisterComponent, {height: '100vh'});
+    const dialogRef = this.dialog.open(RegisterComponent, {height: '100vh', width: '700px'});
   }
   ngOnInit() {
     this.renderer.addClass(document.body, 'app-login');
