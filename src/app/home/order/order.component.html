@@ -1,16 +1,16 @@
 <div fxLayout="column" style="height: 95vh;">
 
   <div>
-    <h1 mat-dialog-title>Masa 1523415
+    <h1 mat-dialog-title>{{'table' | translate}}: 1523415
       <button style="float: right" [mat-dialog-close]="true" mat-icon-button>
         <mat-icon aria-label="Example icon-button with a heart icon">clear</mat-icon>
       </button>
     </h1>
   </div>
 
-  <div mat-dialog-content class="no-margin no-padding fullscreen">
+  <div mat-dialog-content>
     <mat-tab-group>
-      <mat-tab label="Yeni Sipariş">
+      <mat-tab label="{{'order' | translate}}">
         <mat-card class="no-padding">
           <mat-card-content>
           <mat-tab-group>
@@ -80,7 +80,7 @@
           </mat-card-content>
           </mat-card>
       </mat-tab>
-      <mat-tab label="Adisyon">
+      <mat-tab label="{{'addition' | translate}}">
         <mat-card>
           <mat-card-content>
             <table mat-table [dataSource]="dataSource" fxFill="100">
@@ -105,11 +105,11 @@
                 </td>
               </ng-container>
               <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Ürün </th>
+                <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}}  </td>
               </ng-container>
               <ng-container matColumnDef="price">
-                <th mat-header-cell *matHeaderCellDef> Fiyat </th>
+                <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> {{element.price}} </td>
               </ng-container>
               <ng-container matColumnDef="process">
@@ -127,14 +127,14 @@
         </mat-card>
 
       </mat-tab>
-      <mat-tab label="Ödeme">
+      <mat-tab label="{{'payment' | translate}}">
           <mat-card class="no-padding">
              <mat-card-content>
                <mat-accordion >
                  <mat-expansion-panel [expanded]="false">
                    <mat-expansion-panel-header>
                      <mat-panel-title>
-                       Siparişler
+                       {{'order' | translate}}
                      </mat-panel-title>
                      <mat-panel-description></mat-panel-description>
                    </mat-expansion-panel-header>
@@ -161,11 +161,11 @@
                        </td>
                      </ng-container>
                      <ng-container matColumnDef="name">
-                       <th mat-header-cell *matHeaderCellDef> Ürün </th>
+                       <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
                        <td mat-cell *matCellDef="let element" ngClass="{{element.unit === 0 ? 'no-select' : ''}}"> {{element.name}} </td>
                      </ng-container>
                      <ng-container matColumnDef="price">
-                       <th mat-header-cell *matHeaderCellDef> Fiyat </th>
+                       <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} </th>
                        <td mat-cell *matCellDef="let element" class="{{element.unit === 0 ? 'no-select' : ''}}"> {{element.price}} TL. </td>
                      </ng-container>
                      <ng-container matColumnDef="process">
@@ -184,7 +184,7 @@
                  <mat-expansion-panel>
                    <mat-expansion-panel-header>
                      <mat-panel-title>
-                       Ödeme
+                       {{'payment' | translate}}
                      </mat-panel-title>
                      <mat-panel-description></mat-panel-description>
                    </mat-expansion-panel-header>
@@ -192,7 +192,7 @@
                    <div fxLayout="column" fxLayoutGap="20px">
                      <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
                        <mat-form-field>
-                         <mat-select placeholder="Ödeme Şekli">
+                         <mat-select placeholder="{{'payment_type' | translate}}">
                            <mat-option value="Nakit">Nakit</mat-option>
                            <mat-option value="Kredi Kartı">Kredi Kartı</mat-option>
                            <mat-option value="Ticket">Ticket</mat-option>
@@ -200,37 +200,37 @@
                        </mat-form-field>
                      </div>
                      <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
-                       <mat-checkbox (change)="onChangePriceDown()" formControlName="hideRequired">İndirim Uygula</mat-checkbox>
+                       <mat-checkbox (change)="onChangePriceDown()" formControlName="hideRequired">{{'discount' | translate}}</mat-checkbox>
                      </div>
                      <div *ngIf="showPriceDown"  fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
                        <mat-form-field>
-                         <mat-select placeholder="İndirim">
-                           <mat-option value="%">Yüzdelik</mat-option>
-                           <mat-option value="Tutar">Tutar</mat-option>
+                         <mat-select placeholder="{{'discount' | translate}}">
+                           <mat-option value="0">{{'percent' | translate}}</mat-option>
+                           <mat-option value="1">{{'price' | translate}}</mat-option>
                          </mat-select>
                        </mat-form-field>
                      </div>
                      <div *ngIf="showPriceDown" fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
                        <mat-form-field style="width: 400px">
-                         <input matInput placeholder="Tutar veya Oran" type="number" value="0">
+                         <input matInput placeholder="{{'value' | translate}}" type="number" value="0">
                        </mat-form-field>
                      </div>
 
                      <div fxLayout="row">
 
                        <div fxFlex="auto">
-                         Tahsil Edilecek : <h2>35.99 TL</h2>
+                         {{'payment' | translate}} : <h2>35.99 TL</h2>
                        </div>
                        <div fxFlex="auto">
-                         Uygulanan İndirim : <h2 class="mat-primary">0.0 TL</h2>
+                         {{'discount' | translate}} : <h2 class="mat-primary">0.0 TL</h2>
                        </div>
                      </div>
 
 
                      <div fxFlex="100" style="margin-top:30px;"></div>
                      <div fxFlex="100">
-                       <button color="primary" mat-button>TAMAM</button>
-                       <button mat-button [mat-dialog-close]="true">KAPAT</button>
+                       <button color="primary" mat-button>{{'ok_button' | translate}}</button>
+                       <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
                      </div>
                    </div>
                  </mat-expansion-panel>
@@ -247,7 +247,7 @@
     <mat-expansion-panel [expanded]="false">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Hesap Özeti
+          {{'payment_detail' | translate}}
         </mat-panel-title>
         <mat-panel-description></mat-panel-description>
       </mat-expansion-panel-header>
@@ -255,7 +255,7 @@
         <div fxLayout="row wrap" fxFill fxFlexFill fxLayoutGap="10px">
           <div fxFlex="25" fxFlex.xs="100" fxFlex.sm="100">
             <mat-card class="card-no-shadow">
-              <mat-card-title>Toplam Tutar</mat-card-title>
+              <mat-card-title>{{'total' | translate}}</mat-card-title>
               <mat-card-content>
                 <h2>200.00 TL</h2>
               </mat-card-content>
@@ -264,7 +264,7 @@
           </div>
           <div fxFlex="auto">
             <mat-card class="card-no-shadow">
-              <mat-card-title>Tahsil Edilen Tutar</mat-card-title>
+              <mat-card-title>{{'paid' | translate}}</mat-card-title>
               <mat-card-content>
                 <h2>200.00 TL</h2>
               </mat-card-content>
@@ -273,7 +273,7 @@
           </div>
           <div fxFlex="auto">
             <mat-card class="card-no-shadow">
-              <mat-card-title>Kalan Tutar</mat-card-title>
+              <mat-card-title>{{'payable' | translate}}</mat-card-title>
               <mat-card-content>
                 <h2>200.00 TL</h2>
               </mat-card-content>

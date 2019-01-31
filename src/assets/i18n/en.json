@@ -57,6 +57,19 @@
   "category": "Category",
   "price": "Price",
   "tax": "Tax",
-  "tax_included": "Tax Included"
+  "tax_included": "Tax Included",
+
+  "order": "Order",
+  "payment": "Payment",
+  "payment_detail": "Payment Detail",
+  "addition": "Addition",
+  "total": "Total",
+  "paid":  "Paid In",
+  "payable": "Payable",
+  "payment_type": "Payment Type",
+  "discount": "Discount",
+  "percent": "Percent",
+  "value": "Value"
+
 
 }
