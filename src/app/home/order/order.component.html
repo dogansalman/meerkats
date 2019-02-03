@@ -84,29 +84,40 @@
         <mat-card>
           <mat-card-content>
             <table mat-table [dataSource]="dataSource" fxFill="100">
-              <ng-container matColumnDef="unit">
-                <th mat-header-cell *matHeaderCellDef></th>
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
                 <td mat-cell *matCellDef="let element">
-                  <div fxLayout="row wrap">
+                  {{element.name}}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="unit">
+                <th mat-header-cell *matHeaderCellDef>{{'unit' | translate}}</th>
+                <td mat-cell *matCellDef="let element">
+                  <div fxLayout="row inline">
                     <div fxFlex="auto" fxFlexOrder="1">
-                      <button color="primary"  mat-icon-button>
+                      <button color="primary" class="min-with_0" style="margin:5px;" mat-flat-button>
                         <i class="material-icons">add</i>
                       </button>
                     </div>
+
                     <div fxFlex="auto" fxFlexOrder="2">
-                      <h2 class="centered-text" >2</h2>
+                      <button class="min-with_0" style="margin:5px; background-color: transparent;" mat-flat-button>
+                        <span style="font-size:29px; color:#000000">2</span>
+                      </button>
+
                     </div>
+
                     <div fxFlex="auto" fxFlexOrder="3">
-                      <button color="warn"  mat-icon-button>
+                      <button color="warn" class="min-with_0" style="margin:5px" mat-flat-button>
                         <i class="material-icons">remove</i>
                       </button>
                     </div>
+
                   </div>
+
+
                 </td>
-              </ng-container>
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}}  </td>
               </ng-container>
               <ng-container matColumnDef="price">
                 <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} </th>
@@ -115,7 +126,7 @@
               <ng-container matColumnDef="process">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
-                  <button color="warn"  mat-icon-button>
+                  <button color="warn" class="min-with_0" style="margin:5px" mat-flat-button>
                     <i class="material-icons">delete</i>
                   </button>
                 </td>
@@ -143,9 +154,9 @@
                      <ng-container matColumnDef="unit">
                        <th mat-header-cell *matHeaderCellDef></th>
                        <td mat-cell *matCellDef="let element;  let i = index">
-                         <div fxLayout="row wrap">
+                         <div fxLayout="row inline">
                            <div fxFlex="auto" fxFlexOrder="1">
-                             <button (click)="onUpdatePaymentItem(+1,i)" color="primary"  mat-icon-button>
+                             <button (click)="onUpdatePaymentItem(+1,i)" style="margin:5px;" color="primary"  mat-icon-button>
                                <i class="material-icons">add</i>
                              </button>
                            </div>
@@ -153,7 +164,7 @@
                              <h2 class="centered-text">{{element.unit}}</h2>
                            </div>
                            <div fxFlex="auto" fxFlexOrder="3">
-                             <button (click)="onUpdatePaymentItem(-1,i)" color="warn"  mat-icon-button>
+                             <button (click)="onUpdatePaymentItem(-1,i)" style="margin:5px;" color="warn"  mat-icon-button>
                                <i class="material-icons">remove</i>
                              </button>
                            </div>

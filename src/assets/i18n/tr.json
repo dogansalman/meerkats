@@ -57,6 +57,19 @@
   "category": "Kategori",
   "price": "Fiyat",
   "tax": "Kdv",
-  "tax_included": "Vergi Dahil"
+  "tax_included": "Vergi Dahil",
+
+  "order": "Sipariş",
+  "payment": "Ödeme",
+  "payment_detail": "Ödeme Detay",
+  "addition": "Adisyon",
+  "total": "Toplam",
+  "paid":  "Ödenen",
+  "payable": "Kalan",
+  "payment_type": "Ödeme Tipi",
+  "discount": "İndirim",
+  "percent": "Yüzde",
+  "value": "Değer",
+  "unit": "Adet"
 
 }

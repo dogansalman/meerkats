@@ -23,7 +23,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 @Component({
-  templateUrl:'order.component.html',
+  templateUrl: 'order.component.html',
   styleUrls: ['order.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
@@ -33,7 +33,7 @@ export class OrderComponent{
 
   public showPriceDown = false;
 
-  displayedColumns: string[] = ['unit','name', 'price','process' ];
+  displayedColumns: string[] = ['name', 'unit', 'price', 'process' ];
   dataSource = ELEMENT_DATA;
 
   constructor(private dialog: MatDialog){}

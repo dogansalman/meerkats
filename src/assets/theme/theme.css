@@ -13,7 +13,9 @@ input[type=number]::-webkit-outer-spin-button {
   height: 100vh;
 }
 
-
+.min-with_0{
+  min-width: 0px !important;
+}
 .fab-btn.mat-fab{
   position:  fixed !important;
 }

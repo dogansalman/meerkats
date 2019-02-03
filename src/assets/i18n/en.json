@@ -69,7 +69,8 @@
   "payment_type": "Payment Type",
   "discount": "Discount",
   "percent": "Percent",
-  "value": "Value"
+  "value": "Value",
+  "unit": "Unit"
 
 
 }
