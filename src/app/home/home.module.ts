@@ -8,14 +8,15 @@ import {SnackbarService} from '../services/snackbar/snackbar.service';
 import {OrderModule} from './order/order.module';
 import {OrderComponent} from './order/order.component';
 import {TranslateModule} from '../services/translate/translate.module';
+import {ConfirmComponent} from '../components/confirm/confirm.component';
 
 @NgModule({
   imports: [AppMaterialModule, CommonModule, HomeRoutingModule, FlexLayoutModule, OrderModule, TranslateModule],
   declarations: [HomeComponent],
   providers: [SnackbarService],
-  entryComponents: [OrderComponent]
+  entryComponents: [OrderComponent, ConfirmComponent]
 })
 
 export class HomeModule {
-  constructor(){ }
+  constructor() { }
 }

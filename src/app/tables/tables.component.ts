@@ -15,16 +15,22 @@ import {TranslatePipe} from '../services/translate/translate.pipe';
 export class TablesComponent implements OnInit, AfterContentInit {
 
   constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private translater: TranslatePipe) { }
+  public openedTableDetail = false;
 
   ngOnInit() { this.spinner.show(); }
   ngAfterContentInit() { this.spinner.hide(); }
 
-  openDialog(): void {
+  onTableDetail($event: MouseEvent): void {
+    // TODO FİX CLİCK EVENTS
+    console.log($event.target, 'clicked');
+
+    if (this.openedTableDetail) { return; }
+    this.openedTableDetail = true;
     const dialogRef = this.dialog.open(TableComponent, {
       width: '450px'
     });
 
-    dialogRef.afterClosed().subscribe(result => { });
+    dialogRef.afterClosed().subscribe(() => this.openedTableDetail = false);
   }
 
   Confirm(): void {
@@ -33,8 +39,10 @@ export class TablesComponent implements OnInit, AfterContentInit {
       data: {message: this.translater.transform('sure_message'), title: this.translater.transform('sure_message_title')}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) console.log('delete it');
+    dialogRef.componentInstance.onSelect.subscribe(result => {
+      console.log(result);
     });
+
+    dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
 }

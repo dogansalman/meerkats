@@ -5,12 +5,18 @@
   </mat-card-header>
 
   <mat-card-content>
-
   </mat-card-content>
+
   <mat-card-actions>
-    <button color="primary" [mat-dialog-close]="true" mat-button>{{'ok_button' | translate}}</button>
-    <button mat-button [mat-dialog-close]="false">{{'cancel_button' | translate}}</button>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+      <div>
+        <button color="primary"  (click)="onSelection(true)" mat-flat-button>{{'ok_button' | translate}}</button>
+      </div>
+      <div>
+        <button mat-button  (click)="onSelection(false)">{{'cancel_button' | translate}}</button>
+      </div>
+    </div>
   </mat-card-actions>
 </mat-card>
 
-<p></p>
+

@@ -5,26 +5,25 @@
           <mat-card-content>
           <div fxLayout="row wrap"  fxLayoutGap="10px">
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail($event)" fxFlex.xs="100" fxFlex.sm="45">
               <mat-card-header>
-                <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
+                <mat-card-title><h2>{{'table' | translate}}: 1232</h2></mat-card-title>
                 <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
               </mat-card-header>
               <mat-card-content>
-
               </mat-card-content>
               <mat-divider></mat-divider>
               <mat-card-actions>
-                <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                <button mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                 <div fxFlex></div>
-                <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                <button (click)="Confirm()"  rel="delete_btn" mat-button color="warn">{{'delete_button' | translate}}</button>
               </mat-card-actions>
               <mat-card-footer>
 
               </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
               <mat-card-header>
                 <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                 <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -34,16 +33,16 @@
               </mat-card-content>
               <mat-divider></mat-divider>
               <mat-card-actions>
-                <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                 <div fxFlex></div>
-                <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
               </mat-card-actions>
               <mat-card-footer>
 
               </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
               <mat-card-header>
                 <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                 <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -53,16 +52,16 @@
               </mat-card-content>
               <mat-divider></mat-divider>
               <mat-card-actions>
-                <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                 <div fxFlex></div>
-                <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
               </mat-card-actions>
               <mat-card-footer>
 
               </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
               <mat-card-header>
                 <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                 <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -72,16 +71,16 @@
               </mat-card-content>
               <mat-divider></mat-divider>
               <mat-card-actions>
-                <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                 <div fxFlex></div>
-                <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
               </mat-card-actions>
               <mat-card-footer>
 
               </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -91,16 +90,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -110,16 +109,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -129,16 +128,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -148,16 +147,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -167,16 +166,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -186,16 +185,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -205,16 +204,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -224,16 +223,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -243,16 +242,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -262,16 +261,16 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
             </mat-card-footer>
             </mat-card>
 
-            <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
               <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -281,9 +280,9 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions>
-              <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+              <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+              <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer>
 
@@ -300,7 +299,7 @@
           <mat-card-content>
             <div fxLayout="row wrap"  fxLayoutGap="10px">
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -310,16 +309,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -329,16 +328,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -348,16 +347,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -367,16 +366,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -386,16 +385,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -405,16 +404,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -424,16 +423,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -443,16 +442,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -462,16 +461,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -481,16 +480,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -500,16 +499,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -519,16 +518,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -538,16 +537,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -557,16 +556,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -576,9 +575,9 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
@@ -595,7 +594,7 @@
           <mat-card-content>
             <div fxLayout="row wrap"  fxLayoutGap="10px">
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -605,16 +604,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -624,16 +623,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -643,16 +642,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -662,16 +661,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -681,16 +680,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -700,16 +699,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -719,16 +718,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -738,16 +737,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -757,16 +756,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -776,16 +775,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -795,16 +794,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -814,16 +813,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -833,16 +832,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45" >
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45" >
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle><mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -852,16 +851,16 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
                 </mat-card-footer>
               </mat-card>
 
-              <mat-card class="table-card" fxFlex.xs="100" fxFlex.sm="45">
+              <mat-card class="table-card" (click)="onTableDetail()" fxFlex.xs="100" fxFlex.sm="45">
                 <mat-card-header>
                   <mat-card-title><h2>{{'table' | translate}}: 1232</h2> </mat-card-title>
                   <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> 316122332126 </mat-card-subtitle>
@@ -871,9 +870,9 @@
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <mat-card-actions>
-                  <button  mat-button (click)="openDialog()">{{'edit_button' | translate}}</button>
+                  <button  mat-button color="primary" (click)="onTableDetail()">{{'edit_button' | translate}}</button>
                   <div fxFlex></div>
-                  <button (click)="Confirm()" mat-button>{{'delete_button' | translate}}</button>
+                  <button (click)="Confirm()" mat-button color="warn">{{'delete_button' | translate}}</button>
                 </mat-card-actions>
                 <mat-card-footer>
 
@@ -885,7 +884,7 @@
         </mat-card>
       </mat-tab>
     </mat-tab-group>
-    <button mat-fab class="fab-btn" color="primary" (click)="openDialog()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
+    <button mat-fab class="fab-btn" color="primary" (click)="onTableDetail()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
 
 
 

@@ -115,18 +115,16 @@
                     </div>
 
                   </div>
-
-
                 </td>
               </ng-container>
               <ng-container matColumnDef="price">
                 <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                <td mat-cell *matCellDef="let element"> <h2>{{element.price}}</h2> </td>
               </ng-container>
               <ng-container matColumnDef="process">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element">
-                  <button color="warn" class="min-with_0" style="margin:5px" mat-flat-button>
+                  <button color="warn" (click)="onConfirm(element)" class="min-with_0" style="margin:5px" mat-flat-button>
                     <i class="material-icons">delete</i>
                   </button>
                 </td>
@@ -156,15 +154,17 @@
                        <td mat-cell *matCellDef="let element;  let i = index">
                          <div fxLayout="row inline">
                            <div fxFlex="auto" fxFlexOrder="1">
-                             <button (click)="onUpdatePaymentItem(+1,i)" style="margin:5px;" color="primary"  mat-icon-button>
+                             <button (click)="onUpdatePaymentItem(+1,i)"   color="primary" class="min-with_0" style="margin:5px;" mat-flat-button>
                                <i class="material-icons">add</i>
                              </button>
                            </div>
                            <div fxFlex="auto" fxFlexOrder="2">
-                             <h2 class="centered-text">{{element.unit}}</h2>
+                             <button class="min-with_0" style="margin:5px; background-color: transparent;" mat-flat-button>
+                               <span style="font-size:29px; color:#000000">{{element.unit}}</span>
+                             </button>
                            </div>
                            <div fxFlex="auto" fxFlexOrder="3">
-                             <button (click)="onUpdatePaymentItem(-1,i)" style="margin:5px;" color="warn"  mat-icon-button>
+                             <button (click)="onUpdatePaymentItem(-1,i)" color="warn" class="min-with_0" style="margin:5px" mat-flat-button>
                                <i class="material-icons">remove</i>
                              </button>
                            </div>
@@ -177,12 +177,12 @@
                      </ng-container>
                      <ng-container matColumnDef="price">
                        <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} </th>
-                       <td mat-cell *matCellDef="let element" class="{{element.unit === 0 ? 'no-select' : ''}}"> {{element.price}} TL. </td>
+                       <td mat-cell *matCellDef="let element"  ngClass="{{element.unit === 0 ? 'no-select' : ''}}"> <h2>{{element.price}} TL.</h2>  </td>
                      </ng-container>
                      <ng-container matColumnDef="process">
                        <th mat-header-cell *matHeaderCellDef></th>
                        <td mat-cell *matCellDef="let element">
-                         <button color="warn" (click)="removeItem(element)" mat-icon-button>
+                         <button color="warn" (click)="onConfirm(element)"  class="min-with_0" style="margin:5px" mat-flat-button>
                            <i class="material-icons">delete</i>
                          </button>
                        </td>
@@ -228,7 +228,6 @@
                      </div>
 
                      <div fxLayout="row">
-
                        <div fxFlex="auto">
                          {{'payment' | translate}} : <h2>35.99 TL</h2>
                        </div>
@@ -237,11 +236,15 @@
                        </div>
                      </div>
 
-
                      <div fxFlex="100" style="margin-top:30px;"></div>
-                     <div fxFlex="100">
-                       <button color="primary" mat-button>{{'ok_button' | translate}}</button>
-                       <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
+
+                     <div  fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="15px">
+                       <div>
+                         <button color="primary" mat-flat-button>{{'ok_button' | translate}}</button>
+                       </div>
+                       <div>
+                        <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
+                       </div>
                      </div>
                    </div>
                  </mat-expansion-panel>

@@ -47,6 +47,12 @@
   </mat-card>
 </mat-dialog-content>
 <div mat-dialog-actions>
-  <button color="primary" mat-button>{{'ok_button' | translate}}</button>
-  <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+    <div>
+      <button color="primary" mat-flat-button>{{'ok_button' | translate}}</button>
+    </div>
+    <div>
+      <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
+    </div>
+  </div>
 </div>
