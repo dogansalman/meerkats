@@ -7,22 +7,22 @@ import {Component, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 
-export class NumbersComponent{
+export class NumbersComponent {
 
   public quantity: number = 1;
-  public numbs: Array<number> = [1,2,3,4,5,6,7,8,9,0];
+  public numbs: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 
-  constructor(){}
+  constructor() { }
 
   onClickNumb(numb: number): void {
-    let changedNumb = Number(this.quantity.toString() + numb);
-    if(changedNumb > 999 ) return;
-    if(changedNumb <= 0) { this.quantity = 1;  return;}
+    const changedNumb = Number(this.quantity.toString() + numb);
+    if (changedNumb > 999 ) { return; }
+    if (changedNumb <= 0) { this.quantity = 1;  return; }
     this.quantity = changedNumb;
   }
   onDeleteNumb(): void {
-    let changedNumb =  Number(this.quantity.toString().substr(0,this.quantity.toString().length -1));
+    const changedNumb =  Number(this.quantity.toString().substr(0, this.quantity.toString().length -1));
     this.quantity = changedNumb <= 0 ? 0 : changedNumb;
   }
 }

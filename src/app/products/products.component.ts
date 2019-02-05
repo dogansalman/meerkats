@@ -138,7 +138,7 @@ const ELEMENT_DATA: ProductInterface[] = [
 @Component({
   templateUrl: 'products.component.html'
 })
-export class ProductsComponent implements AfterViewInit{
+export class ProductsComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['image', 'name', 'category', 'price'];
   dataSource = ELEMENT_DATA;

@@ -21,9 +21,6 @@ export class TablesComponent implements OnInit, AfterContentInit {
   ngAfterContentInit() { this.spinner.hide(); }
 
   onTableDetail($event: MouseEvent): void {
-    // TODO FİX CLİCK EVENTS
-    console.log($event.target, 'clicked');
-
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
     const dialogRef = this.dialog.open(TableComponent, {
@@ -34,6 +31,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
   }
 
   Confirm(): void {
+    this.openedTableDetail = true;
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '450px',
       data: {message: this.translater.transform('sure_message'), title: this.translater.transform('sure_message_title')}
@@ -43,6 +41,6 @@ export class TablesComponent implements OnInit, AfterContentInit {
       console.log(result);
     });
 
-    dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
+    dialogRef.afterClosed().subscribe(() => { dialogRef.componentInstance.onSelect.unsubscribe();  this.openedTableDetail = false; });
   }
 }
