@@ -44,8 +44,8 @@ const routes: Routes = [
         loadChildren: '../../../app/products/products.module#ProductsModule'
       },
       {
-        path: 'business',
-        loadChildren: '../../../app/business/business.module#BusinessModule'
+        path: 'account',
+        loadChildren: '../../../app/account/account.module#AccountModule'
       }
     ]
   }

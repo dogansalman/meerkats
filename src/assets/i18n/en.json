@@ -15,6 +15,7 @@
   "register": "Register",
   "remember": "Remember Me",
   "forgot_password": "Forgot Password",
+  "password_reset": "Reset Password",
   "password_lenght": "Up to 11 characters can be.",
   "create_account": "Create a new account",
   "forgot_pass_message": "You can update your password with the message to be sent to your registered e-mail address.",
@@ -70,7 +71,8 @@
   "discount": "Discount",
   "percent": "Percent",
   "value": "Value",
-  "unit": "Unit"
+  "unit": "Unit",
+  "account_approve_message": "Your profile must approval when you change your account's information in this case can not using all functions"
 
 
 }

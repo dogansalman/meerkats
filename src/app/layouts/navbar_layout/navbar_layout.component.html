@@ -10,7 +10,7 @@
             Maya Kafe Restorant
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item> <mat-icon>assignment_ind</mat-icon> {{'account_navbar' | translate}}</button>
+          <button mat-menu-item routerLink="/account"> <mat-icon>assignment_ind</mat-icon> {{'account_navbar' | translate}}</button>
           <button mat-menu-item><mat-icon>exit_to_app</mat-icon> {{'logout_navbar' | translate}}</button>
         </mat-menu>
       </div>
@@ -55,7 +55,7 @@
           <span class="navbar-menu-title" fxShow.xs="false">{{'stats_navbar' | translate}}</span>
         </a>
 
-        <a class="navmenu-item" routerLink="/kitchen" mat-list-item>
+        <a class="navmenu-item"  style="opacity: 0.5;"  mat-list-item>
           <i class="material-icons">event_note</i>
           <span class="navbar-menu-title" fxShow.xs="false">{{'kitchen_navbar' | translate}}</span>
         </a>

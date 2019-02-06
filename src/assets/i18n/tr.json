@@ -16,6 +16,7 @@
   "remember": "Hatırla",
   "forgot_password": "Şifremi Unuttum",
   "password_lenght": "En fazla 11 karakter olabilir.",
+  "password_reset": "Şifre Yenile",
   "create_account": "Yeni hesap oluştur",
   "forgot_pass_message": "Kayıtlı e-posta adresinize gönderilecek ileti ile şifrenizi güncelleyebilirsiniz.",
   "enter_business_code": "Lütfen işletme kodunu girin",
@@ -70,6 +71,6 @@
   "discount": "İndirim",
   "percent": "Yüzde",
   "value": "Değer",
-  "unit": "Adet"
-
+  "unit": "Adet",
+  "account_approve_message": "Hesabınızın bilgilerini değiştirdiğinizde profilinizin onaylaması gerekir, bu durumda tüm işlevleri kullanamazsınız"
 }
