@@ -17,6 +17,8 @@
   "forgot_password": "Şifremi Unuttum",
   "password_lenght": "En fazla 11 karakter olabilir.",
   "password_reset": "Şifre Yenile",
+  "new_password": "Yeni şifre",
+  "reply_password": "Şifre tekrar",
   "create_account": "Yeni hesap oluştur",
   "forgot_pass_message": "Kayıtlı e-posta adresinize gönderilecek ileti ile şifrenizi güncelleyebilirsiniz.",
   "enter_business_code": "Lütfen işletme kodunu girin",

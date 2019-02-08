@@ -80,9 +80,23 @@
     </mat-card>
   </mat-tab>
   <mat-tab label="{{'password_reset' | translate}}">
-    <mat-card class="card-no-shadow no-padding">
+    <mat-card fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="15"  class="card-no-shadow">
       <mat-card-content>
-        <p>password reset</p>
+        <mat-form-field class="full-width-field">
+          <input matInput #password maxlength="255" type="password" placeholder="{{'password' | translate}}"/>
+          <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field">
+          <input matInput #newpass maxlength="255" type="password" placeholder="{{'new_password' | translate}}"/>
+          <mat-hint align="end">{{newpass.value.length}} / 255</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field">
+          <input matInput #replypass maxlength="255" type="password" placeholder="{{'reply_password' | translate}}"/>
+          <mat-hint align="end">{{replypass.value.length}} / 255</mat-hint>
+        </mat-form-field>
+
       </mat-card-content>
     </mat-card>
   </mat-tab>
