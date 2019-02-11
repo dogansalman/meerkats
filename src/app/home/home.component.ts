@@ -32,7 +32,8 @@ export class HomeComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    this.snack.show('Henüz masa oluşturmadınız.', 'Ekle', 'success').afterDismissed().subscribe(() => {});
+    // TODO fix ExpressionChangedAfterItHasBeenCheckedError
+    // this.snack.show('Henüz masa oluşturmadınız.', 'Ekle', 'success').afterDismissed().subscribe(() => {});
   }
 
   ngAfterContentInit() { this.spn.hide(); }

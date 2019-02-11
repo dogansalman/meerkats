@@ -85,6 +85,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
       draggable: true
     });
   }
+
   public onChangeAccount(): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '450px',
@@ -94,7 +95,16 @@ export class AccountComponent implements AfterViewInit, OnInit {
       if (result) { console.log('Ok!'); }
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
-
+  }
+  public onChangePassword(): void {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '450px',
+      data: {message: this.translater.transform('sure_message'), title: this.translater.transform('sure_message_title') }
+    });
+    dialogRef.componentInstance.onSelect.subscribe(result => {
+      if (result) { console.log('Ok!'); }
+    });
+    dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
   ngAfterViewInit(): void { this.spinner.hide(); }
 
