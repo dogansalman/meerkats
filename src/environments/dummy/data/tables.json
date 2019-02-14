@@ -1,183 +1,183 @@
 [
-  [{
-    "location": "BHÇ-00001",
+  {
+    "location": "Bahçe",
     "chair": 1,
     "no": 1,
     "barcode": "30142-964",
-    "business_id": "dMhIA2"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00002",
+    "location": "Bahçe",
     "chair": 2,
     "no": 2,
     "barcode": "49884-605",
-    "business_id": "jV5lOCn6zZC"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00003",
+    "location": "Bahçe",
     "chair": 3,
     "no": 1,
     "barcode": "54868-5833",
-    "business_id": "BdTY2dI"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00004",
+    "location": "Bahçe",
     "chair": 4,
     "no": 4,
     "barcode": "0378-4791",
-    "business_id": "ki5NwdsAf"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00005",
+    "location": "Bahçe",
     "chair": 5,
     "no": 1,
     "barcode": "60512-9061",
-    "business_id": "468LXlEAuEQ"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00006",
+    "location": "Bahçe",
     "chair": 6,
     "no": 1,
     "barcode": "0904-3854",
-    "business_id": "TccH3LM"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00006",
+    "location": "Bahçe",
     "chair": 7,
     "no": 1,
     "barcode": "49288-0348",
-    "business_id": "EoMEHpr"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00007",
+    "location": "İÇ MEKAN",
     "chair": 8,
     "no": 1,
     "barcode": "55111-638",
-    "business_id": "8fsxRx8sHjae"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00008",
+    "location": "İÇ MEKAN",
     "chair": 9,
     "no": 2,
     "barcode": "23359-019",
-    "business_id": "XBOcmasUnID"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-00009",
+    "location": "İÇ MEKAN",
     "chair": 10,
     "no": 2,
     "barcode": "47202-1509",
-    "business_id": "PkWXo4Z9T"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000010",
+    "location": "İÇ MEKAN",
     "chair": 11,
     "no": 1,
     "barcode": "76125-783",
-    "business_id": "c82w13kDan"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000011",
+    "location": "İÇ MEKAN",
     "chair": 12,
     "no": 3,
     "barcode": "63550-158",
-    "business_id": "qV48FvG8GNeP"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000012",
+    "location": "İÇ MEKAN",
     "chair": 13,
     "no": 3,
     "barcode": "49348-753",
-    "business_id": "VPuJKiZIP"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000013",
+    "location": "İÇ MEKAN",
     "chair": 14,
     "no": 2,
     "barcode": "17630-2043",
-    "business_id": "KVgn0SLy"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000014",
+    "location": "İÇ MEKAN",
     "chair": 15,
     "no": 2,
     "barcode": "42291-656",
-    "business_id": "jIvMrszTLUT"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000015",
+    "location": "İÇ MEKAN",
     "chair": 16,
     "no": 6,
     "barcode": "43269-712",
-    "business_id": "27PI132xRCM"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000016",
+    "location": "İÇ MEKAN",
     "chair": 17,
     "no": 1,
     "barcode": "35356-685",
-    "business_id": "TiV5R9QG0EPw"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000017",
+    "location": "İÇ MEKAN",
     "chair": 18,
     "no": 3,
     "barcode": "13537-336",
-    "business_id": "wCqR0c"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000018",
+    "location": "İÇ MEKAN",
     "chair": 19,
     "no": 2,
     "barcode": "61995-2831",
-    "business_id": "uSGRpCrVS"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000019",
+    "location": "BALKON",
     "chair": 20,
     "no": 1,
     "barcode": "50436-6755",
-    "business_id": "mo95c0f85v"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000020",
+    "location": "BALKON",
     "chair": 21,
     "no": 4,
     "barcode": "0536-0370",
-    "business_id": "4rDEJHBw"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000021",
+    "location": "BALKON",
     "chair": 22,
     "no": 3,
     "barcode": "67546-212",
-    "business_id": "kpPLcSMTD1z"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000022",
+    "location": "BALKON",
     "chair": 23,
     "no": 2,
     "barcode": "0054-0283",
-    "business_id": "ThLdwY"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000023",
+    "location": "BALKON",
     "chair": 24,
     "no": 1,
     "barcode": "43333-442",
-    "business_id": "PkR8ikq9dF"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000023",
+    "location": "BALKON",
     "chair": 25,
     "no": 1,
     "barcode": "25225-021",
-    "business_id": "qWIbhrDf586"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000024",
+    "location": "BALKON",
     "chair": 26,
     "no": 1,
     "barcode": "0185-0701",
-    "business_id": "cHQDZnJ8DKD"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000025",
+    "location": "BALKON",
     "chair": 27,
     "no": 1,
     "barcode": "67877-221",
-    "business_id": "8g34j08Mtf"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000026",
+    "location": "BALKON",
     "chair": 28,
     "no": 7,
     "barcode": "70253-263",
-    "business_id": "OEaw43"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000027",
+    "location": "BALKON",
     "chair": 29,
     "no": 2,
     "barcode": "67253-391",
-    "business_id": "3jlrvEIUg2HO"
+    "business_id": "dummy"
   }, {
-    "location": "BHÇ-000028",
+    "location": "BALKON",
     "chair": 30,
     "no": 1,
     "barcode": "52584-020",
-    "business_id": "mhu6tQ"
-  }]
+    "business_id": "dummy"
+  }
 ]
