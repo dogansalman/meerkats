@@ -43,7 +43,6 @@ pushMethods.table = function(arg) {
 /* Push Firebase */
 argv._.forEach(arg => pushMethods[arg](arg));
 
-process.exit();
 
 
 

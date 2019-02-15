@@ -4,20 +4,30 @@ import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
+import {TableServices} from '../models/table/table.services';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [TranslatePipe]
+  providers: [TranslatePipe, TableServices]
 })
 export class TablesComponent implements OnInit, AfterContentInit {
-
-  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private translater: TranslatePipe) { }
   public openedTableDetail = false;
+  public table: any;
+  public locations: any;
 
-  ngOnInit() { this.spinner.show(); }
+  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private translater: TranslatePipe, private tableServ: TableServices) { }
+
+  ngOnInit() {
+    this.spinner.show();
+    this.tableServ.get().then(data => {
+      this.table = data;
+      this.locations = this.table.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
+      console.log(this.table, this.locations);
+    });
+  }
   ngAfterContentInit() { this.spinner.hide(); }
 
   onTableDetail($event: MouseEvent): void {

@@ -9,12 +9,13 @@ import {TableModule} from './table/table.module';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {ConfirmModule} from '../components/confirm/confirm.module';
 import {TranslateModule} from '../services/translate/translate.module';
+import {FilterModule} from '../pipes/filter/filter.module';
 
 @NgModule({
-  imports: [AppMaterialModule, FlexLayoutModule, CommonModule, TablesRoutingModule, TableModule, ConfirmModule, TranslateModule],
+  imports: [AppMaterialModule, FlexLayoutModule, CommonModule, TablesRoutingModule, TableModule, ConfirmModule, TranslateModule, FilterModule],
   declarations: [TablesComponent],
   entryComponents: [TableComponent, ConfirmComponent]
 
 })
 
-export class TablesModule{}
+export class TablesModule {}

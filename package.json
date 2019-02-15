@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dummy": "node src/environments/dummy/dummy.ts"
+    "dummy": "node src/environments/dummy/dummy.js"
   },
   "private": true,
   "dependencies": {
