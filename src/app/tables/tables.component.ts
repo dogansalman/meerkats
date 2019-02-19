@@ -5,6 +5,7 @@ import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {TableServices} from '../models/table/table.services';
+import {Table} from '../models/table/table';
 
 @Component({
   selector: 'app-tables',
@@ -25,16 +26,17 @@ export class TablesComponent implements OnInit, AfterContentInit {
     this.tableServ.get().then(data => {
       this.table = data;
       this.locations = this.table.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
-      console.log(this.table, this.locations);
+      // console.log(this.table, this.locations);
     });
   }
   ngAfterContentInit() { this.spinner.hide(); }
 
-  onTableDetail($event: MouseEvent): void {
+  onTableDetail(table: Table): void {
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
     const dialogRef = this.dialog.open(TableComponent, {
-      width: '450px'
+      width: '450px',
+      data: table || null
     });
 
     dialogRef.afterClosed().subscribe(() => this.openedTableDetail = false);

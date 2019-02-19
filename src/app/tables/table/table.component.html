@@ -7,28 +7,32 @@
   <mat-card class="card-no-shadow">
     <mat-card-content>
       <p>{{'table_add_desc' | translate}}</p>
-      <mat-form-field class="full-width-field">
-        <input type="text" placeholder="{{'location' | translate}}" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
+      <form [formGroup]="this.frmGrp" (ngSubmit)="changeOrCrate()">
 
-      <mat-form-field class="full-width-field">
-        <input type="number" placeholder="{{'chair' | translate}} ({{'capacity' | translate}})" aria-label="Number" matInput>
-      </mat-form-field>
+        <mat-form-field class="full-width-field">
+          <input type="text" placeholder="{{'location' | translate}}" aria-label="Number" matInput formControlName="location" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
 
-      <mat-form-field class="full-width-field">
-        <input type="text" matInput #number maxlength="11" placeholder="Masa No">
-        <mat-hint align="start"><strong>{{'password_lenght' | translate}}</strong> </mat-hint>
-        <mat-hint align="end">{{number.value.length}} / 11</mat-hint>
-      </mat-form-field>
+        <mat-form-field class="full-width-field">
+          <input type="number" formControlName="chair" placeholder="{{'chair' | translate}} ({{'capacity' | translate}})" aria-label="Number" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="full-width-field">
+          <input formControlName="no" type="text" matInput #number maxlength="11" placeholder="Masa No">
+          <mat-hint align="start"><strong>{{'password_lenght' | translate}}</strong> </mat-hint>
+          <mat-hint align="end">{{number.value.length}} / 11</mat-hint>
+        </mat-form-field>
+      </form>
+
 
     </mat-card-content>
     <mat-card-actions>
-      <button color="primary" mat-flat-button>{{'ok_button' | translate}}</button>
+      <button color="primary" (click)="changeOrCrate()" mat-flat-button>{{'ok_button' | translate}}</button>
       <button mat-button [mat-dialog-close]="true">KAPAT</button>
     </mat-card-actions>
   </mat-card>
