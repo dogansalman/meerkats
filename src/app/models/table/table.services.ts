@@ -22,13 +22,21 @@ export class TableServices {
     });
   }
 
-
-
-
+  getLocation(data: any[]): any {
+    return data.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
+  }
   detail() { }
 
   delete() { }
 
-  update() { }
+  update(data: Table) {
+    return new Promise((resolve, reject) => {
+      const key = data.$key;
+      delete data.$key;
+      this.db.object('/table/' + key).update(data)
+        .then(() => resolve(Object.assign(data, {'$key': key})))
+        .catch(() => reject(null));
+    });
+  }
 
 }

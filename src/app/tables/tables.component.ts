@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {TableServices} from '../models/table/table.services';
 import {Table} from '../models/table/table';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Component({
   selector: 'app-tables',
@@ -18,25 +19,36 @@ export class TablesComponent implements OnInit, AfterContentInit {
   public openedTableDetail = false;
   public table: any;
   public locations: any;
+  private _DbRef;
 
-  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private translater: TranslatePipe, private tableServ: TableServices) { }
+  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private translater: TranslatePipe, private tableServ: TableServices, private db: AngularFireDatabase) {
+    /* Set database ref */
+    this._DbRef = this.db.database.ref('/table');
+  }
 
   ngOnInit() {
     this.spinner.show();
     this.tableServ.get().then(data => {
       this.table = data;
-      this.locations = this.table.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
-      // console.log(this.table, this.locations);
+      this.locations = this.tableServ.getLocation(this.table);
+    });
+
+    /* On updated table */
+    this._DbRef.on('child_changed', (child) => {
+      const selectedIndex = this.table.findIndex(a => a.$key === child.key);
+      this.table[selectedIndex] = child.val();
+      this.locations = this.tableServ.getLocation(this.table);
     });
   }
   ngAfterContentInit() { this.spinner.hide(); }
 
   onTableDetail(table: Table): void {
+
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
     const dialogRef = this.dialog.open(TableComponent, {
       width: '450px',
-      data: table || null
+      data: table || null,
     });
 
     dialogRef.afterClosed().subscribe(() => this.openedTableDetail = false);
@@ -55,4 +67,5 @@ export class TablesComponent implements OnInit, AfterContentInit {
 
     dialogRef.afterClosed().subscribe(() => { dialogRef.componentInstance.onSelect.unsubscribe();  this.openedTableDetail = false; });
   }
+
 }
