@@ -25,9 +25,16 @@ export class TableServices {
   getLocation(data: any[]): any {
     return data.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
   }
+
   detail() { }
 
-  delete() { }
+  delete(data: Table) {
+    // TODO add queryFn before deleting item on firebase
+    return new Promise((resolve, reject) => {
+      this.db.object('/table/' + data.$key).remove().then(() => resolve(true))
+        .catch(err => reject(err));
+    });
+  }
 
   update(data: Table) {
     return new Promise((resolve, reject) => {

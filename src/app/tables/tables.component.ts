@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterContentInit,  ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
@@ -36,7 +36,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
     /* On updated table */
     this._DbRef.on('child_changed', (child) => {
       const selectedIndex = this.table.findIndex(a => a.$key === child.key);
-      this.table[selectedIndex] = child.val();
+      Object.assign(this.table[selectedIndex], child.val());
       this.locations = this.tableServ.getLocation(this.table);
     });
   }
@@ -54,7 +54,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
     dialogRef.afterClosed().subscribe(() => this.openedTableDetail = false);
   }
 
-  Confirm(): void {
+  onDelete(data: Table): void {
     this.openedTableDetail = true;
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '450px',
@@ -62,7 +62,13 @@ export class TablesComponent implements OnInit, AfterContentInit {
     });
 
     dialogRef.componentInstance.onSelect.subscribe(result => {
-      console.log(result);
+      this.tableServ.delete(data).then(() => {
+        const selectedIndex = this.table.findIndex(a => a.$key === data.$key);
+        // TODO fix dom updating when delete item in array
+        this.table.removeAt(selectedIndex);
+        // this.table.splice(selectedIndex, 1);
+        this.locations = this.tableServ.getLocation(this.table);
+      }).catch(err => console.log(err));
     });
 
     dialogRef.afterClosed().subscribe(() => { dialogRef.componentInstance.onSelect.unsubscribe();  this.openedTableDetail = false; });
