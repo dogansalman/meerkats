@@ -74,5 +74,8 @@
   "percent": "Yüzde",
   "value": "Değer",
   "unit": "Adet",
-  "account_approve_message": "Hesabınızın bilgilerini değiştirdiğinizde profilinizin onaylaması gerekir, bu durumda tüm işlevleri kullanamazsınız"
+  "account_approve_message": "Hesabınızın bilgilerini değiştirdiğinizde profilinizin onaylaması gerekir, bu durumda tüm işlevleri kullanamazsınız",
+
+  "successful": "İşlem başarılı.",
+  "unsuccessful": "İşlem Başarısız!"
 }

@@ -55,8 +55,8 @@ export class TableComponent implements  OnInit {
       this.tableServ.update(this.frmGrp.value)
         .then(() => {
           this.spinner.hide();
-          this.dialogRef.close();
-        }).catch((err) => console.log(err));
+          this.dialogRef.close(true);
+        }).catch((err) => this.dialogRef.close(err));
        return;
     }
 

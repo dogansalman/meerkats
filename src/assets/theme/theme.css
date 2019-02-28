@@ -123,3 +123,21 @@ input[type=number]::-webkit-outer-spin-button {
   cursor:pointer;
   box-shadow: 0 10px 15px -2px rgba(0,0,0,.2), 0 10px 15px 0 rgba(0,0,0,.14), 0 10px 15px 0 rgba(0,0,0,.12) !important;
 }
+
+.snack_success.mat-snack-bar-container
+{
+  background: #80cbc4 !important;
+}
+.snack_success.mat-snack-bar-container > .mat-simple-snackbar > .mat-simple-snackbar-action
+{
+  color: #4ea19a !important;
+}
+
+.snack_error.mat-snack-bar-container
+{
+  background: #ffa3a3 !important;
+}
+.snack_error.mat-snack-bar-container > .mat-simple-snackbar > .mat-simple-snackbar-action
+{
+  color: #c05c5c !important;
+}

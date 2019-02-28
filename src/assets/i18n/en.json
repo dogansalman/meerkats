@@ -74,7 +74,8 @@
   "percent": "Percent",
   "value": "Value",
   "unit": "Unit",
-  "account_approve_message": "Your profile must approval when you change your account's information in this case can not using all functions"
+  "account_approve_message": "Your profile must approval when you change your account's information in this case can not using all functions",
 
-
+  "successful": "Successful.",
+  "unsuccessful": "Unsuccessful!"
 }

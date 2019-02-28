@@ -30,6 +30,7 @@ export class TableServices {
 
   delete(data: Table) {
     // TODO add queryFn before deleting item on firebase
+    // TODO check table status opened or closed
     return new Promise((resolve, reject) => {
       this.db.object('/table/' + data.$key).remove().then(() => resolve(true))
         .catch(err => reject(err));
