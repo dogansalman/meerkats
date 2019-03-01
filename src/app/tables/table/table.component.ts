@@ -16,28 +16,31 @@ export class TableComponent implements  OnInit {
   /* Properties*/
   public frmGrp: FormGroup;
   public _table: Table;
-  options: string[] = [];
+  locations: string[] = [];
 
 
   constructor(
     public dialogRef: MatDialogRef<TableComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Table,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
     private tableServ: TableServices,
     private spinner: NgxSpinnerService
   )  {
     /* Create form group validations */
     this.frmGrp = this.formBuilder.group({
-      $key: [null],
+      '$key': [null],
       'location': [null, Validators.required],
-      'chair': [null, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      'no': [null, [Validators.required, Validators.minLength(1), Validators.maxLength(20), Validators.pattern('[0-9]')]],
-      'barcode': [null, [Validators.required, Validators.minLength(11), Validators.maxLength(11)]],
+      'chair': [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]],
+      'no': [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255), Validators.pattern('[0-9]')]],
+      'barcode': [null, [Validators.required, Validators.maxLength(255)]],
       'business_id': [null]
     });
 
     /* Set selected Table */
-    this._table = data;
+    this._table = data.table as Table;
+
+    /* Set locations */
+    this.locations = this.data.locations;
 
   }
 
@@ -47,7 +50,9 @@ export class TableComponent implements  OnInit {
   }
 
   changeOrCrate(): void {
-   // if (!this.frmGrp.valid) { alert('is not valid'); }
+     // TODO Validations Message
+     if (!this.frmGrp.valid) { console.log(this.frmGrp.valid); }
+     console.log(this.frmGrp.controls);
 
     if (this._table) {
       /*Update*/
@@ -61,8 +66,13 @@ export class TableComponent implements  OnInit {
     }
 
     /* Create */
-    console.log('create...', this.frmGrp.value);
+    const data = this.frmGrp.value;
+    delete data.$key;
+    data.business_id = 'dummy'; // TODO Get Auth Key
+    data.barcode = '1625361-123'; // TODO Generate QR CODE
 
+    // TODO successful message or error
+    this.tableServ.create(this.frmGrp.value).then(() => console.log('added', data)).catch((e) => console.log(e));
     this.dialogRef.close();
     return;
 

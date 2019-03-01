@@ -47,4 +47,9 @@ export class TableServices {
     });
   }
 
+  create(data: Table) {
+    return new Promise((resolve, reject) => {
+      this.db.list('/table').push(data).then(() => resolve(data));
+    });
+  }
 }

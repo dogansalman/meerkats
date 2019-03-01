@@ -1,4 +1,4 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
@@ -18,7 +18,7 @@ import {MatSnackBar} from '@angular/material';
 })
 export class TablesComponent implements OnInit, AfterContentInit {
   public openedTableDetail = false;
-  public table: any;
+  public table: Table[];
   public locations: any;
   private _DbRef;
 
@@ -38,19 +38,29 @@ export class TablesComponent implements OnInit, AfterContentInit {
     /* Get all tables from cloud */
     this.tableServ.get().then(data => {
       /* Set table array globally */
-      this.table = data;
+      this.table = data as Table[];
       /* Get tables location in tables array */
       this.locations = this.tableServ.getLocation(this.table);
     });
 
     /* On updated data */
     this._DbRef.on('child_changed', (child) => {
+      // TODO fix changing location of the table when duplicated table problem
       /* Get index changed table */
       const selectedIndex = this.table.findIndex(a => a.$key === child.key);
       /* Assign table object to changed tables value */
       Object.assign(this.table[selectedIndex], child.val());
       /* Reload location */
       this.locations = this.tableServ.getLocation(this.table);
+    });
+
+    /* On added data */
+    this._DbRef.on('child_added', (child) => {
+      if (this.table) {
+        this.table.push(child.val() as Table);
+        /* Reload location */
+        this.locations = this.tableServ.getLocation(this.table);
+      }
     });
 
     /* On removed data */
@@ -74,12 +84,11 @@ export class TablesComponent implements OnInit, AfterContentInit {
     this.openedTableDetail = true;
     const dialogRef = this.dialog.open(TableComponent, {
       width: '450px',
-      data: table || null,
+      data: {table: table || null, locations: this.locations},
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       this.openedTableDetail = false;
-      console.log(result);
       if (!result || result === 'undefined' || result == null) { return; }
       if (result === true) {
         this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
