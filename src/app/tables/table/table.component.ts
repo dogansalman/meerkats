@@ -51,8 +51,8 @@ export class TableComponent implements  OnInit {
 
   changeOrCrate(): void {
      // TODO Validations Message
-     if (!this.frmGrp.valid) { console.log(this.frmGrp.valid); }
-     console.log(this.frmGrp.controls);
+     // if (!this.frmGrp.valid) { console.log(this.frmGrp.valid); }
+     // console.log(this.frmGrp.controls);
 
     if (this._table) {
       /*Update*/
@@ -71,10 +71,6 @@ export class TableComponent implements  OnInit {
     data.business_id = 'dummy'; // TODO Get Auth Key
     data.barcode = '1625361-123'; // TODO Generate QR CODE
 
-    // TODO successful message or error
-    this.tableServ.create(this.frmGrp.value).then(() => console.log('added', data)).catch((e) => console.log(e));
-    this.dialogRef.close();
-    return;
-
+    this.tableServ.create(this.frmGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
   }
  }

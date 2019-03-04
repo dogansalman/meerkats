@@ -57,9 +57,14 @@ export class TablesComponent implements OnInit, AfterContentInit {
     /* On added data */
     this._DbRef.on('child_added', (child) => {
       if (this.table) {
-        this.table.push(child.val() as Table);
+        console.log(this.table.length);
+        this.table[this.table.length - 1] = child.val();
+
+        // this.table.push(child.val() as Table);
         /* Reload location */
         this.locations = this.tableServ.getLocation(this.table);
+        console.log(child.val());
+        console.log(this.table.length);
       }
     });
 
