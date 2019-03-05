@@ -1,30 +1,30 @@
-    <mat-tab-group>
-      <mat-tab *ngFor="let location of locations" label="{{location}}">
-        <mat-card>
-          <mat-card-title>{{location}}</mat-card-title>
-          <mat-card-content>
-            <div fxLayout="row wrap"  fxLayoutGap="10px" fxLayoutAlign="space-around center">
-              <mat-card *ngFor="let table_ of table  | filter : 'location' : location" class="table-card" (click)="onTableDetail(table_)" fxFlex.xs="100" fxFlex.sm="45">
-                <mat-card-header>
-                  <mat-card-title><h2>{{'table' | translate}}: {{table_.no}} </h2></mat-card-title>
-                  <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> {{table_.barcode}} </mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                </mat-card-content>
-                <mat-divider></mat-divider>
-                <mat-card-actions>
-                  <button mat-button color="primary" (click)="onTableDetail(table_)">{{'edit_button' | translate}}</button>
-                  <div fxFlex></div>
-                  <button (click)="onDelete(table_)"  rel="delete_btn" mat-button color="warn">{{'delete_button' | translate}}</button>
-                </mat-card-actions>
-                <mat-card-footer></mat-card-footer>
-              </mat-card>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </mat-tab>
-    </mat-tab-group>
-    <button mat-fab class="fab-btn" color="primary" (click)="onTableDetail()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
+<mat-tab-group>
+  <mat-tab *ngFor="let location of locations" label="{{location}}">
+    <mat-card>
+      <mat-card-title>{{location}}</mat-card-title>
+      <mat-card-content>
+        <div fxLayout="row wrap"  fxLayoutGap="10px" fxLayoutAlign="space-around center">
+          <mat-card *ngFor="let table_ of table  | filter : 'location' : location" class="table-card" (click)="onTableDetail(table_)" fxFlex.xs="100" fxFlex.sm="45">
+            <mat-card-header>
+              <mat-card-title><h2>{{'table' | translate}}: {{table_.no}} </h2></mat-card-title>
+              <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> {{table_.barcode}} </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+              <button mat-button color="primary" (click)="onTableDetail(table_)">{{'edit_button' | translate}}</button>
+              <div fxFlex></div>
+              <button (click)="onDelete(table_)"  rel="delete_btn" mat-button color="warn">{{'delete_button' | translate}}</button>
+            </mat-card-actions>
+            <mat-card-footer></mat-card-footer>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>
+<button mat-fab class="fab-btn" color="primary" (click)="onTableDetail()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
 
 
 

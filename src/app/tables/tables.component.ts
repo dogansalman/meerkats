@@ -1,32 +1,34 @@
-import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterContentInit, ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {TableServices} from '../models/table/table.services';
 import {Table} from '../models/table/table';
 import {AngularFireDatabase} from '@angular/fire/database';
-import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [TranslatePipe, TableServices]
+  providers: [TranslatePipe, TableServices],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class TablesComponent implements OnInit, AfterContentInit {
   public openedTableDetail = false;
   public table: Table[];
   public locations: any;
   private _DbRef;
+  private newItemAdded = false;
 
   constructor(private spinner: NgxSpinnerService, public dialog: MatDialog,
               private snack: MatSnackBar,
               private translater: TranslatePipe,
               private tableServ: TableServices,
-              private db: AngularFireDatabase) {
+              private db: AngularFireDatabase
+              ) {
     /* Set database ref */
     this._DbRef = this.db.database.ref('/table');
   }
@@ -56,27 +58,26 @@ export class TablesComponent implements OnInit, AfterContentInit {
 
     /* On added data */
     this._DbRef.on('child_added', (child) => {
-      if (this.table) {
-        console.log(this.table.length);
-        this.table[this.table.length - 1] = child.val();
-
-        // this.table.push(child.val() as Table);
-        /* Reload location */
-        this.locations = this.tableServ.getLocation(this.table);
-        console.log(child.val());
-        console.log(this.table.length);
-      }
+      if (!this.newItemAdded) { return; }
+      this.table = [...this.table, Object.assign(child.val() as Table, {$key: child.key})];
+      /* Reload location */
+      this.locations = this.tableServ.getLocation(this.table);
     });
 
     /* On removed data */
     this._DbRef.on('child_removed', (child) => {
       const removedIndex = this.table.findIndex(a => a.$key === child.key);
       this.table.splice(removedIndex , 1);
+      console.log(removedIndex, this.table);
       // for dom updating on delete table
       this.table = this.table.filter((e, i) => removedIndex !== i);
       this.locations = this.tableServ.getLocation(this.table);
 
     });
+
+    this._DbRef.once('value', () => this.newItemAdded = true);
+
+
   }
 
   /* Loader hiding after init loaded. */
@@ -84,7 +85,6 @@ export class TablesComponent implements OnInit, AfterContentInit {
 
   /* On table detail modal */
   onTableDetail(table: Table): void {
-
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
     const dialogRef = this.dialog.open(TableComponent, {
@@ -112,8 +112,10 @@ export class TablesComponent implements OnInit, AfterContentInit {
     });
 
     dialogRef.componentInstance.onSelect.subscribe(result => {
+      console.log(result);
       if (!result) { return; }
       this.tableServ.delete(data).then(() => {
+        console.log(data);
         this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
       }).catch(err => {
         this.snack.open(this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
@@ -123,5 +125,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
 
     dialogRef.afterClosed().subscribe(() => { dialogRef.componentInstance.onSelect.unsubscribe();  this.openedTableDetail = false; });
   }
+
+
 
 }
