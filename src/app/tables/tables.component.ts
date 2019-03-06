@@ -47,11 +47,11 @@ export class TablesComponent implements OnInit, AfterContentInit {
 
     /* On updated data */
     this._DbRef.on('child_changed', (child) => {
-      // TODO fix changing location of the table when duplicated table problem
       /* Get index changed table */
       const selectedIndex = this.table.findIndex(a => a.$key === child.key);
-      /* Assign table object to changed tables value */
-      Object.assign(this.table[selectedIndex], child.val());
+      /* Fixes for dom updating */
+       this.table.splice(selectedIndex, 1, Object.assign(child.val() as Table, {$key: child.key}));
+       this.table = [...this.table];
       /* Reload location */
       this.locations = this.tableServ.getLocation(this.table);
     });
@@ -68,11 +68,9 @@ export class TablesComponent implements OnInit, AfterContentInit {
     this._DbRef.on('child_removed', (child) => {
       const removedIndex = this.table.findIndex(a => a.$key === child.key);
       this.table.splice(removedIndex , 1);
-      console.log(removedIndex, this.table);
       // for dom updating on delete table
       this.table = this.table.filter((e, i) => removedIndex !== i);
       this.locations = this.tableServ.getLocation(this.table);
-
     });
 
     this._DbRef.once('value', () => this.newItemAdded = true);
@@ -112,10 +110,8 @@ export class TablesComponent implements OnInit, AfterContentInit {
     });
 
     dialogRef.componentInstance.onSelect.subscribe(result => {
-      console.log(result);
       if (!result) { return; }
       this.tableServ.delete(data).then(() => {
-        console.log(data);
         this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
       }).catch(err => {
         this.snack.open(this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
