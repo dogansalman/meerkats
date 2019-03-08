@@ -1,10 +1,10 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
-import {TableServices} from '../models/table/table.services';
+import {TableService} from '../models/table/table.service';
 import {Table} from '../models/table/table';
 import {AngularFireDatabase} from '@angular/fire/database';
 
@@ -13,10 +13,10 @@ import {AngularFireDatabase} from '@angular/fire/database';
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [TranslatePipe, TableServices],
+  providers: [TranslatePipe, TableService],
   changeDetection: ChangeDetectionStrategy.Default
 })
-export class TablesComponent implements OnInit, AfterContentInit {
+export class TablesComponent implements OnInit {
   public openedTableDetail = false;
   public table: Table[];
   public locations: any;
@@ -26,7 +26,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
   constructor(private spinner: NgxSpinnerService, public dialog: MatDialog,
               private snack: MatSnackBar,
               private translater: TranslatePipe,
-              private tableServ: TableServices,
+              private tableServ: TableService,
               private db: AngularFireDatabase
               ) {
     /* Set database ref */
@@ -34,16 +34,13 @@ export class TablesComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
-    /* Show loader */
-    this.spinner.show();
-
     /* Get all tables from cloud */
     this.tableServ.get().then(data => {
       /* Set table array globally */
       this.table = data as Table[];
       /* Get tables location in tables array */
       this.locations = this.tableServ.getLocation(this.table);
-    });
+    }).then(() => this.spinner.hide());
 
     /* On updated data */
     this._DbRef.on('child_changed', (child) => {
@@ -75,11 +72,7 @@ export class TablesComponent implements OnInit, AfterContentInit {
 
     this._DbRef.once('value', () => this.newItemAdded = true);
 
-
   }
-
-  /* Loader hiding after init loaded. */
-  ngAfterContentInit() { this.spinner.hide(); }
 
   /* On table detail modal */
   onTableDetail(table: Table): void {

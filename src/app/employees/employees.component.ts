@@ -1,45 +1,31 @@
-import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {EmployeeInterface} from '../interfaces/employee';
 import {MatDialog} from '@angular/material';
 import {EmployeeComponent} from './employee/employee.component';
+import {EmployeeService} from '../models/employee/employee.service';
+import {Employee} from '../models/employee/employee';
 
-const ELEMENT_DATA: EmployeeInterface[] = [
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi',},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Tam Yetkili(Yönetici)'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-  {name: 'doğan', lastname: 'salman', password: '12312', business_id: '1', username: 'dogan', permissions: 'Sipariş Yönetimi, Ürün Yönetimi, Masa Yönetimi'},
-
-];
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [EmployeeService]
 })
 
 
-export class EmployeesComponent implements OnInit, AfterContentInit{
+export class EmployeesComponent implements OnInit {
+  public dataSource: Employee[];
+  public displayedColumns: string[] = ['name', 'lastname', 'username', 'permissions'];
 
-  displayedColumns: string[] = ['name', 'lastname', 'username', 'permissions'];
-  dataSource = ELEMENT_DATA;
-
-  constructor(private spinner: NgxSpinnerService, private dialog: MatDialog) {}
+  constructor(private spinner: NgxSpinnerService, private dialog: MatDialog, private employeeService: EmployeeService) { }
 
 
-  ngOnInit(): void { }
-  ngAfterContentInit(): void {
-    this.spinner.hide();
+  ngOnInit(): void {
+    /* Get Employee */
+    this.employeeService.get().then(data =>  this.dataSource = data as Employee[]).then(() => this.spinner.hide());
   }
+
 
   onPersonModal(): void {
     this.dialog.open(EmployeeComponent, {width: '600px', height: '450px'});

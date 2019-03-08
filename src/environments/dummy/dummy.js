@@ -1,8 +1,10 @@
 let firebase = require('firebase');
 let minimist = require('minimist');
 let tableData =  require('../dummy/data/tables');
-let pushMethods = {
-  table: null
+let employeeData =  require('../dummy/data/employee');
+let dummy = {
+  table: { data: tableData },
+  employee: {data: employeeData}
 };
 
 
@@ -23,7 +25,7 @@ let argv = minimist(process.argv.slice(2));
 
 /* Argument validation */
 argv._.forEach(a => {
-  if (!pushMethods.hasOwnProperty(a)) {
+  if (!dummy.hasOwnProperty(a)) {
     console.log(a + ' is not valid args');
     process.exit();
   }
@@ -34,14 +36,10 @@ if (argv._.findIndex(arg => arg === 'delete') > 0) {
   process.exit();
 }
 
-/* Firebase push functions */
-pushMethods.table = function(arg) {
-  console.log(arg + ' pushed');
-  firebase.database().ref(arg).set(tableData);
-};
-
 /* Push Firebase */
-argv._.forEach(arg => pushMethods[arg](arg));
+ argv._.forEach(arg => {
+   firebase.database().ref(arg).set(dummy[arg].data);
+ });
 
 
 

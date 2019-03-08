@@ -3,7 +3,7 @@ import {AngularFireDatabase} from '@angular/fire/database';
 import {Table} from './table';
 
 @Injectable()
-export class TableServices {
+export class TableService {
 
   tables: Table[];
   constructor(private db: AngularFireDatabase) { }

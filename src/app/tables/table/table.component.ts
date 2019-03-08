@@ -2,13 +2,13 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Table} from '../../models/table/table';
-import {TableServices} from '../../models/table/table.services';
+import {TableService} from '../../models/table/table.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 
 @Component({
   templateUrl: 'table.component.html',
-  providers: [TableServices]
+  providers: [TableService]
 })
 
 export class TableComponent implements  OnInit {
@@ -23,7 +23,7 @@ export class TableComponent implements  OnInit {
     public dialogRef: MatDialogRef<TableComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private formBuilder: FormBuilder,
-    private tableServ: TableServices,
+    private tableServ: TableService,
     private spinner: NgxSpinnerService
   )  {
     /* Create form group validations */
@@ -31,8 +31,8 @@ export class TableComponent implements  OnInit {
       '$key': [null],
       'location': [null, Validators.required],
       'chair': [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]],
-      'no': [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255), Validators.pattern('[0-9]')]],
-      'barcode': [null, [Validators.required, Validators.maxLength(255)]],
+      'no': [null, [Validators.required, Validators.maxLength(120), Validators.pattern('[a-zA-Z 0-9]*')]],
+      'barcode': [null],
       'business_id': [null]
     });
 
@@ -51,8 +51,11 @@ export class TableComponent implements  OnInit {
 
   changeOrCrate(): void {
      // TODO Validations Message
-     // if (!this.frmGrp.valid) { console.log(this.frmGrp.valid); }
-     // console.log(this.frmGrp.controls);
+      if (!this.frmGrp.valid) {
+        console.log(this.frmGrp.controls);
+        return;
+      }
+
 
     if (this._table) {
       /*Update*/
