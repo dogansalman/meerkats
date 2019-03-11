@@ -1,58 +1,57 @@
 <div>
-  <h1 mat-dialog-title>Personel
-    <button style="float: right" [mat-dialog-close]="true" mat-icon-button>
+  <h1 mat-dialog-title>{{'employee_navbar' | translate}}
+    <button style="float: right" [mat-dialog-close] mat-icon-button>
       <mat-icon aria-label="Example icon-button with a heart icon">clear</mat-icon>
     </button>
   </h1>
 </div>
-<mat-dialog-content>
-  <mat-card mat-dialog-content class="card-no-shadow">
-    <mat-card-content>
-
-      <mat-form-field class="full-width-field">
-        <mat-select placeholder="{{'permission' | translate}}"  multiple>
-          <mat-option value="0">Ürün Yönetimi</mat-option>
-          <mat-option value="0">Sipariş Yönetimi</mat-option>
-          <mat-option value="0">Masa Yönetimi</mat-option>
-          <mat-option value="0">Kasa Yönetimi</mat-option>
-          <mat-option value="0">Rapor İstatistik</mat-option>
-          <mat-option value="0">Mutfak</mat-option>
-          <mat-option value="0">Tam Yetkili (Yönetici)</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field class="full-width-field">
-        <input type="text" matInput #fullname maxlength="255" placeholder="{{'name' | translate}} {{'lastname' | translate}}">
-        <mat-hint align="start"> </mat-hint>
-        <mat-hint align="end">{{fullname.value.length}} / 255</mat-hint>
-      </mat-form-field>
-
-
-      <mat-form-field class="full-width-field">
-        <input type="text" matInput #username maxlength="255" placeholder="{{'username' | translate}}">
-        <mat-hint align="start"> </mat-hint>
-        <mat-hint align="end">{{username.value.length}} / 255</mat-hint>
-      </mat-form-field>
-
-
-      <mat-form-field class="full-width-field">
-        <input type="password" matInput #password maxlength="255" placeholder="{{'password' | translate}}">
-        <mat-hint align="start"> </mat-hint>
-        <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
-      </mat-form-field>
-
-
-    </mat-card-content>
-
-  </mat-card>
-</mat-dialog-content>
-<div mat-dialog-actions>
-  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
-    <div>
-      <button color="primary" mat-flat-button>{{'ok_button' | translate}}</button>
-    </div>
-    <div>
-      <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
+<form [formGroup]="this.frmGrp" (ngSubmit)="onCreateOrUpdate()">
+  <mat-dialog-content>
+    <mat-card mat-dialog-content class="card-no-shadow">
+      <mat-card-content>
+        <mat-form-field class="full-width-field">
+          <mat-select formControlName="permissions" placeholder="{{'permission' | translate}}"  multiple>
+            <mat-option value="0">Ürün Yönetimi</mat-option>
+            <mat-option value="1">Sipariş Yönetimi</mat-option>
+            <mat-option value="2">Masa Yönetimi</mat-option>
+            <mat-option value="3">Kasa Yönetimi</mat-option>
+            <mat-option value="4">Rapor İstatistik</mat-option>
+            <mat-option value="5">Mutfak</mat-option>
+            <mat-option value="6">Tam Yetkili (Yönetici)</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width-field">
+          <input formControlName="name" type="text" matInput #name maxlength="255" placeholder="{{'name' | translate}}">
+          <mat-hint align="start"> </mat-hint>
+          <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="full-width-field">
+          <input type="text" formControlName="lastname"  matInput #lastname maxlength="255" placeholder="{{'lastname' | translate}}">
+          <mat-hint align="start"> </mat-hint>
+          <mat-hint align="end">{{lastname.value.length}} / 255</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="full-width-field">
+          <input type="text" matInput formControlName="username"  #username maxlength="255" placeholder="{{'username' | translate}}">
+          <mat-hint align="start"> </mat-hint>
+          <mat-hint align="end">{{username.value.length}} / 255</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="full-width-field">
+          <input type="password" matInput formControlName="password" #password maxlength="255" placeholder="{{'password' | translate}}">
+          <mat-hint align="start"> </mat-hint>
+          <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
+      <div>
+        <button type="submit" color="primary" mat-flat-button>{{'ok_button' | translate}}</button>
+      </div>
+      <div>
+        <button mat-button [mat-dialog-close]>{{'cancel_button' | translate}}</button>
+      </div>
     </div>
   </div>
-</div>
+</form>
+

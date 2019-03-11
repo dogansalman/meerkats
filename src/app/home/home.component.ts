@@ -1,15 +1,8 @@
 import {AfterContentInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {SnackbarService} from '../services/snackbar/snackbar.service';
 import {OrderComponent} from './order/order.component';
 import {MatDialog} from '@angular/material';
-import {AngularFireDatabase} from '@angular/fire/database';
-import {AngularFireList} from '@angular/fire/database';
 
-
-class Book {
-  constructor(public title) { }
-}
 
 @Component({
   selector: 'app-home',
@@ -19,22 +12,10 @@ class Book {
 })
 export class HomeComponent implements OnInit, AfterContentInit {
 
-  // Firebase List Object
-  storyList: AngularFireList<any>;
 
-  constructor(private spn: NgxSpinnerService, private snack: SnackbarService, private dialog: MatDialog, private db: AngularFireDatabase ) {
+  constructor(private spn: NgxSpinnerService, private dialog: MatDialog ) { }
 
-    /*
-    Firebase Create example
-    * */
-    this.storyList = this.db.list('stories');
-    this.storyList.push({name: 'doğan', surname: 'salman'});
-  }
-
-  ngOnInit() {
-    // TODO fix ExpressionChangedAfterItHasBeenCheckedError
-    // this.snack.show('Henüz masa oluşturmadınız.', 'Ekle', 'success').afterDismissed().subscribe(() => {});
-  }
+  ngOnInit() {  }
 
   ngAfterContentInit() { this.spn.hide(); }
 

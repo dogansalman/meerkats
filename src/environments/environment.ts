@@ -13,5 +13,10 @@ export const environment = {
     storageBucket: 'meerkats-40f0a.appspot.com',
     messagingSenderId: '1072246567046'
   },
-  mapKey: 'AIzaSyBArrMAt0tnZeQpylNvAQFyQpbuspIQW40'
+  mapKey: 'AIzaSyBArrMAt0tnZeQpylNvAQFyQpbuspIQW40',
+  permissions: [0, 1, 2, 3, 4, 5],
+  routePermission: [
+    {'route': [0, 2, 3]},
+    {'route': [0, 2, 3]}
+  ]
 };

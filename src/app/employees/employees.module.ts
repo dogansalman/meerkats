@@ -7,11 +7,13 @@ import {EmployeesRoutingModule} from './employees-routing.module';
 import {EmployeeComponent} from './employee/employee.component';
 import {EmployeeModule} from './employee/employee.module';
 import {TranslateModule} from '../services/translate/translate.module';
+import {ConfirmModule} from '../components/confirm/confirm.module';
+import {ConfirmComponent} from '../components/confirm/confirm.component';
 
 @NgModule({
-  imports: [AppMaterialModule, FlexLayoutModule, CommonModule, EmployeesRoutingModule, EmployeeModule, TranslateModule],
+  imports: [AppMaterialModule, FlexLayoutModule, CommonModule, EmployeesRoutingModule, EmployeeModule, TranslateModule, ConfirmModule],
   declarations: [EmployeesComponent],
-  entryComponents: [EmployeeComponent]
+  entryComponents: [EmployeeComponent, ConfirmComponent]
 })
 
 export class EmployeesModule {
