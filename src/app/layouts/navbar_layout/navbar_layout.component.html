@@ -21,7 +21,7 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill>
-    <mat-sidenav #sidenav>
+    <mat-sidenav class="sidebar-layout" #sidenav>
        <mat-card class="main-logo-btn" fxShow.xs="false" routerLink="/home">
          <mat-card-header>
          <img mat-card-avatar src="https://via.placeholder.com/150x150"/>
@@ -30,7 +30,6 @@
        </mat-card-header>
         </mat-card>
       <mat-divider></mat-divider>
-
       <mat-nav-list>
 
         <a  class="navmenu-item"  routerLink="/home" mat-list-item>
@@ -69,7 +68,6 @@
         </mat-menu>
         </a>
       </mat-nav-list>
-
     </mat-sidenav>
     <router-outlet class="hidden-router"></router-outlet>
   </mat-sidenav-container>

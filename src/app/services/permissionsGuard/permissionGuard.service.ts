@@ -2,6 +2,10 @@ import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, Route } from '@angular/router';
 import {Observable} from 'rxjs/internal/Observable';
 
+/* Permission keys for routing rules.
+ * Permission names in i18n with permission_[id] */
+export const PermissionKeys =  [0, 1, 2, 3, 4];
+
 @Injectable()
 export class PermissionGuardService implements  CanActivate {
 
@@ -26,6 +30,7 @@ export class PermissionGuardService implements  CanActivate {
     return false;
   }
 }
+
 
 
 

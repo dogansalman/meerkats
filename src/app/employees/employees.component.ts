@@ -24,7 +24,6 @@ export class EmployeesComponent implements OnInit {
   public displayedColumns: string[] = ['name', 'lastname', 'username', 'permissions', 'actionsColumn'];
   private newItemAdded = false;
   public openedTableDetail = false;
-
   /* Consturctor set DbRef */
   constructor(private spinner: NgxSpinnerService,
               private dialog: MatDialog,

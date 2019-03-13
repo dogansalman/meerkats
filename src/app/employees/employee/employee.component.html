@@ -11,13 +11,7 @@
       <mat-card-content>
         <mat-form-field class="full-width-field">
           <mat-select formControlName="permissions" placeholder="{{'permission' | translate}}"  multiple>
-            <mat-option value="0">Ürün Yönetimi</mat-option>
-            <mat-option value="1">Sipariş Yönetimi</mat-option>
-            <mat-option value="2">Masa Yönetimi</mat-option>
-            <mat-option value="3">Kasa Yönetimi</mat-option>
-            <mat-option value="4">Rapor İstatistik</mat-option>
-            <mat-option value="5">Mutfak</mat-option>
-            <mat-option value="6">Tam Yetkili (Yönetici)</mat-option>
+            <mat-option *ngFor="let permission of permissions" value="{{permission}}">{{'permission_' + permission | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field class="full-width-field">

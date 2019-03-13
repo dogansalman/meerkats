@@ -4,6 +4,7 @@ import {Employee} from '../../models/employee/employee';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EmployeeService} from '../../models/employee/employee.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {PermissionKeys} from '../../services/permissionsGuard/permissionGuard.service';
 
 @Component({
   templateUrl: 'employee.component.html',
@@ -14,6 +15,7 @@ export class EmployeeComponent implements OnInit {
 
   public _employee: Employee = null;
   public frmGrp: FormGroup;
+  public permissions = PermissionKeys;
   constructor(public dialogRef: MatDialogRef<EmployeeComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private fb: FormBuilder,
@@ -38,6 +40,7 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this._employee) { this.frmGrp.patchValue(this._employee); }
+
   }
   onCreateOrUpdate(): void {
     // TODO Validations Message

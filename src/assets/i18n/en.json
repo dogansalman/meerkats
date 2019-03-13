@@ -77,5 +77,11 @@
   "account_approve_message": "Your profile must approval when you change your account's information in this case can not using all functions",
 
   "successful": "Successful.",
-  "unsuccessful": "Unsuccessful!"
+  "unsuccessful": "Unsuccessful!",
+
+  "permission_0": "Table",
+  "permission_1": "Cash & Order",
+  "permission_2": "Report",
+  "permission_3": "Employee",
+  "permission_4": "Admin"
 }

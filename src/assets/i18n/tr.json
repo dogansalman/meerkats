@@ -77,5 +77,11 @@
   "account_approve_message": "Hesabınızın bilgilerini değiştirdiğinizde profilinizin onaylaması gerekir, bu durumda tüm işlevleri kullanamazsınız",
 
   "successful": "İşlem başarılı.",
-  "unsuccessful": "İşlem Başarısız!"
+  "unsuccessful": "İşlem Başarısız!",
+
+  "permission_0": "Masa",
+  "permission_1": "Kasa & Siparis",
+  "permission_2": "Rapor",
+  "permission_3": "Personel",
+  "permission_4": "Tam Yetki"
 }

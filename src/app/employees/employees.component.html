@@ -22,7 +22,9 @@
       <!-- Symbol Column -->
       <ng-container matColumnDef="permissions">
         <th mat-header-cell *matHeaderCellDef> {{'permission' | translate}} </th>
-        <td mat-cell *matCellDef="let element">  <mat-label>{{element.permissions}}</mat-label> </td>
+        <td mat-cell *matCellDef="let element">
+          <mat-label style="background: #80cbc4; color: #ffff; padding: 3px; margin: 3px; font-size:12px;" *ngFor="let _permission of element.permissions"> {{'permission_' + _permission | translate}} </mat-label>
+        </td>
       </ng-container>
 
       <!-- Symbol Column -->

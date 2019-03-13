@@ -75,7 +75,7 @@ export class TablesComponent implements OnInit {
   }
 
   /* On table detail modal */
-  onTableDetail(table: Table): void {
+  onTableDetail(table: Table = null): void {
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
     const dialogRef = this.dialog.open(TableComponent, {

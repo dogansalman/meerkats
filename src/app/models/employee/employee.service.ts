@@ -16,6 +16,9 @@ export class EmployeeService {
         res.forEach(element => {
           const item = element.payload.toJSON();
           item['$key'] = element.key;
+
+          /* Firebase does not support array */
+          item['permissions'] = Object.values(item['permissions']);
           this.employees.push(item as Employee);
         });
         return resolve(this.employees);

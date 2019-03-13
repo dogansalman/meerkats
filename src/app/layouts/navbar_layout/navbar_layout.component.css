@@ -18,6 +18,15 @@
    right: 10px;
  }
 
+.sidebar-layout{
+  background:url('../../../assets/img/bgsidebar.jpg') !important;
+  background-position: center center;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+  border-collapse: collapse;
+  display: table;
+}
+
 .mat-drawer{
   background: #ffffff;
 }
@@ -43,4 +52,5 @@
   }
 .main-logo-btn{
   transition: none !important; box-shadow: none !important; cursor: pointer; outline: 1px solid #666666; outline: 0px auto -webkit-focus-ring-color;
+  background:transparent !important;
 }
