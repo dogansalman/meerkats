@@ -1,0 +1,211 @@
+[{
+  "name": "Mitsubishi",
+  "price": "62.87",
+  "tax": 1,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Ford",
+  "price": "39.45",
+  "tax": 2,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Ford",
+  "price": "47.89",
+  "tax": 3,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Lexus",
+  "price": "34.73",
+  "tax": 4,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Ford",
+  "price": "38.12",
+  "tax": 5,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Bentley",
+  "price": "8.58",
+  "tax": 6,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Honda",
+  "price": "63.90",
+  "tax": 7,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Nissan",
+  "price": "29.67",
+  "tax": 8,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Kia",
+  "price": "21.64",
+  "tax": 9,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Pontiac",
+  "price": "0.39",
+  "tax": 10,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Eagle",
+  "price": "4.15",
+  "tax": 11,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Geo",
+  "price": "12.13",
+  "tax": 12,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Mercury",
+  "price": "12.44",
+  "tax": 13,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Ford",
+  "price": "24.18",
+  "tax": 14,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Hyundai",
+  "price": "44.46",
+  "tax": 15,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "BMW",
+  "price": "6.67",
+  "tax": 16,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Suzuki",
+  "price": "7.64",
+  "tax": 17,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Suzuki",
+  "price": "44.46",
+  "tax": 18,
+  "category": "Tatlı",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Toyota",
+  "price": "49.44",
+  "tax": 19,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Ferrari",
+  "price": "33.85",
+  "tax": 20,
+  "category": "Salata",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Ford",
+  "price": "37.51",
+  "tax": 21,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Mitsubishi",
+  "price": "58.97",
+  "tax": 22,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "BMW",
+  "price": "35.35",
+  "tax": 23,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Chevrolet",
+  "price": "64.83",
+  "tax": 24,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Toyota",
+  "price": "54.04",
+  "tax": 25,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Ford",
+  "price": "8.28",
+  "tax": 26,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Mitsubishi",
+  "price": "32.64",
+  "tax": 27,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Mercury",
+  "price": "51.07",
+  "tax": 28,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Chrysler",
+  "price": "12.29",
+  "tax": 29,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}, {
+  "name": "Lotus",
+  "price": "25.36",
+  "tax": 30,
+  "category": "İçecek",
+  "image": "",
+  "business_id": "dummy"
+}]

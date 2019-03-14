@@ -2,9 +2,12 @@ let firebase = require('firebase');
 let minimist = require('minimist');
 let tableData =  require('../dummy/data/tables');
 let employeeData =  require('../dummy/data/employee');
+let productData = require('../dummy/data/product');
+
 let dummy = {
-  table: { data: tableData },
-  employee: {data: employeeData}
+  table: {data: tableData },
+  employee: {data: employeeData},
+  product: {data: productData}
 };
 
 

@@ -1,127 +1,36 @@
 <mat-tab-group>
-  <mat-tab  label="İçecek(20)">
+  <mat-tab *ngFor="let category of categories" label="{{category}}">
     <mat-card>
       <mat-card-content>
         <div fxLayout="row wrap"  fxLayoutGap="10px">
-
-          <table mat-table [dataSource]="dataSource" fxFlex="100">
-
-
+          <table mat-table [dataSource]="products | filter: 'category' : category" fxFlex="100">
               <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef> {{'image' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> <img (click)="onProduct()" src="https://via.placeholder.com/150" style="height: 50px;"> </td>
               </ng-container>
-
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> {{element.name}} </td>
               </ng-container>
-
               <ng-container matColumnDef="category">
                 <th mat-header-cell *matHeaderCellDef> {{'category' | translate}}</th>
                 <td mat-cell *matCellDef="let element"> {{element.category}} </td>
               </ng-container>
-
               <ng-container matColumnDef="price">
                 <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} ({{'tax_included' | translate}}) </th>
                 <td mat-cell *matCellDef="let element">  <mat-label> {{element.price | currency: true : ''}} ₺</mat-label> </td>
               </ng-container>
-
-
-            <ng-container matColumnDef="actionsColumn">
-                <th mat-header-cell *matHeaderCellDef> </th>
-                <td mat-cell *matCellDef="let element"> </td>
+              <ng-container matColumnDef="actionsColumn">
+                  <th mat-header-cell *matHeaderCellDef> </th>
+                  <td mat-cell *matCellDef="let element"> </td>
               </ng-container>
-
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr (click)="onProduct()" mat-row class="button-table-row" *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-
         </div>
       </mat-card-content>
     </mat-card>
   </mat-tab>
-
-  <mat-tab  label="Tatlı(10)">
-    <mat-card>
-      <mat-card-content>
-        <div fxLayout="row wrap"  fxLayoutGap="10px">
-
-          <table mat-table [dataSource]="dataSource" fxFlex="100">
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="image">
-              <th mat-header-cell *matHeaderCellDef> {{'image' | translate}} </th>
-              <td mat-cell *matCellDef="let element"> <img src="https://via.placeholder.com/150" style="height: 50px;"> </td>
-            </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="category">
-              <th mat-header-cell *matHeaderCellDef> {{'category' | translate}}</th>
-              <td mat-cell *matCellDef="let element"> {{element.category}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="price">
-              <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} ({{'tax_included' | translate}}) </th>
-              <td mat-cell *matCellDef="let element">  <mat-label> {{element.price | currency: true : ''}} ₺ </mat-label> </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row class="button-table-row" *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-tab>
-
-  <mat-tab  label="Salata(20)">
-    <mat-card>
-      <mat-card-content>
-        <div fxLayout="row wrap"  fxLayoutGap="10px">
-
-          <table mat-table [dataSource]="dataSource" fxFlex="100">
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="image">
-              <th mat-header-cell *matHeaderCellDef> {{'image' | translate}} </th>
-              <td mat-cell *matCellDef="let element"> <img src="https://via.placeholder.com/150" style="height: 50px;"> </td>
-            </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="category">
-              <th mat-header-cell *matHeaderCellDef> {{'category' | translate}}</th>
-              <td mat-cell *matCellDef="let element"> {{element.category}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="price">
-              <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} ({{'tax_included' | translate}}) </th>
-              <td mat-cell *matCellDef="let element">  <mat-label> {{element.price | currency: true : ''}} ₺ </mat-label> </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row class="button-table-row" *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </mat-tab>
-
 </mat-tab-group>
 <button mat-fab class="fab-btn" color="primary" (click)="onProduct()"> <mat-icon svgIcon="add-svg"></mat-icon></button>
 
