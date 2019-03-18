@@ -6,8 +6,11 @@ import {EmployeeService} from '../models/employee/employee.service';
 import {Employee} from '../models/employee/employee';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {MatSnackBar} from '@angular/material';
-import {AngularFireDatabase} from '@angular/fire/database';
+import { AngularFireDatabase, SnapshotAction} from '@angular/fire/database';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
+import {Observable} from 'rxjs/internal/Observable';
+import {tap} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-employees',
@@ -19,50 +22,23 @@ import {ConfirmComponent} from '../components/confirm/confirm.component';
 
 export class EmployeesComponent implements OnInit {
   /* Properties  */
-  public employees: Employee[];
-  private _DbRef;
+  public employees: Observable<Employee[]>;
+
   public displayedColumns: string[] = ['name', 'lastname', 'username', 'permissions', 'actionsColumn'];
-  private newItemAdded = false;
   public openedTableDetail = false;
-  /* Consturctor set DbRef */
+
   constructor(private spinner: NgxSpinnerService,
               private dialog: MatDialog,
               private db: AngularFireDatabase,
               private employeeService: EmployeeService, private snack: MatSnackBar, private translater: TranslatePipe) {
-
-    /* Set database ref */
-    this._DbRef = this.db.database.ref('/employee');
   }
 
   ngOnInit(): void {
-    /* Get & Set Employees  */
-    this.employeeService.get().then(data =>  this.employees = data as Employee[]).then(() => this.spinner.hide());
-
-    /* On updated data */
-    this._DbRef.on('child_changed', (child) => {
-      /* Get index changed table */
-      const selectedIndex = this.employees.findIndex(a => a.$key === child.key);
-      /* Fixes for dom updating */
-      this.employees.splice(selectedIndex, 1, Object.assign(child.val() as Employee, {$key: child.key}));
-      this.employees = [...this.employees];
-    });
-
-    /* On added data */
-    this._DbRef.on('child_added', (child) => {
-      if (!this.newItemAdded) { return; }
-      this.employees = [...this.employees, Object.assign(child.val() as Employee, {$key: child.key})];
-    });
-
-    /* On removed data */
-    this._DbRef.on('child_removed', (child) => {
-      const removedIndex = this.employees.findIndex(a => a.$key === child.key);
-      this.employees.splice(removedIndex , 1);
-      // for dom updating on delete table
-      this.employees = this.employees.filter((e, i) => removedIndex !== i);
-    });
-
-    this._DbRef.once('value', () => this.newItemAdded = true);
-
+    this.employees  = this.employeeService.get().snapshotChanges()
+      .pipe(
+       keyVal(),
+       tap(() => this.spinner.hide())
+      );
   }
 
   /* Open person modal */
@@ -103,3 +79,22 @@ export class EmployeesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => { dialogRef.componentInstance.onSelect.unsubscribe();  this.openedTableDetail = false; });
   }
 }
+
+  /* SnapshotAction key value operators */
+const keyVal = () => (source: Observable<SnapshotAction<any>[]>) => {
+  return new Observable<any[]>(observer => {
+    return source.subscribe({
+      next(x) {
+        observer.next(
+          x.map(actions => Object.assign(actions.payload.val(), {$key: actions.key}))
+        );
+      },
+      error(err) {
+        observer.error(err);
+      },
+      complete() {
+        observer.complete();
+      }
+    });
+  });
+};

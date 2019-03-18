@@ -1,6 +1,6 @@
 <mat-card class="card-no-shadow">
   <mat-card-content>
-    <table mat-table [dataSource]="employees" fxFlex="100">
+    <table mat-table [dataSource]="employees | async" fxFlex="100">
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
@@ -19,13 +19,14 @@
         <td mat-cell *matCellDef="let element" ngClass.sm="hide" ngClass.xs="hide"> {{element.username}} </td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="permissions" ngClass.sm="hide" ngClass.xs="hide">
         <th mat-header-cell *matHeaderCellDef ngClass.sm="hide" ngClass.xs="hide"> {{'permission' | translate}} </th>
         <td mat-cell *matCellDef="let element" ngClass.sm="hide" ngClass.xs="hide">
           <mat-label style="background: #80cbc4; color: #ffff; padding: 3px; margin: 3px; font-size:12px;" *ngFor="let _permission of element.permissions"> {{'permission_' + _permission | translate}} </mat-label>
         </td>
       </ng-container>
+
+
       <!-- Symbol Column -->
       <ng-container matColumnDef="actionsColumn">
         <th mat-header-cell *matHeaderCellDef> </th>
