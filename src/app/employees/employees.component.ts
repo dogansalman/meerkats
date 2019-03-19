@@ -6,11 +6,11 @@ import {EmployeeService} from '../models/employee/employee.service';
 import {Employee} from '../models/employee/employee';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {MatSnackBar} from '@angular/material';
-import { AngularFireDatabase, SnapshotAction} from '@angular/fire/database';
+import {AngularFireDatabase} from '@angular/fire/database';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {Observable} from 'rxjs/internal/Observable';
 import {tap} from 'rxjs/operators';
-
+import {keyVal} from '../operators/keyVal/keyVal';
 
 @Component({
   selector: 'app-employees',
@@ -80,21 +80,3 @@ export class EmployeesComponent implements OnInit {
   }
 }
 
-  /* SnapshotAction key value operators */
-const keyVal = () => (source: Observable<SnapshotAction<any>[]>) => {
-  return new Observable<any[]>(observer => {
-    return source.subscribe({
-      next(x) {
-        observer.next(
-          x.map(actions => Object.assign(actions.payload.val(), {$key: actions.key}))
-        );
-      },
-      error(err) {
-        observer.error(err);
-      },
-      complete() {
-        observer.complete();
-      }
-    });
-  });
-};

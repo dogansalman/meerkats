@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Employee} from './employee';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
-import {Observable} from 'rxjs/internal/Observable';
 
 @Injectable()
 export class EmployeeService {

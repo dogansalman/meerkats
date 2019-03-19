@@ -1,29 +1,24 @@
 import {Injectable} from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {Table} from './table';
+import {Observable} from 'rxjs/internal/Observable';
+import {filter, map} from 'rxjs/operators';
 
 @Injectable()
 export class TableService {
 
-  tables: Table[];
   constructor(private db: AngularFireDatabase) { }
 
-  get() {
-    return new Promise((resolve, reject) => {
-      this.tables = [];
-      this.db.list('/table', ref => ref.orderByChild('business_id').equalTo('dummy')).snapshotChanges().subscribe(res => {
-        res.forEach(element => {
-          const item = element.payload.toJSON();
-          item['$key'] = element.key;
-          this.tables.push(item as Table);
-        });
-        return resolve(this.tables);
-      });
-    });
+  get(): AngularFireList<Table> {
+    return this.db.list('/table');
   }
 
   getLocation(data: any[]): any {
     return data.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
+  }
+  getLocation2(): AngularFireList<any[]> {
+     return this.db.list('table');
+
   }
 
   detail() { }

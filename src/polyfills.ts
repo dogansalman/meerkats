@@ -59,8 +59,12 @@ import 'core-js/es7/reflect';
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
-
+/***************************************************************************************************
+ * Hammerjs is required for mouse events touch, pointerEvents
+ */
+import 'hammerjs/hammer';
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+

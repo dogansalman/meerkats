@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
@@ -6,72 +6,39 @@ import {MatDialog, MatSnackBar} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {TableService} from '../models/table/table.service';
 import {Table} from '../models/table/table';
-import {AngularFireDatabase} from '@angular/fire/database';
+import {Observable} from 'rxjs/internal/Observable';
+import {filter, tap} from 'rxjs/operators';
+import {keyVal} from '../operators/keyVal/keyVal';
 
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [TranslatePipe, TableService],
-  changeDetection: ChangeDetectionStrategy.Default
+  providers: [TranslatePipe, TableService]
 })
 export class TablesComponent implements OnInit {
   public openedTableDetail = false;
-  public table: Table[];
+  public tables: Observable<Table[]>;
   public locations: any;
-  private _DbRef;
-  private newItemAdded = false;
 
   constructor(private spinner: NgxSpinnerService, public dialog: MatDialog,
               private snack: MatSnackBar,
               private translater: TranslatePipe,
               private tableServ: TableService,
-              private db: AngularFireDatabase
               ) {
-    /* Set database ref */
-    this._DbRef = this.db.database.ref('/table');
   }
 
   ngOnInit() {
-    /* Get all tables from cloud */
-    this.tableServ.get().then(data => {
-      /* Set table array globally */
-      this.table = data as Table[];
-      /* Get tables location in tables array */
-      this.locations = this.tableServ.getLocation(this.table);
-    }).then(() => this.spinner.hide());
 
-    /* On updated data */
-    this._DbRef.on('child_changed', (child) => {
-      /* Get index changed table */
-      const selectedIndex = this.table.findIndex(a => a.$key === child.key);
-      /* Fixes for dom updating */
-       this.table.splice(selectedIndex, 1, Object.assign(child.val() as Table, {$key: child.key}));
-       this.table = [...this.table];
-      /* Reload location */
-      this.locations = this.tableServ.getLocation(this.table);
-    });
-
-    /* On added data */
-    this._DbRef.on('child_added', (child) => {
-      if (!this.newItemAdded) { return; }
-      this.table = [...this.table, Object.assign(child.val() as Table, {$key: child.key})];
-      /* Reload location */
-      this.locations = this.tableServ.getLocation(this.table);
-    });
-
-    /* On removed data */
-    this._DbRef.on('child_removed', (child) => {
-      const removedIndex = this.table.findIndex(a => a.$key === child.key);
-      this.table.splice(removedIndex , 1);
-      // for dom updating on delete table
-      this.table = this.table.filter((e, i) => removedIndex !== i);
-      this.locations = this.tableServ.getLocation(this.table);
-    });
-
-    this._DbRef.once('value', () => this.newItemAdded = true);
-
+    // TODO LOKASYONLAR AYRICA LİSTELENECEK. YOKSA OBSERVABLE SUBSCRİBE OLMUYOR LİSTELENMİYOR.
+    this.locations = ['BAHÇE', 'İÇ MEKAN', 'BALKON'];
+    this.tables = this.tableServ.get().snapshotChanges()
+        .pipe(
+          keyVal(),
+          tap((data) => this.locations = this.tableServ.getLocation(data)),
+          tap(() => this.spinner.hide())
+        );
   }
 
   /* On table detail modal */
