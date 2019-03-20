@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {Table} from './table';
-import {Observable} from 'rxjs/internal/Observable';
-import {filter, map} from 'rxjs/operators';
+
 
 @Injectable()
 export class TableService {
@@ -16,10 +15,7 @@ export class TableService {
   getLocation(data: any[]): any {
     return data.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
   }
-  getLocation2(): AngularFireList<any[]> {
-     return this.db.list('table');
 
-  }
 
   detail() { }
 

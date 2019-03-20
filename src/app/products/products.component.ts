@@ -6,6 +6,9 @@ import {ProductService} from '../models/product/product.service';
 import {Product} from '../models/product/product';
 import {MatSnackBar} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
+import {Observable} from 'rxjs/internal/Observable';
+import {keyVal} from '../operators/keyVal/keyVal';
+import {tap} from 'rxjs/operators';
 
 @Component({
   templateUrl: 'products.component.html',
@@ -14,19 +17,17 @@ import {TranslatePipe} from '../services/translate/translate.pipe';
 export class ProductsComponent implements OnInit {
 
   displayedColumns: string[] = ['image', 'name', 'category', 'price'];
-  products: Product[];
+  products: Observable<Product[]>;
   categories: any[];
 
 
   constructor(private spinner: NgxSpinnerService, private dialog: MatDialog, private productServ: ProductService, private snack: MatSnackBar, private translater: TranslatePipe) { }
 
   ngOnInit(): void {
-    this.productServ.get().then(data => {
-      /* Set products */
-      this.products = data as Product[];
-      /* Get categories from products */
-      this.categories = this.productServ.getCategories(this.products);
-    }).then(() => this.spinner.hide());
+    /* Get locations */
+    this.productServ.get().snapshotChanges().pipe(keyVal(), tap(a => this.categories = this.productServ.getCategories(a))).subscribe();
+    /* Get tables */
+    this.products  = this.productServ.get().snapshotChanges().pipe(keyVal(), tap(() => this.spinner.hide()));
   }
 
   onProduct(product: Product = null): void {

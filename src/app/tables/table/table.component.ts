@@ -26,6 +26,11 @@ export class TableComponent implements  OnInit {
     private tableServ: TableService,
     private spinner: NgxSpinnerService
   )  {
+
+    /* Set selected Table */
+    this._table = data.table as Table;
+    /* Set locations */
+    this.locations = this.data.locations;
     /* Create form group validations */
     this.frmGrp = this.formBuilder.group({
       '$key': [null],
@@ -36,12 +41,6 @@ export class TableComponent implements  OnInit {
       'business_id': [null]
     });
 
-    /* Set selected Table */
-    this._table = data.table as Table;
-
-    /* Set locations */
-    this.locations = this.data.locations;
-
   }
 
   ngOnInit(): void {
@@ -49,13 +48,9 @@ export class TableComponent implements  OnInit {
     if (this._table) { this.frmGrp.patchValue(this._table); }
   }
 
-  changeOrCrate(): void {
-     // TODO Validations Message
-      if (!this.frmGrp.valid) {
-        console.log(this.frmGrp.controls);
-        return;
-      }
+  onCreateOrUpdate(): void {
 
+    if (!this.frmGrp.valid) { return; }
 
     if (this._table) {
       /*Update*/
@@ -65,14 +60,13 @@ export class TableComponent implements  OnInit {
           this.spinner.hide();
           this.dialogRef.close(true);
         }).catch((err) => this.dialogRef.close(err));
-       return;
+      return;
     }
 
     /* Create */
     const data = this.frmGrp.value;
     delete data.$key;
     data.business_id = 'dummy'; // TODO Get Auth Key
-    data.barcode = '1625361-123'; // TODO Generate QR CODE
 
     this.tableServ.create(this.frmGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
   }

@@ -4,7 +4,7 @@
   </button>
 </h1>
 <mat-dialog-content>
-  <form [formGroup]="this.frmGrp" (ngSubmit)="changeOrCrate()">
+  <form [formGroup]="this.frmGrp" (ngSubmit)="onCreateOrUpdate()">
   <mat-card class="card-no-shadow">
     <mat-card-content>
       <p>{{'table_add_desc' | translate}}</p>
@@ -26,7 +26,7 @@
         </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
-      <button color="primary" type="submit" (click)="changeOrCrate()" mat-flat-button>{{'ok_button' | translate}}</button>
+      <button color="primary" type="submit" mat-flat-button>{{'ok_button' | translate}}</button>
       <button mat-button [mat-dialog-close]>KAPAT</button>
     </mat-card-actions>
   </mat-card>

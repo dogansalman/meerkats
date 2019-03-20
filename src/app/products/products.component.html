@@ -3,7 +3,7 @@
     <mat-card>
       <mat-card-content>
         <div fxLayout="row wrap"  fxLayoutGap="10px">
-          <table mat-table [dataSource]="products | filter: 'category' : category" fxFlex="100">
+          <table mat-table [dataSource]="products | async | filter: 'category' : category" fxFlex="100">
               <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef> {{'image' | translate}} </th>
                 <td mat-cell *matCellDef="let element"> <img (click)="onProduct()" src="https://via.placeholder.com/150" style="height: 50px;"> </td>

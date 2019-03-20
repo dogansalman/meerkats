@@ -7,7 +7,7 @@ import {TranslatePipe} from '../services/translate/translate.pipe';
 import {TableService} from '../models/table/table.service';
 import {Table} from '../models/table/table';
 import {Observable} from 'rxjs/internal/Observable';
-import {filter, tap} from 'rxjs/operators';
+import {tap} from 'rxjs/operators';
 import {keyVal} from '../operators/keyVal/keyVal';
 
 @Component({
@@ -30,25 +30,17 @@ export class TablesComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    // TODO LOKASYONLAR AYRICA LİSTELENECEK. YOKSA OBSERVABLE SUBSCRİBE OLMUYOR LİSTELENMİYOR.
-    this.locations = ['BAHÇE', 'İÇ MEKAN', 'BALKON'];
-    this.tables = this.tableServ.get().snapshotChanges()
-        .pipe(
-          keyVal(),
-          tap((data) => this.locations = this.tableServ.getLocation(data)),
-          tap(() => this.spinner.hide())
-        );
+    /* Get locations */
+    this.tableServ.get().snapshotChanges().pipe(keyVal(), tap(a => this.locations = this.tableServ.getLocation(a))).subscribe();
+    /* Get tables */
+    this.tables  = this.tableServ.get().snapshotChanges().pipe(keyVal(), tap(() => this.spinner.hide()));
   }
 
   /* On table detail modal */
   onTableDetail(table: Table = null): void {
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
-    const dialogRef = this.dialog.open(TableComponent, {
-      width: '450px',
-      data: {table: table || null, locations: this.locations},
-    });
+    const dialogRef =  this.dialog.open(TableComponent, {width: '600px', height: '450px', data: {table: table, locations: this.locations}});
 
     dialogRef.afterClosed().subscribe((result) => {
       this.openedTableDetail = false;
