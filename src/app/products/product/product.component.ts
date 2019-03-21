@@ -24,17 +24,15 @@ export class ProductComponent implements OnInit {
     this.formGrp = this.fb.group(
       {
         $key: [null],
-        name: [null, Validators.required],
-        price: [null, Validators.required],
+        name: [null, [Validators.required, Validators.maxLength(255)]],
+        price: [null, [Validators.required]],
         tax: [null, Validators.pattern('[0-9]*')],
-        category: [null, Validators.required],
+        category: [null, Validators.required, Validators.maxLength(120)],
         image: [null],
-        business_id: [null],
       }
     );
 
     /* Set product & categories */
-    console.log(data)
     if (data.product) {
       this._product = data.product;
       this._categories = data.categories;
@@ -67,7 +65,6 @@ export class ProductComponent implements OnInit {
     /* Create */
     const data = this.formGrp.value;
     delete data.$key;
-    data.business_id = 'dummy'; // TODO Get Auth Key
 
     this.productServ.create(this.formGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
   }

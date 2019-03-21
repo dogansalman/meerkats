@@ -45,7 +45,7 @@ export class EmployeesComponent implements OnInit {
   onPersonModal(employee: Employee): void {
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
-    const dialogRef =  this.dialog.open(EmployeeComponent, {width: '600px', height: '450px', data: employee});
+    const dialogRef =  this.dialog.open(EmployeeComponent, {width: '600px', height: '500px', data: employee});
 
     dialogRef.afterClosed().subscribe((result) => {
       this.openedTableDetail = false;

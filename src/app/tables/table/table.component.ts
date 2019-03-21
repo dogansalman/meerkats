@@ -34,11 +34,10 @@ export class TableComponent implements  OnInit {
     /* Create form group validations */
     this.frmGrp = this.formBuilder.group({
       '$key': [null],
-      'location': [null, Validators.required],
-      'chair': [null, [Validators.required, Validators.minLength(1), Validators.maxLength(255)]],
+      'location': [null, [Validators.required, Validators.maxLength(120)]],
+      'chair': [null, [Validators.required, Validators.pattern('[0-9]*')]],
       'no': [null, [Validators.required, Validators.maxLength(120), Validators.pattern('[a-zA-Z 0-9]*')]],
       'barcode': [null],
-      'business_id': [null]
     });
 
   }
@@ -66,7 +65,6 @@ export class TableComponent implements  OnInit {
     /* Create */
     const data = this.frmGrp.value;
     delete data.$key;
-    data.business_id = 'dummy'; // TODO Get Auth Key
 
     this.tableServ.create(this.frmGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
   }

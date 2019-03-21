@@ -15,14 +15,14 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field class="full-width-field">
-          <input formControlName="name" type="text" matInput #name maxlength="255" placeholder="{{'name' | translate}}">
+          <input formControlName="name" type="text" matInput #name maxlength="120" placeholder="{{'name' | translate}}">
           <mat-hint align="start"> </mat-hint>
-          <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
+          <mat-hint align="end">{{name.value.length}} / 120</mat-hint>
         </mat-form-field>
         <mat-form-field class="full-width-field">
-          <input type="text" formControlName="lastname"  matInput #lastname maxlength="255" placeholder="{{'lastname' | translate}}">
+          <input type="text" formControlName="lastname"  matInput #lastname maxlength="120" placeholder="{{'lastname' | translate}}">
           <mat-hint align="start"> </mat-hint>
-          <mat-hint align="end">{{lastname.value.length}} / 255</mat-hint>
+          <mat-hint align="end">{{lastname.value.length}} / 120</mat-hint>
         </mat-form-field>
         <mat-form-field class="full-width-field">
           <input type="text" matInput formControlName="username"  #username maxlength="255" placeholder="{{'username' | translate}}">

@@ -4,5 +4,4 @@ export class Table {
   chair: number;
   no: string;
   barcode: string;
-  business_id: string;
 }

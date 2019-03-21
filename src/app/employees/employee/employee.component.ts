@@ -28,12 +28,11 @@ export class EmployeeComponent implements OnInit {
     this.frmGrp = this.fb.group(
       {
         $key: [null],
-        name: [null, Validators.required],
-        lastname: [null, Validators.required],
+        name: [null, [Validators.required, Validators.maxLength(120)]],
+        lastname: [null, [Validators.required, Validators.maxLength(120)]],
         permissions: [null, Validators.required],
-        business_id: [null],
-        password: [null],
-        username: [null, Validators.required]
+        password: [null, [Validators.required, Validators.maxLength(255)]],
+        username: [null, [Validators.required, Validators.maxLength(255)]]
       }
     );
   }
@@ -43,7 +42,6 @@ export class EmployeeComponent implements OnInit {
 
   }
   onCreateOrUpdate(): void {
-    // TODO Validations Message
     if (!this.frmGrp.valid) { return; }
 
     if (this._employee) {
@@ -60,8 +58,6 @@ export class EmployeeComponent implements OnInit {
     /* Create */
     const data = this.frmGrp.value;
     delete data.$key;
-    data.business_id = 'dummy'; // TODO Get Auth Key
-
     this.employeeServ.create(this.frmGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
   }
 }

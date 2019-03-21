@@ -19,6 +19,7 @@
   "new_password": "New password",
   "reply_password": "Reply new password",
   "password_lenght": "Up to 11 characters can be.",
+  "location_lenght": "Up to 120 characters can be.",
   "create_account": "Create a new account",
   "forgot_pass_message": "You can update your password with the message to be sent to your registered e-mail address.",
   "enter_business_code": "Please enter your business code",

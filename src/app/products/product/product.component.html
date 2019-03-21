@@ -11,7 +11,9 @@
         <mat-card-content>
           <img (click)="uploadBtn.click()" src="https://via.placeholder.com/150" style="height: 150px; margin: auto; display: block; cursor: pointer;">
           <mat-form-field class="full-width-field">
-            <input type="text" placeholder="{{'category' | translate}}"  matInput formControlName="category" [matAutocomplete]="auto">
+            <input type="text" #category placeholder="{{'category' | translate}}"  matInput formControlName="category" [matAutocomplete]="auto">
+            <mat-hint align="start"> </mat-hint>
+            <mat-hint align="end">{{category.value.length}} / 120</mat-hint>
             <mat-autocomplete #auto="matAutocomplete">
               <mat-option *ngFor="let category of _categories" [value]="category">
                 {{category}}
@@ -27,7 +29,6 @@
 
           <mat-form-field class="full-width-field">
             <input type="text" formControlName="price" matInput matInputmaxlength="255" placeholder="{{'price' | translate}} ({{'tax_included' | translate}})">
-            <mat-hint align="start"> </mat-hint>
           </mat-form-field>
 
           <mat-form-field class="full-width-field">

@@ -16,6 +16,7 @@
   "remember": "Hatırla",
   "forgot_password": "Şifremi Unuttum",
   "password_lenght": "En fazla 11 karakter olabilir.",
+  "location_lenght": "En fazla 120 karakter olabilir.",
   "password_reset": "Şifre Yenile",
   "new_password": "Yeni şifre",
   "reply_password": "Şifre tekrar",

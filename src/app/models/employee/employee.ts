@@ -3,7 +3,6 @@ export class Employee {
   name: string;
   lastname: string;
   permissions: any[];
-  business_id: string;
   password: string;
   username: string;
 }

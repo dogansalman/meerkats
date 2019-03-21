@@ -5,5 +5,4 @@ export class Product {
   tax: number;
   category: string;
   image: string;
-  business_id: string;
 }
