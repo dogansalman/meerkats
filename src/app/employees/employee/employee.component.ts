@@ -43,22 +43,26 @@ export class EmployeeComponent implements OnInit {
   }
   onCreateOrUpdate(): void {
     if (!this.frmGrp.valid) { return; }
-
+    this.spinner.show();
     if (this._employee) {
       /*Update*/
-      this.spinner.show();
-      this.employeeServ.update(this.frmGrp.value)
-        .then(() => {
-          this.spinner.hide();
-          this.dialogRef.close(true);
-        }).catch((err) => this.dialogRef.close(err));
-      return;
+      this.employeeServ.update(this.frmGrp.value).then(() => {
+        this.dialogRef.close(true);
+        this.spinner.hide();
+      }).catch(() => {
+        this.spinner.hide();
+        this.dialogRef.close(false);
+      });
     }
 
     /* Create */
-    const data = this.frmGrp.value;
-    delete data.$key;
-    this.employeeServ.create(this.frmGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
+   this.employeeServ.create(this.frmGrp.value as Employee).then(() => {
+     this.dialogRef.close(true);
+     this.spinner.hide();
+   }).catch(() => {
+     this.spinner.hide();
+     this.dialogRef.close(false);
+   });
   }
 }
 
