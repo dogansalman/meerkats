@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Empty_layoutComponent} from '../../layouts/empty_layout/empty_layout.component';
 import { Navbar_layoutComponent } from '../../layouts/navbar_layout/navbar_layout.component';
+import {AuthGuard} from '../../services/authGuard/authGuard';
 
 const routes: Routes = [
   {
@@ -22,10 +23,11 @@ const routes: Routes = [
   {
     path: '',
     component: Navbar_layoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
-        loadChildren: '../../../app/home/home.module#HomeModule'
+        loadChildren: '../../../app/home/home.module#HomeModule',
       },
       {
         path: 'kitchen',
@@ -54,6 +56,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: []
+  providers: [AuthGuard]
 })
 export class AppRoutingModule {}

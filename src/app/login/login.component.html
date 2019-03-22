@@ -1,31 +1,31 @@
+<form [formGroup]="this.frmGroup" (ngSubmit)="onLogin()">
 <div fxLayout="row wrap" class="login">
-  <div fxFlex="100" align="center">
-    <img class="logo" src="./assets/img/meerkats_logo.png">
-  </div>
-  <div fxFlex="100">
-    <mat-form-field class="full-width-field">
-      <input type="number" matInput #number maxlength="11" placeholder="{{'business_code' | translate}}">
-      <mat-hint align="start"><strong>{{'password_lenght' | translate}}</strong> </mat-hint>
-      <mat-hint align="end">{{number.value.length}} / 11</mat-hint>
-    </mat-form-field>
-  </div>
-  <div fxFlex="100">
-    <mat-form-field class="full-width-field">
-      <input type="password" matInput #password maxlength="11" placeholder="{{'password' | translate}}">
-    </mat-form-field>
 
+  <div fxFlex="100" align="center">
+  <img class="logo" src="./assets/img/meerkats_logo.png">
   </div>
-<mat-divider></mat-divider>
+  <div fxFlex="100">
+
+
+    <mat-form-field class="full-width-field">
+      <input type="email" matInput formControlName="email" placeholder="{{'email' | translate}}">
+    </mat-form-field>
+  </div>
+  <div fxFlex="100">
+    <mat-form-field class="full-width-field">
+      <input type="password" matInput formControlName="password" placeholder="{{'password' | translate}}">
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
   <div fxFlex="row">
     <div fxFlex="50" fxFlexAlign="start">
-      <button routerLink="/home"  mat-raised-button color="primary">{{'login' | translate}}</button>
+      <button type="submit"  mat-raised-button color="primary">{{'login' | translate}}</button>
     </div>
 
     <div fxFlex="auto"  fxFlexAlign="end end" style="text-align: right">
       <mat-slide-toggle color="primary">{{'remember' | translate}}</mat-slide-toggle>
     </div>
   </div>
-
   <div fxFlex="row" style="margin-top: 30px;">
     <div fxFlex="50" fxFlexAlign="start">
       <button (click)="registerModal()" mat-button>{{'create_account' | translate}}</button>
@@ -35,6 +35,5 @@
     </div>
   </div>
 
-
 </div>
-
+</form>

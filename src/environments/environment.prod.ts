@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyDxzuoS6ISH_ZqJqP8b-v2VwCYSvyOSbbQ',
+    apiKey: 'AIzaSyBArrMAt0tnZeQpylNvAQFyQpbuspIQW40',
     authDomain: 'meerkats-40f0a.firebaseapp.com',
     databaseURL: 'https://meerkats-40f0a.firebaseio.com',
     projectId: 'meerkats-40f0a',

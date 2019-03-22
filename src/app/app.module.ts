@@ -15,7 +15,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AgmCoreModule } from '@agm/core';
 import { TranslateService } from './services/translate/translate.service';
 import { TranslateModule } from './services/translate/translate.module';
-
+import {AngularFireAuthModule} from '@angular/fire/auth';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
@@ -33,6 +33,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase, 'meerkats'),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AgmCoreModule.forRoot({
       apiKey: environment.mapKey
     }),

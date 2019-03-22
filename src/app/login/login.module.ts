@@ -9,6 +9,7 @@ import {ForgotComponent} from './forgot/forgot.component';
 import {RegisterModule} from './register/register.module';
 import {RegisterComponent} from './register/register.component';
 import {TranslateModule} from '../services/translate/translate.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -18,7 +19,9 @@ import {TranslateModule} from '../services/translate/translate.module';
     AppMaterialModule,
     ForgotModule,
     RegisterModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   declarations: [LoginComponent],
