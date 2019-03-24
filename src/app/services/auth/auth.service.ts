@@ -29,7 +29,7 @@ export class AuthService {
       await this.afAuth.auth.signInWithEmailAndPassword(email, password);
       this.router.navigate(['home']);
     } catch (e) {
-      console.log(e.message);
+      return false;
     }
   }
   async logout() {

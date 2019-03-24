@@ -12,6 +12,7 @@
   "business_code": "Business Code",
   "password": "Password",
   "login": "Login",
+  "login_failed": "E-mail or password has been wrong.",
   "register": "Register",
   "remember": "Remember Me",
   "forgot_password": "Forgot Password",

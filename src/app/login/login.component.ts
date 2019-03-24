@@ -6,17 +6,19 @@ import {Renderer2} from '@angular/core';
 import {RegisterComponent} from './register/register.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth/auth.service';
+import {MatSnackBar} from '@angular/material';
+import {TranslatePipe} from '../services/translate/translate.pipe';
 
 @Component({
   selector: 'app-login',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthService]
+  providers: [AuthService, TranslatePipe]
 })
 export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
   public frmGroup: FormGroup;
-  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private renderer: Renderer2, private fb: FormBuilder, private auth: AuthService) {
+  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private renderer: Renderer2, private fb: FormBuilder, private auth: AuthService, private snack: MatSnackBar, private translater: TranslatePipe) {
     this.frmGroup = fb.group(
       {
         'email': [null, [Validators.required, Validators.email]],
@@ -38,7 +40,11 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
   }
   onLogin(): void {
     if (!this.frmGroup.valid) { return; }
-    this.auth.login(this.frmGroup.value['email'], this.frmGroup.value['password']);
+    this.auth.login(this.frmGroup.value['email'], this.frmGroup.value['password']).then((result) => {
+      if (result === false) {
+        this.snack.open(this.translater.transform('login_failed'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
+      }
+    });
   }
   ngOnInit() {
     this.renderer.addClass(document.body, 'app-login');

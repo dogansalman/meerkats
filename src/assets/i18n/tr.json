@@ -12,6 +12,7 @@
   "business_code": "İşletme Kodu",
   "password": "Şifre",
   "login": "Oturum Aç",
+  "login_failed": "E-posta veya şifreniz hatalı.",
   "register": "Kayıt Ol",
   "remember": "Hatırla",
   "forgot_password": "Şifremi Unuttum",
