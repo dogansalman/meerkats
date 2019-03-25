@@ -1,8 +1,10 @@
-  <h1 mat-dialog-title> {{(_product ? _product.name : '') | uppercase}}
-    <button style="float: right" [mat-dialog-close] mat-icon-button>
-      <mat-icon>clear</mat-icon>
-    </button>
-  </h1>
+ <div>
+    <h1 mat-dialog-title>{{(_product ? _product.name : 'product' | translate) | uppercase}}
+      <button style="float: right" [mat-dialog-close] mat-icon-button>
+        <mat-icon aria-label="Example icon-button with a heart icon">clear</mat-icon>
+      </button>
+    </h1>
+  </div>
 
   <form [formGroup]="formGrp" (ngSubmit)="changeOrCrate()">
     <mat-dialog-content>
@@ -28,11 +30,11 @@
           </mat-form-field>
 
           <mat-form-field class="full-width-field">
-            <input type="text" formControlName="price" matInput matInputmaxlength="255" placeholder="{{'price' | translate}} ({{'tax_included' | translate}})">
+            <input type="text" formControlName="price" matInput  placeholder="{{'price' | translate}} ({{'tax_included' | translate}})">
           </mat-form-field>
 
           <mat-form-field class="full-width-field">
-            <input type="number" formControlName="tax" matInput matInputmaxlength="11" placeholder="{{'tax' | translate}} (%)">
+            <input type="number" formControlName="tax" matInput  placeholder="{{'tax' | translate}} (%)">
           </mat-form-field>
 
         </mat-card-content>

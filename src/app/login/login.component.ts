@@ -8,6 +8,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth/auth.service';
 import {MatSnackBar} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
+import {Router} from '@angular/router';
+import {map, tap} from 'rxjs/operators';
+import {pipe} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +21,21 @@ import {TranslatePipe} from '../services/translate/translate.pipe';
 })
 export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
   public frmGroup: FormGroup;
-  constructor(private spinner: NgxSpinnerService, public dialog: MatDialog, private renderer: Renderer2, private fb: FormBuilder, private auth: AuthService, private snack: MatSnackBar, private translater: TranslatePipe) {
+  constructor(private spinner: NgxSpinnerService,
+              public dialog: MatDialog,
+              private renderer: Renderer2,
+              private fb: FormBuilder,
+              private auth: AuthService,
+              private snack: MatSnackBar,
+              private translater: TranslatePipe,
+              private route: Router) {
     this.frmGroup = fb.group(
       {
         'email': [null, [Validators.required, Validators.email]],
         'password': [null, [Validators.required]]
       }
     );
+
   }
 
   forgotModal(): void {
@@ -53,5 +64,5 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
   ngOnDestroy() {
     this.renderer.removeClass(document.body, 'app-login');
   }
-  ngAfterContentInit() { this.spinner.hide(); }
+  ngAfterContentInit() {  this.spinner.hide(); }
 }

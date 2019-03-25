@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {MatDialog} from '@angular/material';
 import {EmployeeComponent} from './employee/employee.component';
@@ -20,7 +20,7 @@ import {keyVal} from '../operators/keyVal/keyVal';
 })
 
 
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent implements OnInit, AfterViewInit {
   /* Properties  */
   public employees: Observable<Employee[]>;
 
@@ -40,7 +40,10 @@ export class EmployeesComponent implements OnInit {
        tap(() => this.spinner.hide())
       );
   }
-
+  ngAfterViewInit(): void {
+    /* Hide spinner when empty data */
+    this.employees.subscribe(d =>  d.length === 0 ? this.spinner.hide() : null);
+  }
   /* Open person modal */
   onPersonModal(employee: Employee): void {
     if (this.openedTableDetail) { return; }

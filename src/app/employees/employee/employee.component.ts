@@ -44,6 +44,7 @@ export class EmployeeComponent implements OnInit {
   onCreateOrUpdate(): void {
     if (!this.frmGrp.valid) { return; }
     this.spinner.show();
+
     if (this._employee) {
       /*Update*/
       this.employeeServ.update(this.frmGrp.value).then(() => {
@@ -53,6 +54,7 @@ export class EmployeeComponent implements OnInit {
         this.spinner.hide();
         this.dialogRef.close(false);
       });
+      return;
     }
 
     /* Create */

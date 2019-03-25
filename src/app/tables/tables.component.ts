@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, AfterViewInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {TableComponent} from './table/table.component';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
@@ -10,6 +10,7 @@ import {Observable} from 'rxjs/internal/Observable';
 import {tap} from 'rxjs/operators';
 import {keyVal} from '../operators/keyVal/keyVal';
 
+
 @Component({
   selector: 'app-tables',
   templateUrl: './tables.component.html',
@@ -17,7 +18,7 @@ import {keyVal} from '../operators/keyVal/keyVal';
   encapsulation: ViewEncapsulation.None,
   providers: [TranslatePipe, TableService]
 })
-export class TablesComponent implements OnInit {
+export class TablesComponent implements OnInit, AfterViewInit {
   public openedTableDetail = false;
   public tables: Observable<Table[]>;
   public locations: any;
@@ -27,13 +28,20 @@ export class TablesComponent implements OnInit {
               private translater: TranslatePipe,
               private tableServ: TableService,
               ) {
+    this.spinner.show();
   }
 
   ngOnInit() {
+
     /* Get locations */
     this.tableServ.get().snapshotChanges().pipe(keyVal(), tap(a => this.locations = this.tableServ.getLocation(a))).subscribe();
     /* Get tables */
     this.tables  = this.tableServ.get().snapshotChanges().pipe(keyVal(), tap(() => this.spinner.hide()));
+  }
+
+  ngAfterViewInit(): void {
+    /* Hide spinner when empty data */
+    this.tables.subscribe(d =>  d.length === 0 ? this.spinner.hide() : null);
   }
 
   /* On table detail modal */
@@ -73,7 +81,5 @@ export class TablesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => { dialogRef.componentInstance.onSelect.unsubscribe();  this.openedTableDetail = false; });
   }
-
-
 
 }

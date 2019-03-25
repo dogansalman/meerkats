@@ -26,10 +26,6 @@ export class EmployeeService {
   }
 
   delete(data: Employee) {
-    // TODO add queryFn before deleting item on firebase
-    return new Promise((resolve, reject) => {
-      this.db.object('/employee/' + this.auth.user.uid + '/' + data.$key).remove().then(() => resolve(true))
-        .catch(err => reject(err));
-    });
+   return this.db.object('/employee/' + this.auth.user.uid + '/' + data.$key).remove();
   }
 }

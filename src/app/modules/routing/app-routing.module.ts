@@ -16,6 +16,7 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
+        canLoad: [AuthGuard],
         loadChildren: '../../../app/login/login.module#LoginModule'
       }
     ]

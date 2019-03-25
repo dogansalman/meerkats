@@ -63,9 +63,6 @@ export class TableComponent implements  OnInit {
     }
 
     /* Create */
-    const data = this.frmGrp.value;
-    delete data.$key;
-
-    this.tableServ.create(this.frmGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
+    this.tableServ.create(this.frmGrp.value as Table).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
   }
  }

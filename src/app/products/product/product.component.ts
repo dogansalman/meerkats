@@ -26,16 +26,18 @@ export class ProductComponent implements OnInit {
         $key: [null],
         name: [null, [Validators.required, Validators.maxLength(255)]],
         price: [null, [Validators.required]],
-        tax: [null, Validators.pattern('[0-9]*')],
-        category: [null, Validators.required, Validators.maxLength(120)],
+        tax: [null, [Validators.pattern('[0-9]*')]],
+        category: [null, [Validators.required, Validators.maxLength(120)]],
         image: [null],
       }
     );
 
-    /* Set product & categories */
+    this._categories = data.categories;
+
+
+    /* Set product */
     if (data.product) {
       this._product = data.product;
-      this._categories = data.categories;
       this.formGrp.patchValue(data.product);
     }
 
@@ -44,17 +46,12 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void { }
 
   changeOrCrate(): void {
-    // TODO Validations Message
-    if (!this.formGrp.valid) {
-      console.log(this.formGrp.controls);
-      return;
-    }
-
+    if (!this.formGrp.valid) { return; }
+    this.spinner.show();
 
     if (this._product) {
       /*Update*/
-      this.spinner.show();
-      this.productServ.update(this.formGrp.value)
+      this.productServ.update(this.formGrp.value as Product)
         .then(() => {
           this.spinner.hide();
           this.dialogRef.close(true);
@@ -63,10 +60,12 @@ export class ProductComponent implements OnInit {
     }
 
     /* Create */
-    const data = this.formGrp.value;
-    delete data.$key;
-
-    this.productServ.create(this.formGrp.value).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
+    this.productServ.create(this.formGrp.value as Product).then(() => {
+      this.dialogRef.close(true);
+      this.spinner.hide();
+    }).catch((e) => {
+      this.dialogRef.close(e);
+      this.spinner.hide(); });
   }
 
 

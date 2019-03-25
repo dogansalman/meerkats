@@ -1,46 +1,35 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {Table} from './table';
-
+import {AuthService} from '../../services/auth/auth.service';
 
 @Injectable()
 export class TableService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private auth: AuthService) { }
 
   get(): AngularFireList<Table> {
-    return this.db.list('/table');
+    return this.db.list('/table/' + this.auth.user.uid);
   }
 
   getLocation(data: any[]): any {
     return data.map(item => item.location).filter((value, index, self) => self.indexOf(value) === index);
   }
 
-
-  detail() { }
-
-  delete(data: Table) {
+  delete(data: Table): any {
     // TODO add queryFn before deleting item on firebase
     // TODO check table status opened or closed
-    return new Promise((resolve, reject) => {
-      this.db.object('/table/' + data.$key).remove().then(() => resolve(true))
-        .catch(err => reject(err));
-    });
+    return this.db.object('/table/' + this.auth.user.uid + '/' + data.$key).remove();
   }
 
-  update(data: Table) {
-    return new Promise((resolve, reject) => {
-      const key = data.$key;
-      delete data.$key;
-      this.db.object('/table/' + key).update(data)
-        .then(() => resolve(Object.assign(data, {'$key': key})))
-        .catch(() => reject(null));
-    });
+  update(data: Table): any {
+    const key = data.$key;
+    delete data.$key;
+    return  this.db.object('/table/' + this.auth.user.uid + '/' + key).update(data);
   }
 
-  create(data: Table) {
-    return new Promise((resolve, reject) => {
-      this.db.list('/table').push(data).then(() => resolve(data));
-    });
+  create(data: Table): any {
+    delete data.$key;
+    return this.db.list('table/' + this.auth.user.uid + '/').push(data);
   }
 }
