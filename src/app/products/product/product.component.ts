@@ -4,10 +4,13 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Product} from '../../models/product/product';
 import {ProductService} from '../../models/product/product.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {StorageService} from '../../services/storage/storage.service';
+import {finalize, tap} from 'rxjs/operators';
+import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
   templateUrl: 'product.component.html',
-  providers: [ProductService]
+  providers: [ProductService, StorageService]
 })
 
 export class ProductComponent implements OnInit {
@@ -19,7 +22,9 @@ export class ProductComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: any,
               private fb: FormBuilder,
               private productServ: ProductService,
-              private spinner: NgxSpinnerService) {
+              private spinner: NgxSpinnerService,
+              private storage: StorageService,
+              private auth: AuthService) {
     /* Form group */
     this.formGrp = this.fb.group(
       {
@@ -33,7 +38,6 @@ export class ProductComponent implements OnInit {
     );
 
     this._categories = data.categories;
-
 
     /* Set product */
     if (data.product) {
@@ -68,5 +72,15 @@ export class ProductComponent implements OnInit {
       this.spinner.hide(); });
   }
 
+  upload(event): void {
+    //TODO create-update iki farklı şekildede fotoğraf eklenmesi düzenlenecek.
+    this.storage.pushUpload(event.target.files[0], 'product/' + this.auth.user.uid ).snapshotChanges().pipe(
+      finalize(async() => {
+        this.storage.ref.getDownloadURL().subscribe(datam => console.log(datam));
+      })
+    ).subscribe();
+
+  }
 
 }
+

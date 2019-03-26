@@ -8,7 +8,7 @@
 
   <form [formGroup]="formGrp" (ngSubmit)="changeOrCrate()">
     <mat-dialog-content>
-      <input #uploadBtn fxShow="false" id="input-file-id" multiple type="file" />
+      <input #uploadBtn fxShow="false" (change)="upload($event)" id="input-file-id" multiple type="file" />
       <mat-card mat-dialog-content class="card-no-shadow">
         <mat-card-content>
           <img (click)="uploadBtn.click()" src="https://via.placeholder.com/150" style="height: 150px; margin: auto; display: block; cursor: pointer;">

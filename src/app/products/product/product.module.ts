@@ -5,9 +5,10 @@ import {ProductComponent} from './product.component';
 import {TranslateModule} from '../../services/translate/translate.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 @NgModule({
-  imports: [AppMaterialModule, FlexLayoutModule, TranslateModule, FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [AppMaterialModule, FlexLayoutModule, TranslateModule, FormsModule, ReactiveFormsModule, CommonModule, AngularFireStorageModule],
   declarations: [ProductComponent]
 })
 

@@ -8,9 +8,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth/auth.service';
 import {MatSnackBar} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
-import {Router} from '@angular/router';
-import {map, tap} from 'rxjs/operators';
-import {pipe} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-login',
@@ -27,8 +24,7 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
               private fb: FormBuilder,
               private auth: AuthService,
               private snack: MatSnackBar,
-              private translater: TranslatePipe,
-              private route: Router) {
+              private translater: TranslatePipe) {
     this.frmGroup = fb.group(
       {
         'email': [null, [Validators.required, Validators.email]],
@@ -51,8 +47,10 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
   }
   onLogin(): void {
     if (!this.frmGroup.valid) { return; }
+    this.spinner.show();
     this.auth.login(this.frmGroup.value['email'], this.frmGroup.value['password']).then((result) => {
       if (result === false) {
+        this.spinner.hide();
         this.snack.open(this.translater.transform('login_failed'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
       }
     });
