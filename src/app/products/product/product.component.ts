@@ -5,8 +5,8 @@ import {Product} from '../../models/product/product';
 import {ProductService} from '../../models/product/product.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {StorageService} from '../../services/storage/storage.service';
-import {finalize, tap} from 'rxjs/operators';
 import {AuthService} from '../../services/auth/auth.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   templateUrl: 'product.component.html',
@@ -17,6 +17,9 @@ export class ProductComponent implements OnInit {
   public formGrp: FormGroup;
   public _product: Product;
   public _categories: any[];
+  public _file: File;
+  public _image: any = null;
+
 
   constructor(private dialogRef: MatDialogRef<ProductComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -37,9 +40,10 @@ export class ProductComponent implements OnInit {
       }
     );
 
+    /* set categories from products*/
     this._categories = data.categories;
 
-    /* Set product */
+    /* set product */
     if (data.product) {
       this._product = data.product;
       this.formGrp.patchValue(data.product);
@@ -54,8 +58,9 @@ export class ProductComponent implements OnInit {
     this.spinner.show();
 
     if (this._product) {
+      // TODO devam edecek.
       /*Update*/
-      this.productServ.update(this.formGrp.value as Product)
+      this.productServ.update(this.formGrp.value as Product, this._file)
         .then(() => {
           this.spinner.hide();
           this.dialogRef.close(true);
@@ -72,14 +77,27 @@ export class ProductComponent implements OnInit {
       this.spinner.hide(); });
   }
 
-  upload(event): void {
-    //TODO create-update iki farklı şekildede fotoğraf eklenmesi düzenlenecek.
-    this.storage.pushUpload(event.target.files[0], 'product/' + this.auth.user.uid ).snapshotChanges().pipe(
-      finalize(async() => {
-        this.storage.ref.getDownloadURL().subscribe(datam => console.log(datam));
-      })
-    ).subscribe();
+  photoSelected(event) {
+    this.spinner.show();
+    if (!event.target.files[0]) { return; }
+    if (!(new RegExp('(' + ['.jpg', '.jpeg', '.png', '.bmp'].join('|').replace(/\./g, '\\.') + ')$')).test(event.target.files[0].name)) {
+      this._file = null;
+      return;
+    }
+    this._file = event.target.files[0];
 
+    this.storage.readImageFromFile(this._file).then(results => {
+      this._image = results;
+      this.formGrp.patchValue({'image': this._image});
+      this.spinner.hide();
+    }).catch(() => this.spinner.hide());
+
+  }
+  deletePhoto(uploader: HTMLInputElement): void {
+    this.formGrp.patchValue({'image': null});
+    this._image = null;
+    this._file = null;
+    uploader.value = null;
   }
 
 }

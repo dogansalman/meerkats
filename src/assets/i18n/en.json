@@ -37,6 +37,7 @@
   "next_button": "Next",
   "edit_button": "Edit",
   "delete_button": "Delete",
+  "delete_selected_photo": "Remove Selected Photo",
 
   "business": "Business",
   "location": "Location",

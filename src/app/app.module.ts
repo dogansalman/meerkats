@@ -15,7 +15,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AgmCoreModule } from '@agm/core';
 import { TranslateService } from './services/translate/translate.service';
 import { TranslateModule } from './services/translate/translate.module';
-import {AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { StorageService } from './services/storage/storage.service';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
@@ -37,10 +39,12 @@ export function setupTranslateFactory(service: TranslateService): Function {
     AgmCoreModule.forRoot({
       apiKey: environment.mapKey
     }),
-    TranslateModule
+    TranslateModule,
+    AngularFireStorageModule,
   ],
   providers: [
     TranslateService,
+    StorageService,
     {
     provide: APP_INITIALIZER,
     useFactory: setupTranslateFactory,
