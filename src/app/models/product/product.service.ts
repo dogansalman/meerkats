@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/database';
 import {Product} from './product';
 import {AuthService} from '../../services/auth/auth.service';
-import {finalize, tap} from 'rxjs/operators';
+import {finalize} from 'rxjs/operators';
 import {StorageService} from '../../services/storage/storage.service';
 
 @Injectable()
@@ -22,11 +22,9 @@ export class ProductService {
     const key = data.$key;
     delete data.$key;
 
-    // TODO devam edecek.
     if (photoFile) {
-      console.log(photoFile, 'photo var');
       return new Promise((resolve, reject) => {
-        this.storage.pushUpload(photoFile, 'test').snapshotChanges().pipe(
+        this.storage.pushUpload(photoFile, this.auth.user.uid + '/products/' + key + '/').snapshotChanges().pipe(
           finalize( async() => {
             data.image =  await this.storage.ref.getDownloadURL().toPromise();
             resolve(this.db.object('/product/' + this.auth.user.uid + '/' + key).update(data));
@@ -35,7 +33,6 @@ export class ProductService {
       });
     }
 
-    console.log(photoFile, 'photo yok');
     return  this.db.object('/product/' + this.auth.user.uid + '/' + key).update(data);
   }
 

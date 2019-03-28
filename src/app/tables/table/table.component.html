@@ -7,6 +7,15 @@
   <form [formGroup]="this.frmGrp" (ngSubmit)="onCreateOrUpdate()">
   <mat-card class="card-no-shadow">
     <mat-card-content>
+
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <div style="width: 125px; text-align: center;">
+          <qrcode [qrdata]="this._table.qr" [size]="125" [level]="'M'"></qrcode>
+          <button style="margin-top: 10px;" type="button" mat-button aria-label="Qr code">
+            <mat-icon>local_printshop</mat-icon> Print
+          </button>
+        </div>
+      </div>
       <p>{{'table_add_desc' | translate}}</p>
         <mat-form-field class="full-width-field">
           <input type="text" #location placeholder="{{'location' | translate}}" aria-label="Number" matInput formControlName="location" [matAutocomplete]="auto">

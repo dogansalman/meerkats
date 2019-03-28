@@ -3,5 +3,5 @@ export class Table {
   location: string;
   chair: number;
   no: string;
-  barcode: string;
+  qr: string;
 }

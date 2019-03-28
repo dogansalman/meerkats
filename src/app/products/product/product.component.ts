@@ -6,7 +6,6 @@ import {ProductService} from '../../models/product/product.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {StorageService} from '../../services/storage/storage.service';
 import {AuthService} from '../../services/auth/auth.service';
-import {finalize} from 'rxjs/operators';
 
 @Component({
   templateUrl: 'product.component.html',

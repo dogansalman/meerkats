@@ -30,6 +30,10 @@ export class TableService {
 
   create(data: Table): any {
     delete data.$key;
+
+    /* Create QR code */
+    data.qr = this.db.createPushId();
+
     return this.db.list('table/' + this.auth.user.uid + '/').push(data);
   }
 }

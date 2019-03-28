@@ -11,7 +11,7 @@
       <input accept=".jpg, .png, .jpeg, .bmp" #fileUpload fxShow="false"  (change)="photoSelected($event)" id="input-file-id" type="file" />
       <mat-card mat-dialog-content class="card-no-shadow">
         <mat-card-content>
-          <img (click)="fileUpload.click()" [src]="_image || 'https://via.placeholder.com/150x150?text=Select'"  style="height: 150px; margin: auto; display: block; cursor: pointer;">
+          <img (click)="fileUpload.click()"  [src]="this.formGrp.value.image || 'https://via.placeholder.com/150x150?text=Select'"   style="height: 150px; margin: auto; display: block; cursor: pointer;">
           <div class="centered-text" style="margin-top:5px; margin-bottom:5px;">
             <a [fxShow]="_image !== null" color="warn" mat-button (click)="deletePhoto(fileUpload)">
               <i class="material-icons">

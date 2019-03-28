@@ -7,7 +7,7 @@
           <mat-card *ngFor="let table_ of tables | async | filter : 'location' : location" class="table-card" (click)="onTableDetail(table_)" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: {{table_.no}} </h2></mat-card-title>
-              <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> {{table_.barcode}} </mat-card-subtitle>
+              <mat-card-subtitle> <mat-icon class="sm-icon" svgIcon="qr-code-svg"></mat-icon> {{table_.qr}} </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
             </mat-card-content>
