@@ -13,7 +13,7 @@
         <mat-card-content>
           <img (click)="fileUpload.click()"  [src]="this.formGrp.value.image || 'https://via.placeholder.com/150x150?text=Select'"   style="height: 150px; margin: auto; display: block; cursor: pointer;">
           <div class="centered-text" style="margin-top:5px; margin-bottom:5px;">
-            <a [fxShow]="_image !== null" color="warn" mat-button (click)="deletePhoto(fileUpload)">
+            <a [fxShow]="_image !== null || _product.image !== null" color="warn" mat-button (click)="deletePhoto(fileUpload)">
               <i class="material-icons">
               delete
             </i>{{'delete_selected_photo' | translate}}</a>
@@ -37,7 +37,7 @@
           </mat-form-field>
 
           <mat-form-field class="full-width-field">
-            <input type="text" formControlName="price" matInput  placeholder="{{'price' | translate}} ({{'tax_included' | translate}})">
+            <input type="number" formControlName="price" matInput  placeholder="{{'price' | translate}} ({{'tax_included' | translate}})">
           </mat-form-field>
 
           <mat-form-field class="full-width-field">

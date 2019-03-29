@@ -1,17 +1,16 @@
-<h1 mat-dialog-title>{{'table' | translate}}
+<h1 mat-dialog-title>{{_table?.no || 'table' | translate}}
   <button style="float: right" [mat-dialog-close] mat-icon-button>
-    <mat-icon aria-label="Example icon-button with a heart icon">clear</mat-icon>
+    <mat-icon aria-label="close">clear</mat-icon>
   </button>
 </h1>
 <mat-dialog-content>
   <form [formGroup]="this.frmGrp" (ngSubmit)="onCreateOrUpdate()">
   <mat-card class="card-no-shadow">
     <mat-card-content>
-
-      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div *ngIf="_table" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
         <div style="width: 125px; text-align: center;">
-          <qrcode [qrdata]="this._table.qr" [size]="125" [level]="'M'"></qrcode>
-          <button style="margin-top: 10px;" type="button" mat-button aria-label="Qr code">
+          <qrcode #qrCode [qrdata]="this._table.qr || ''" [size]="125" [level]="'M'"></qrcode>
+          <button (click)="onPrintQRCode(qrCode)" style="margin-top: 10px;" type="button" mat-button aria-label="Qr code">
             <mat-icon>local_printshop</mat-icon> Print
           </button>
         </div>
@@ -38,7 +37,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button color="primary" type="submit" mat-flat-button>{{'ok_button' | translate}}</button>
-      <button mat-button [mat-dialog-close]>KAPAT</button>
+      <button mat-button [mat-dialog-close]>{{'cancel_button' | translate}}</button>
     </mat-card-actions>
   </mat-card>
   </form>

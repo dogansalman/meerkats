@@ -21,7 +21,7 @@ export class ProductService {
   update(data: Product, photoFile: File = null): any {
     const key = data.$key;
     delete data.$key;
-
+    // TODO bu karmaşadan daha sonra kurtulmalıyız.
     if (photoFile) {
       return new Promise((resolve, reject) => {
         this.storage.pushUpload(photoFile, this.auth.user.uid + '/products/' + key + '/').snapshotChanges().pipe(
@@ -36,9 +36,27 @@ export class ProductService {
     return  this.db.object('/product/' + this.auth.user.uid + '/' + key).update(data);
   }
 
-  create(data: Product): any {
+  create(data: Product, photoFile: File = null): any {
+    // TODO bu karmaşadan daha sonra kurtulmalıyız.
     delete data.$key;
-    return this.db.list('product/' + this.auth.user.uid).push(data);
+    if (photoFile) { delete data.image; }
+
+    return new Promise((resolve, reject) => {
+      const p = this.db.list('product/' + this.auth.user.uid).push(data);
+      if (p.key == null) { reject(); }
+
+      if (p.key && photoFile) {
+        this.storage.pushUpload(photoFile, this.auth.user.uid + '/products/' + p.key + '/').snapshotChanges().pipe(
+          finalize( async() => {
+            data.image =  await this.storage.ref.getDownloadURL().toPromise();
+            resolve(this.db.object('/product/' + this.auth.user.uid + '/' + p.key).update(data));
+          })
+        ).subscribe();
+      }
+
+    });
+
+
   }
 
   delete(data: Product): any {

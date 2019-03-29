@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Table} from '../../models/table/table';
 import {TableService} from '../../models/table/table.service';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {QRCodeComponent} from 'angularx-qrcode';
 
 
 @Component({
@@ -34,10 +35,10 @@ export class TableComponent implements  OnInit {
     /* Create form group validations */
     this.frmGrp = this.formBuilder.group({
       '$key': [null],
-      'location': [null, [Validators.required, Validators.maxLength(120)]],
+      'location': [null, [Validators.required, Validators.maxLength(120), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]],
       'chair': [null, [Validators.required, Validators.pattern('[0-9]*')]],
-      'no': [null, [Validators.required, Validators.maxLength(120), Validators.pattern('[a-zA-Z 0-9]*')]],
-      'barcode': [null],
+      'no': [null, [Validators.required, Validators.maxLength(120), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]],
+      'qr': [null],
     });
 
   }
@@ -64,5 +65,14 @@ export class TableComponent implements  OnInit {
 
     /* Create */
     this.tableServ.create(this.frmGrp.value as Table).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
+  }
+
+  onPrintQRCode(element: QRCodeComponent): void {
+    const WindowPrt = window.open('', '', 'left=0,top=0,width=500,height=500,toolbar=0,scrollbars=0,status=0');
+    WindowPrt.document.write(element.el.nativeElement.innerHTML);
+    WindowPrt.document.close();
+    WindowPrt.focus();
+    WindowPrt.print();
+    WindowPrt.close();
   }
  }

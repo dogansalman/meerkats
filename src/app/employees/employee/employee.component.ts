@@ -28,11 +28,11 @@ export class EmployeeComponent implements OnInit {
     this.frmGrp = this.fb.group(
       {
         $key: [null],
-        name: [null, [Validators.required, Validators.maxLength(120)]],
-        lastname: [null, [Validators.required, Validators.maxLength(120)]],
+        name: [null, [Validators.required, Validators.maxLength(120), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]],
+        lastname: [null, [Validators.required, Validators.maxLength(120), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]],
         permissions: [null, Validators.required],
         password: [null, [Validators.required, Validators.maxLength(255)]],
-        username: [null, [Validators.required, Validators.maxLength(255)]]
+        username: [null, [Validators.required, Validators.maxLength(255), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]]
       }
     );
   }

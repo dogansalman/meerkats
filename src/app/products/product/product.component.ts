@@ -31,10 +31,10 @@ export class ProductComponent implements OnInit {
     this.formGrp = this.fb.group(
       {
         $key: [null],
-        name: [null, [Validators.required, Validators.maxLength(255)]],
+        name: [null, [Validators.required, Validators.maxLength(255), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]],
         price: [null, [Validators.required]],
         tax: [null, [Validators.pattern('[0-9]*')]],
-        category: [null, [Validators.required, Validators.maxLength(120)]],
+        category: [null, [Validators.required, Validators.maxLength(120), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]],
         image: [null],
       }
     );
@@ -57,7 +57,6 @@ export class ProductComponent implements OnInit {
     this.spinner.show();
 
     if (this._product) {
-      // TODO devam edecek.
       /*Update*/
       this.productServ.update(this.formGrp.value as Product, this._file)
         .then(() => {
@@ -68,7 +67,7 @@ export class ProductComponent implements OnInit {
     }
 
     /* Create */
-    this.productServ.create(this.formGrp.value as Product).then(() => {
+    this.productServ.create(this.formGrp.value as Product, this._file).then(() => {
       this.dialogRef.close(true);
       this.spinner.hide();
     }).catch((e) => {
