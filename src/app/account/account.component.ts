@@ -11,12 +11,14 @@ import {MouseEvent} from '@agm/core';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
+import {AccountService} from '../models/account/account.service';
+import {Account} from '../models/account/account';
 
 @Component(
   {
     selector: 'app-account',
     templateUrl: 'account.component.html',
-    providers: [TranslatePipe]
+    providers: [TranslatePipe, AccountService]
   }
 )
 
@@ -33,7 +35,9 @@ export class AccountComponent implements AfterViewInit, OnInit {
   markers: Marker[];
   /* Properties */
   zoom: Number = 8;
-  constructor(private spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices, private http: HttpRequestService, private dialog: MatDialog, private translater: TranslatePipe) { }
+  constructor(private spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
+              private http: HttpRequestService, private dialog: MatDialog,
+              private translater: TranslatePipe, private accServ: AccountService) { }
 
   ngOnInit() {
     // TODO ÜLKE SEÇİMİ İLE BİRLİKTE İL İLÇELER LİSTELENECEK
@@ -84,6 +88,20 @@ export class AccountComponent implements AfterViewInit, OnInit {
       lng: $event.coords.lng,
       draggable: true
     });
+  }
+
+  onRegister(): void {
+    const u = {
+      business_name: 'Maya Kafe',
+      email: 'dogansalman@outlook.com',
+      adress: 'adresasdasdasd asda',
+      business_type: 'Kafe',
+      password: '6515336',
+      city: 'Tekirdağ',
+      state: 'Çorlu',
+      phone: '0252 666 98 98'
+    }
+    this.accServ.create(u);
   }
 
   public onChangeAccount(): void {
