@@ -35,15 +35,10 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   forgotModal(): void {
-    const dialogRef = this.dialog.open(ForgotComponent, {
-      width: '450px',
-      data: {name: 'name', animal: 'animal'}
-    });
-
-    dialogRef.afterClosed().subscribe(result => { });
+    this.dialog.open(ForgotComponent, {width: '550px', height: '375px'});
   }
   registerModal(): void {
-    const dialogRef = this.dialog.open(RegisterComponent, {height: '100vh', width: '700px'});
+    this.dialog.open(RegisterComponent, {panelClass: 'fullscreen'});
   }
   onLogin(): void {
     if (!this.frmGroup.valid) { return; }

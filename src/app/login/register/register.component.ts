@@ -1,6 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
-import {DialogData} from '../forgot/forgot.component';
+import {Component, OnInit} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {BusinessType} from '../../models/bussinessType/businessType';
 import {CityStates} from '../../interfaces/city_states';
@@ -10,15 +8,20 @@ import {Coords} from '../../interfaces/coords';
 import {Marker} from '../../interfaces/marker';
 import {environment} from '../../../environments/environment.prod';
 import {MouseEvent} from '@agm/core';
+import {Account} from '../../models/account/account';
+import {AccountService} from '../../models/account/account.service';
+import {TranslatePipe} from '../../services/translate/translate.pipe';
+import {MatSnackBar} from '@angular/material';
+
 
 @Component({
     templateUrl: './register.component.html',
-    providers: [BussinessTypeServices, HttpRequestService]
+    providers: [BussinessTypeServices, HttpRequestService, AccountService, TranslatePipe]
 })
 
 export class RegisterComponent implements OnInit {
   /* Models*/
-  BusinessTypeList: BusinessType[];
+  BusinessTypeList: string[];
   /* Interfaces */
   Cities: CityStates[];
   States: CityStates[];
@@ -30,12 +33,15 @@ export class RegisterComponent implements OnInit {
   /* Properties */
   zoom: Number = 8;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public db: AngularFireDatabase, private bustypeService: BussinessTypeServices, private http: HttpRequestService) { }
+  constructor(public db: AngularFireDatabase,
+              private bustypeService: BussinessTypeServices,
+              private translater: TranslatePipe,
+              private snack: MatSnackBar,
+              private http: HttpRequestService, private accServ: AccountService) { }
 
   ngOnInit() {
-    // TODO ÜLKE SEÇİMİ İLE BİRLİKTE İL İLÇELER LİSTELENECEK
     this.getCity();
-    this.getBusinessType();
+    this.BusinessTypeList = environment.business_types;
   }
 
   public getCity() {
@@ -45,16 +51,6 @@ export class RegisterComponent implements OnInit {
         this.Cities.push({id: key, name: data.result[key]} as CityStates);
       });
       this.Cities.sort((a, b) => a.name.localeCompare(b.name));
-    });
-  }
-  public getBusinessType() {
-    this.bustypeService.get().snapshotChanges().subscribe(res => {
-      this.BusinessTypeList = [];
-      res.forEach(element => {
-        const item = element.payload.toJSON();
-        item['$key'] = element.key;
-        this.BusinessTypeList.push(item as BusinessType);
-      });
     });
   }
   public getStates(country_id: string, state_id: string) {
@@ -86,6 +82,26 @@ export class RegisterComponent implements OnInit {
     // TODO bu event içinde seçili il ilçe sınırları içerisinde olup olmadığıı kontrol edilecek.
     console.log('dragEnd', m, $event);
   }
+
+  onRegister(): void {
+    const u = {
+      business_name: 'Maya Kafe',
+      email: 'dogansalman@outlook.com',
+      adress: 'adresasdasdasd asda',
+      business_type: 'Kafe',
+      password: '6515336',
+      city: 'Tekirdağ',
+      state: 'Çorlu',
+      phone: '0252 666 98 98',
+      coords: {latitude: 0, longitude: 0} as Coords };
+
+
+    // const a = new Coords
+    this.accServ.create(u as Account).then(() => console.log('ok')).catch(err => {
+      this.snack.open(this.translater.transform(err.code), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
+    });
+  }
+
 
 }
 

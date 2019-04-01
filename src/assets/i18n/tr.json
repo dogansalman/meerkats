@@ -86,5 +86,26 @@
   "permission_1": "Kasa & Siparis",
   "permission_2": "Rapor",
   "permission_3": "Personel",
-  "permission_4": "Tam Yetki"
+  "permission_4": "Tam Yetki",
+
+  "auth/email-already-exists": "E-posta adresi farklı bir kullanıcı tarafından kullanılmaktadır.",
+  "auth/email-already-in-use": "E-posta adresi farklı bir kullanıcı tarafından kullanılmaktadır.",
+  "auth/invalid-password": "Şifre en az 6 karakter uzunluğunda olmalı.",
+  "auth/user-not-found": "The email is not found.",
+  "auth/user-send-reset": "Şifre yenileme iletisi gönderildi.",
+
+  "type_kafe": "Kafe",
+  "type_bistro": "Bistro",
+  "type_restoran": "Restoran",
+  "type_brasserie": "Brasserie",
+  "type_fast food": "Fast Food",
+
+  "payment_nakit": "Nakit",
+  "payment_kredi kartı": "Kredi Kartı",
+  "payment_multinet": "Multinet",
+  "payment_smart ticket": "Smart Ticket",
+  "payment_set kart": "Set Kart",
+  "payment_sodexo": "Sodexo",
+  "payment_metropol": "Metropol",
+  "payment_glovo": "Glovo"
 }

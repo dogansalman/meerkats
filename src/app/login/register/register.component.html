@@ -9,7 +9,11 @@
   <mat-horizontal-stepper #stepper linear >
     <mat-step>
       <ng-template matStepLabel>{{'business' | translate}}</ng-template>
-      <mat-card class="card-no-shadow no-padding">
+      <mat-card style="max-width: 500px;" class="card-no-shadow no-padding">
+        <h2>Lorem İpsum</h2>
+        <p>
+          "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes
+        </p>
         <mat-card-content>
         <mat-form-field class="full-width-field">
             <input matInput #name maxlength="255" placeholder="{{'business_name' | translate}}">
@@ -19,8 +23,8 @@
           <mat-form-field class="full-width-field">
             <!–– TODO dil seçeneği değiştirildiğinde burdaki durumda değiştirilmeli firebase'den gelen veri sabit bu durumda  düşünülmeli––>
             <mat-select placeholder="{{'business_type' | translate}}">
-              <mat-option *ngFor="let type of this.BusinessTypeList" [value]="type.$key">
-                {{type.name}}
+              <mat-option *ngFor="let type of this.BusinessTypeList" [value]="type">
+                {{ 'type_' + type.toLowerCase() | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -73,13 +77,17 @@
     <mat-step>
       <ng-template matStepLabel>{{'location' | translate}}</ng-template>
       <mat-card class="card-no-shadow no-padding">
+        <h2>Lorem İpsum</h2>
+        <p>
+          "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes
+        </p>
         <mat-card-content>
           <agm-map
             (mapClick)="this.mapClicked($event)"
             [zoom]="this.zoom"
             [latitude]="this.cordi.latitude"
             [longitude]="this.cordi.longitude"
-            style="display: block;">
+            style="display: block; height: calc(100vh - 450px);">
             <agm-marker
               *ngFor="let m of markers; let i = index"
               [latitude]="m.lat"
@@ -100,7 +108,7 @@
     <mat-step>
       <ng-template matStepLabel>{{'approve' | translate}}</ng-template>
       <div>
-        <button mat-button mat-raised-button color="primary">{{'ok_button' | translate}}</button>
+        <button (click)="onRegister()" mat-button mat-raised-button color="primary">{{'ok_button' | translate}}</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>

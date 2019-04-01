@@ -41,6 +41,9 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user'));
     return user !== null;
   }
+  forgot(email: string): Promise<any> {
+    return this.afAuth.auth.sendPasswordResetEmail(email);
+  }
 
 }
 

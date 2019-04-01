@@ -7,7 +7,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class AccountService {
   constructor(private db: AngularFireDatabase, private fireAuth: AngularFireAuth) {}
 
-  create(data: Account): any {
+  create(data: Account): Promise<any> {
     return this.fireAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then((u) => {
       this.db.list('account').push(Object.assign(data, {'uid': u.user.uid}));
     });

@@ -2,7 +2,6 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {BusinessType} from '../models/bussinessType/businessType';
 import {CityStates} from '../interfaces/city_states';
-import {Coords} from '../interfaces/coords';
 import {Marker} from '../interfaces/marker';
 import {BussinessTypeServices} from '../models/bussinessType/bussinessType.services';
 import {HttpRequestService} from '../services/httpRequest/httpRequest.service';
@@ -12,7 +11,7 @@ import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {AccountService} from '../models/account/account.service';
-import {Account} from '../models/account/account';
+import {Coords} from '../interfaces/coords';
 
 @Component(
   {
@@ -28,6 +27,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
   /* Interfaces */
   Cities: CityStates[];
   States: CityStates[];
+
   cordi: Coords = {
     latitude: 0,
     longitude: 0
@@ -90,19 +90,6 @@ export class AccountComponent implements AfterViewInit, OnInit {
     });
   }
 
-  onRegister(): void {
-    const u = {
-      business_name: 'Maya Kafe',
-      email: 'dogansalman@outlook.com',
-      adress: 'adresasdasdasd asda',
-      business_type: 'Kafe',
-      password: '6515336',
-      city: 'Tekirdağ',
-      state: 'Çorlu',
-      phone: '0252 666 98 98'
-    }
-    this.accServ.create(u);
-  }
 
   public onChangeAccount(): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
