@@ -5,10 +5,9 @@ export class Account {
   business_name: string;
   business_type: string;
   email: string;
-  phone: string;
-  adress: string;
-  state: string;
-  city: string;
-  coords: Coords
-  password: string;
+  phone: string  = null;
+  adress: string = null;
+  state: string = null;
+  city: string = null;
+  coords: Coords = null;
 }

@@ -7,9 +7,12 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class AccountService {
   constructor(private db: AngularFireDatabase, private fireAuth: AngularFireAuth) {}
 
-  create(data: Account): Promise<any> {
-    return this.fireAuth.auth.createUserWithEmailAndPassword(data.email, data.password).then((u) => {
-      this.db.list('account').push(Object.assign(data, {'uid': u.user.uid}));
+  create(data: Account, password: string): Promise<any> {
+    return this.fireAuth.auth.createUserWithEmailAndPassword(data.email, password).then((u) => {
+      delete data['password'];
+      this.db.list('account').push(Object.assign(data, {'uid': u.user.uid})).then(() => {
+        this.fireAuth.auth.currentUser.sendEmailVerification();
+      });
     });
   }
 }

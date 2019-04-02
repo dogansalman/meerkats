@@ -4,8 +4,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonModule} from '@angular/common';
 import {RegisterComponent} from './register.component';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {AgmCoreModule} from '@agm/core';
 import {TranslateModule} from '../../services/translate/translate.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -13,8 +13,9 @@ import {TranslateModule} from '../../services/translate/translate.module';
     CommonModule,
     FlexLayoutModule,
     AngularFireDatabaseModule,
-    AgmCoreModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [RegisterComponent],
   providers: [],
