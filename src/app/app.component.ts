@@ -2,15 +2,23 @@ import {Component, OnInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
+import {AuthService} from './services/auth/auth.service';
+import {MatSnackBar} from '@angular/material';
+import {TranslatePipe} from './services/translate/translate.pipe';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [AuthService, TranslatePipe]
 })
 export class AppComponent implements OnInit  {
 
-  constructor(private spinner: NgxSpinnerService, private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+  constructor(private spinner: NgxSpinnerService,
+              private matIconRegistry: MatIconRegistry,
+              private snackbar: MatSnackBar,
+              private translater: TranslatePipe,
+              private domSanitizer: DomSanitizer, private auth: AuthService) {
 
     /* Set Custom Icons */
     this.matIconRegistry.addSvgIcon('table-svg', this.domSanitizer.bypassSecurityTrustResourceUrl('../assets/icon/table.svg'));
@@ -26,6 +34,13 @@ export class AppComponent implements OnInit  {
 
   ngOnInit() {
     this.spinner.show();
+    /* User logged */
+    this.auth.afAuth.auth.onAuthStateChanged((user) => {
+      if (user && !user.emailVerified) {
+        this.snackbar.open(this.translater.transform('verify_email_message'), null, {duration: 5000, panelClass: 'snack_warning'});
+      }
+    });
+
   }
 
 }

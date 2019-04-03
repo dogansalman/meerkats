@@ -10,7 +10,7 @@ export class AccountService {
   create(data: Account, password: string): Promise<any> {
     return this.fireAuth.auth.createUserWithEmailAndPassword(data.email, password).then((u) => {
       delete data['password'];
-      this.db.list('account').push(Object.assign(data, {'uid': u.user.uid})).then(() => {
+      this.db.list('account/' + u.user.uid).push(data).then(() => {
         this.fireAuth.auth.currentUser.sendEmailVerification();
       });
     });

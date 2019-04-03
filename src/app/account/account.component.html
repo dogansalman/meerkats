@@ -1,9 +1,13 @@
-<mat-card class="card-no-shadow">
+<mat-card *ngIf="!this.auth.afAuth.auth.currentUser.emailVerified" class="card-no-shadow">
   <mat-card-content>
-    <h2>Maya Kafe / Restoran</h2>
+      <h2>{{'verify_email_message_title' | translate}}</h2>
+      <p>{{'verify_email_message' | translate}}</p>
+      <button mat-flat-button (click)="reSendVerifyEmail()" color="primary"> Resend Email</button>
   </mat-card-content>
 </mat-card>
+<mat-divider></mat-divider>
 <mat-tab-group>
+
   <mat-tab label="{{'business' | translate}}">
     <div fxLayout="row wrap" fxLayoutAlign="center">
       <mat-card fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="50" fxFlex.lg="50" fxFlex.xl="50" class="card-no-shadow">
@@ -14,10 +18,11 @@
             <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
           </mat-form-field>
           <mat-form-field class="full-width-field">
+
             <!–– TODO dil seçeneği değiştirildiğinde burdaki durumda değiştirilmeli firebase'den gelen veri sabit bu durumda  düşünülmeli––>
             <mat-select placeholder="{{'business_type' | translate}}">
-              <mat-option *ngFor="let type of this.BusinessTypeList" [value]="type.$key">
-                {{type.name}}
+              <mat-option *ngFor="let type of business_types" [value]="type | translate">
+                {{type | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>

@@ -1,3 +1,9 @@
+<mat-card *ngIf="(products | async)?.length === 0" class="card-no-shadow">
+  <mat-card-content>
+    <mat-label>{{'product' | translate}} {{'not_found' | translate}}</mat-label>
+  </mat-card-content>
+</mat-card>
+
 <mat-tab-group>
   <mat-tab *ngFor="let category of categories" label="{{category}}">
     <mat-card>

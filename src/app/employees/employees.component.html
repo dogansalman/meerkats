@@ -1,4 +1,4 @@
-<mat-card class="card-no-shadow">
+<mat-card *ngIf="(employees | async)?.length !== 0" class="card-no-shadow">
   <mat-card-content>
     <table mat-table [dataSource]="employees | async" fxFlex="100">
       <!-- Name Column -->
@@ -38,6 +38,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr  (click)="onPersonModal(row)" mat-row class="button-table-row" *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+  </mat-card-content>
+</mat-card>
+<mat-card *ngIf="(employees | async)?.length === 0" class="card-no-shadow">
+  <mat-card-content>
+    <mat-label>{{'employee' | translate}} {{'not_found' | translate}}</mat-label>
   </mat-card-content>
 </mat-card>
 <button mat-fab class="fab-btn" color="primary" (click)="onPersonModal(null)"> <mat-icon svgIcon="add-svg"></mat-icon></button>

@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {BusinessType} from '../models/bussinessType/businessType';
 import {CityStates} from '../interfaces/city_states';
 import {Marker} from '../interfaces/marker';
 import {BussinessTypeServices} from '../models/bussinessType/bussinessType.services';
@@ -10,20 +9,21 @@ import {MouseEvent} from '@agm/core';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
-import {AccountService} from '../models/account/account.service';
+import {AuthService} from '../services/auth/auth.service';
 import {Coords} from '../interfaces/coords';
+import {MatSnackBar} from '@angular/material';
 
 @Component(
   {
     selector: 'app-account',
     templateUrl: 'account.component.html',
-    providers: [TranslatePipe, AccountService]
+    providers: [TranslatePipe, AuthService]
   }
 )
 
 export class AccountComponent implements AfterViewInit, OnInit {
   /* Models*/
-  BusinessTypeList: BusinessType[];
+  business_types: string[];
   /* Interfaces */
   Cities: CityStates[];
   States: CityStates[];
@@ -37,12 +37,14 @@ export class AccountComponent implements AfterViewInit, OnInit {
   zoom: Number = 8;
   constructor(private spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
               private http: HttpRequestService, private dialog: MatDialog,
-              private translater: TranslatePipe, private accServ: AccountService) { }
+              public auth: AuthService,
+              private snackbar: MatSnackBar,
+              private translater: TranslatePipe) { }
 
   ngOnInit() {
     // TODO ÜLKE SEÇİMİ İLE BİRLİKTE İL İLÇELER LİSTELENECEK
     this.getCity();
-    this.getBusinessType();
+    this.business_types = environment.business_types;
   }
 
   public getCity() {
@@ -54,16 +56,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
       this.Cities.sort((a, b) => a.name.localeCompare(b.name));
     });
   }
-  public getBusinessType() {
-    this.bustypeService.get().snapshotChanges().subscribe(res => {
-      this.BusinessTypeList = [];
-      res.forEach(element => {
-        const item = element.payload.toJSON();
-        item['$key'] = element.key;
-        this.BusinessTypeList.push(item as BusinessType);
-      });
-    });
-  }
+
   public getStates(country_id: string, state_id: string) {
     this.http.get('http://geodata.solutions/api/api.php?type=getCities&countryId=' + country_id + '&stateId=' + state_id, {}).subscribe(data => {
       this.States = [];
@@ -90,7 +83,17 @@ export class AccountComponent implements AfterViewInit, OnInit {
     });
   }
 
-
+  public reSendVerifyEmail(): void {
+    if (this.auth.afAuth.auth.currentUser.emailVerified) { return; }
+    this.spinner.show();
+    this.auth.afAuth.auth.currentUser.sendEmailVerification().then(() => {
+      this.spinner.hide();
+      this.snackbar.open(this.translater.transform('successfull'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
+    }).catch((err) => {
+      this.spinner.hide();
+      this.snackbar.open(err.message || this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
+    });
+  }
   public onChangeAccount(): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '450px',

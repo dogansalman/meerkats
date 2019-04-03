@@ -5,9 +5,16 @@ export class Account {
   business_name: string;
   business_type: string;
   email: string;
-  phone: string  = null;
-  adress: string = null;
-  state: string = null;
-  city: string = null;
-  coords: Coords = null;
+  phone: string;
+  adress: string;
+  state: string;
+  city: string;
+  coords: Coords;
+
+  constructor() {
+    this.state = '';
+    this.phone = '';
+    this.adress = '';
+    this.city = '';
+  }
 }

@@ -51,6 +51,8 @@
   "state": "İl",
   "city": "İlçe",
   "table": "Masa",
+  "employee": "Personel",
+  "product": "Ürün",
   "open_table": "Açık",
   "closed_table": "Kapalı",
 
@@ -107,5 +109,9 @@
   "payment_set kart": "Set Kart",
   "payment_sodexo": "Sodexo",
   "payment_metropol": "Metropol",
-  "payment_glovo": "Glovo"
+  "payment_glovo": "Glovo",
+
+  "verify_email_message": "Hesabınızın eposta adresi henüz doğrulanmamış. Lütfen eposta adresinizi doğrulayın.",
+  "verify_email_message_title": "Eposta adresinizi doğrulayın.",
+  "not_found": "Bulunamadı."
 }

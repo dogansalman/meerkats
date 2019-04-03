@@ -151,3 +151,13 @@ input[type=number]::-webkit-outer-spin-button {
   color: #c05c5c !important;
 }
 
+.snack_warning.mat-snack-bar-container
+{
+  background: #ffeaa7 !important;
+  color: #c09611 !important;
+}
+.snack_warning.mat-snack-bar-container > .mat-simple-snackbar > .mat-simple-snackbar-action
+{
+  color:  #c09611 !important;
+}
+

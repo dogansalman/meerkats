@@ -51,6 +51,8 @@
   "state": "State",
   "city": "City",
   "table": "Table",
+  "employee": "Employee",
+  "product": "Product",
   "open_table": "Opened",
   "closed_table": "Closed",
 
@@ -107,5 +109,10 @@
   "payment_set kart": "Set Kart",
   "payment_sodexo": "Sodexo",
   "payment_metropol": "Metropol",
-  "payment_glovo": "Glovo"
+  "payment_glovo": "Glovo",
+
+  "verify_email_message": "Your account's email not verified. Please verify your account's email address.",
+  "verify_email_message_title": "Verify email address",
+  "not_found": "is not found"
+
 }
