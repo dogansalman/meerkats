@@ -113,6 +113,6 @@
 
   "verify_email_message": "Your account's email not verified. Please verify your account's email address.",
   "verify_email_message_title": "Verify email address",
-  "not_found": "is not found"
-
+  "not_found": "is not found",
+  "resend_mail_button": "Resend EMail"
 }

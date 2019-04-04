@@ -113,5 +113,6 @@
 
   "verify_email_message": "Hesabınızın eposta adresi henüz doğrulanmamış. Lütfen eposta adresinizi doğrulayın.",
   "verify_email_message_title": "Eposta adresinizi doğrulayın.",
-  "not_found": "Bulunamadı."
+  "not_found": "Bulunamadı.",
+  "resend_mail_button": "Yeniden Gönder"
 }

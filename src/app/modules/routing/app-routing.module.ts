@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { Empty_layoutComponent} from '../../layouts/empty_layout/empty_layout.component';
-import { Navbar_layoutComponent } from '../../layouts/navbar_layout/navbar_layout.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {EmptyLayoutComponent} from '../../layouts/emptyLayout/emptyLayout.component';
+import {NavbarLayoutComponent} from '../../layouts/navbarLayout/navbarLayout.component';
 import {AuthGuard} from '../../services/authGuard/authGuard';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: Empty_layoutComponent,
+    component: EmptyLayoutComponent,
     children: [
       {
         path: 'login',
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: Navbar_layoutComponent,
+    component: NavbarLayoutComponent,
     canActivate: [AuthGuard],
     children: [
       {

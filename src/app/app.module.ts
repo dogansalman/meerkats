@@ -6,8 +6,8 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppMaterialModule } from './modules/material/app-material.module';
-import { Navbar_layoutComponent } from './layouts/navbar_layout/navbar_layout.component';
-import { Empty_layoutComponent } from './layouts/empty_layout/empty_layout.component';
+import { NavbarLayoutComponent } from './layouts/navbarLayout/navbarLayout.component';
+import { EmptyLayoutComponent } from './layouts/emptyLayout/emptyLayout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -20,11 +20,11 @@ import { StorageService } from './services/storage/storage.service';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
 export function setupTranslateFactory(service: TranslateService): Function {
-  return () => service.use('en');
+  return () => service.use(localStorage.getItem('lang-meerkats') || 'tr');
 }
 
 @NgModule({
-  declarations: [AppComponent, Navbar_layoutComponent, Empty_layoutComponent],
+  declarations: [AppComponent, NavbarLayoutComponent, EmptyLayoutComponent],
   imports: [
     BrowserAnimationsModule,
     AppRoutingModule,

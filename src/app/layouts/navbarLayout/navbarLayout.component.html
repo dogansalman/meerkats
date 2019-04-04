@@ -7,7 +7,9 @@
       <span class="example-spacer"></span>
       <div>
         <button mat-button [matMenuTriggerFor]="menu">
-            Maya Kafe Restorant
+          <i class="material-icons">
+            perm_identity
+          </i> {{accountInfoDetail?.email}}
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/account"> <mat-icon>assignment_ind</mat-icon> {{'account_navbar' | translate}}</button>
@@ -25,8 +27,8 @@
        <mat-card class="main-logo-btn" fxShow.xs="false" routerLink="/home">
          <mat-card-header>
          <img mat-card-avatar src="https://via.placeholder.com/150x150"/>
-         <mat-card-title>Maya Kafe - Restorant</mat-card-title>
-         <mat-card-subtitle>{{'business_code' | translate}}: 16235132</mat-card-subtitle>
+         <mat-card-title>{{accountInfoDetail?.business_name}} -  {{accountInfoDetail?.business_type}}</mat-card-title>
+         <mat-card-subtitle>{{accountInfoDetail?.email}}</mat-card-subtitle>
        </mat-card-header>
         </mat-card>
       <mat-divider></mat-divider>

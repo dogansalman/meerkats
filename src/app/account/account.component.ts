@@ -1,49 +1,39 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
-import {CityStates} from '../interfaces/city_states';
-import {Marker} from '../interfaces/marker';
 import {BussinessTypeServices} from '../models/bussinessType/bussinessType.services';
 import {HttpRequestService} from '../services/httpRequest/httpRequest.service';
 import {environment} from '../../environments/environment.prod';
-import {MouseEvent} from '@agm/core';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 import {AuthService} from '../services/auth/auth.service';
-import {Coords} from '../interfaces/coords';
 import {MatSnackBar} from '@angular/material';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {AccountService} from '../models/account/account.service';
+import {Account} from '../models/account/account';
+
 
 @Component(
   {
     selector: 'app-account',
     templateUrl: 'account.component.html',
-    providers: [TranslatePipe, AuthService]
+    providers: [TranslatePipe, AuthService, AccountService]
   }
 )
 
 export class AccountComponent implements AfterViewInit, OnInit {
   /* Models*/
   business_types: string[];
-  /* Interfaces */
-  Cities: CityStates[];
-  States: CityStates[];
 
-  cordi: Coords = {
-    latitude: 0,
-    longitude: 0
-  };
-  markers: Marker[];
-  /* Properties */
-  zoom: Number = 8;
 
   public frmGroup: FormGroup;
 
   constructor(private spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
               private http: HttpRequestService, private dialog: MatDialog,
               public auth: AuthService,
-              private snackbar: MatSnackBar,
+              private snack: MatSnackBar,
               private fb: FormBuilder,
+              private accService: AccountService,
               private translater: TranslatePipe) {
 
     this.frmGroup = this.fb.group({
@@ -62,11 +52,20 @@ export class AccountComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    // TODO ÜLKE SEÇİMİ İLE BİRLİKTE İL İLÇELER LİSTELENECEK
-    this.getCity();
     this.business_types = environment.business_types;
+    this.auth.getProfileDetail.subscribe(u => this.frmGroup.patchValue(u));
   }
 
+  // TODO Create map custom component
+  /*
+    Cities: CityStates[];
+    States: CityStates[];
+    cordi: Coords = {
+      latitude: 0,
+      longitude: 0
+    };
+    markers: Marker[];
+  zoom: Number = 8;
   public getCity() {
     this.http.get('http://geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
       this.Cities = [];
@@ -76,7 +75,6 @@ export class AccountComponent implements AfterViewInit, OnInit {
       this.Cities.sort((a, b) => a.name.localeCompare(b.name));
     });
   }
-
   public getStates(country_id: string, state_id: string) {
     this.http.get('http://geodata.solutions/api/api.php?type=getCities&countryId=' + country_id + '&stateId=' + state_id, {}).subscribe(data => {
       this.States = [];
@@ -102,16 +100,17 @@ export class AccountComponent implements AfterViewInit, OnInit {
       draggable: true
     });
   }
+  * */
 
   public reSendVerifyEmail(): void {
     if (this.auth.afAuth.auth.currentUser.emailVerified) { return; }
     this.spinner.show();
     this.auth.afAuth.auth.currentUser.sendEmailVerification().then(() => {
       this.spinner.hide();
-      this.snackbar.open(this.translater.transform('successfull'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
+      this.snack.open(this.translater.transform('successfull'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
     }).catch((err) => {
       this.spinner.hide();
-      this.snackbar.open(err.message || this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
+      this.snack.open(err.message || this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
     });
   }
   public onChangeAccount(): void {
@@ -120,7 +119,15 @@ export class AccountComponent implements AfterViewInit, OnInit {
       data: {message: this.translater.transform('account_approve_message'), title: this.translater.transform('sure_message_title') }
     });
     dialogRef.componentInstance.onSelect.subscribe(result => {
-      if (result) { console.log('Ok!'); }
+     if (!result) { return; }
+     this.spinner.show();
+      this.accService.update(this.frmGroup.value as Account, this.auth.afAuth.auth.currentUser.uid).then(() => {
+        this.spinner.hide();
+        this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
+      }).catch(err => {
+        this.spinner.hide();
+        this.snack.open(err.message || this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
+      });
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
