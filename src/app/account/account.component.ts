@@ -12,6 +12,7 @@ import {TranslatePipe} from '../services/translate/translate.pipe';
 import {AuthService} from '../services/auth/auth.service';
 import {Coords} from '../interfaces/coords';
 import {MatSnackBar} from '@angular/material';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component(
   {
@@ -35,11 +36,30 @@ export class AccountComponent implements AfterViewInit, OnInit {
   markers: Marker[];
   /* Properties */
   zoom: Number = 8;
+
+  public frmGroup: FormGroup;
+
   constructor(private spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
               private http: HttpRequestService, private dialog: MatDialog,
               public auth: AuthService,
               private snackbar: MatSnackBar,
-              private translater: TranslatePipe) { }
+              private fb: FormBuilder,
+              private translater: TranslatePipe) {
+
+    this.frmGroup = this.fb.group({
+      adress: [null, [Validators.maxLength(255)]],
+      business_name: [null, [Validators.required, Validators.maxLength(255)]],
+      business_type: [null, [Validators.required, Validators.maxLength(255)]],
+      city: [null, [Validators.maxLength(255)]],
+      state: [null, [Validators.maxLength(255)]],
+      phone: [null, [Validators.maxLength(255)]],
+      email: [null, [Validators.required, Validators.email, Validators.maxLength(255)]],
+      coords: this.fb.group({
+        latitude: [null],
+        longitude: [null]
+      })
+    });
+  }
 
   ngOnInit() {
     // TODO ÜLKE SEÇİMİ İLE BİRLİKTE İL İLÇELER LİSTELENECEK

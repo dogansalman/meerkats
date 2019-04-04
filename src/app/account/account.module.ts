@@ -11,6 +11,7 @@ import {BussinessTypeServices} from '../models/bussinessType/bussinessType.servi
 import {HttpRequestService} from '../services/httpRequest/httpRequest.service';
 import {ConfirmModule} from '../components/confirm/confirm.module';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule(
   {
@@ -21,7 +22,9 @@ import {ConfirmComponent} from '../components/confirm/confirm.component';
       AngularFireDatabaseModule,
       AgmCoreModule,
       CommonModule,
-      ConfirmModule
+      ConfirmModule,
+      FormsModule,
+      ReactiveFormsModule
     ],
     declarations: [AccountComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
