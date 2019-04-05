@@ -3,8 +3,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {AppMaterialModule} from '../../modules/material/app-material.module';
 
 @NgModule({
-  imports: [FlexLayoutModule, AppMaterialModule],
-
+  imports: [FlexLayoutModule, AppMaterialModule]
 })
 
-export class NumbersModule {}
+export class ProvinceModule {}

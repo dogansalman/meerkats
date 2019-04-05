@@ -13,11 +13,12 @@ import {AccountService} from '../models/account/account.service';
 import {Account} from '../models/account/account';
 
 
+
 @Component(
   {
     selector: 'app-account',
     templateUrl: 'account.component.html',
-    providers: [TranslatePipe, AuthService, AccountService]
+    providers: [TranslatePipe, AuthService, AccountService],
   }
 )
 
@@ -58,23 +59,14 @@ export class AccountComponent implements AfterViewInit, OnInit {
 
   // TODO Create map custom component
   /*
-    Cities: CityStates[];
-    States: CityStates[];
+
     cordi: Coords = {
       latitude: 0,
       longitude: 0
     };
     markers: Marker[];
   zoom: Number = 8;
-  public getCity() {
-    this.http.get('http://geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
-      this.Cities = [];
-      Object.keys(data.result).forEach(key => {
-        this.Cities.push({id: key, name: data.result[key]} as CityStates);
-      });
-      this.Cities.sort((a, b) => a.name.localeCompare(b.name));
-    });
-  }
+
   public getStates(country_id: string, state_id: string) {
     this.http.get('http://geodata.solutions/api/api.php?type=getCities&countryId=' + country_id + '&stateId=' + state_id, {}).subscribe(data => {
       this.States = [];

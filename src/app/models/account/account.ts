@@ -7,14 +7,14 @@ export class Account {
   email: string;
   phone: string;
   adress: string;
-  state: string;
-  city: string;
+  district: string;
+  province: string;
   coords: Coords;
 
   constructor() {
-    this.state = '';
+    this.province = '';
     this.phone = '';
     this.adress = '';
-    this.city = '';
+    this.district = '';
   }
 }
