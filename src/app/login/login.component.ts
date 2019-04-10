@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
     this.dialog.open(ForgotComponent, {width: '550px', height: '375px'});
   }
   registerModal(): void {
-    this.dialog.open(RegisterComponent, {width: '550px', height: '650px'});
+    this.dialog.open(RegisterComponent, {width: '550px', height: '500px'});
   }
   onLogin(): void {
     if (!this.frmGroup.valid) { return; }
