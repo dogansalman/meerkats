@@ -48,7 +48,7 @@ export class TablesComponent implements OnInit, AfterViewInit {
   onTableDetail(table: Table = null): void {
     if (this.openedTableDetail) { return; }
     this.openedTableDetail = true;
-    const dialogRef =  this.dialog.open(TableComponent, {width: '600px', height: '600px', data: {table: table, locations: this.locations}});
+    const dialogRef =  this.dialog.open(TableComponent, {width: '600px', height: 'auto', data: {table: table, locations: this.locations}});
 
     dialogRef.afterClosed().subscribe((result) => {
       this.openedTableDetail = false;
