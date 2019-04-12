@@ -25,7 +25,7 @@ import {Account} from '../models/account/account';
 export class AccountComponent implements AfterViewInit, OnInit {
   /* Models*/
   business_types: string[];
-
+  cities: any[];
 
   public frmGroup: FormGroup;
 
@@ -67,15 +67,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
     markers: Marker[];
   zoom: Number = 8;
 
-  public getStates(country_id: string, state_id: string) {
-    this.http.get('http://geodata.solutions/api/api.php?type=getCities&countryId=' + country_id + '&stateId=' + state_id, {}).subscribe(data => {
-      this.States = [];
-      Object.keys(data.result).forEach(key => {
-        this.States.push({id: key, name: data.result[key]} as CityStates);
-      });
-      this.States.sort((a, b) => a.name.localeCompare(b.name));
-    });
-  }
+
   public getCordinates(name: string) {
     this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + name + '&key=' + environment.mapKey, {}).subscribe((data => {
       this.cordi.latitude = data.results[0].geometry.location.lat;

@@ -13,7 +13,9 @@ import {ConfirmModule} from '../components/confirm/confirm.module';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProvinceComponent} from '../components/province/province.component';
+import {DistrictComponent} from '../components/district/district.component';
 import {ProvinceModule} from '../components/province/province.module';
+import {DistrictModule} from '../components/district/district.module';
 
 @NgModule(
   {
@@ -27,9 +29,10 @@ import {ProvinceModule} from '../components/province/province.module';
       ConfirmModule,
       FormsModule,
       ReactiveFormsModule,
-      ProvinceModule
+      ProvinceModule,
+      DistrictModule
     ],
-    declarations: [AccountComponent, ProvinceComponent],
+    declarations: [AccountComponent, ProvinceComponent, DistrictComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [BussinessTypeServices, HttpRequestService],
     entryComponents: [ConfirmComponent]

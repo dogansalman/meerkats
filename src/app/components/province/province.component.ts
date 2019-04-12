@@ -1,6 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
 import {HttpRequestService} from '../../services/httpRequest/httpRequest.service';
-import {CityStates} from '../../interfaces/city_states';
 
 @Component({
   selector: 'app-province',
@@ -10,15 +9,20 @@ import {CityStates} from '../../interfaces/city_states';
 
 export class ProvinceComponent {
 
-  cities: CityStates[];
+  provinces: any[];
+  public selectedProvince;
 
+  @Output() _cities = new EventEmitter<any[]>();
+
+  // TODO On selection changed do not fire. updateDistricts function in districtComponents
   constructor(private http: HttpRequestService) {
     this.http.get('http://geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
-      this.cities = [];
+      this.provinces = [];
       Object.keys(data.result).forEach(key => {
-        this.cities.push({id: key, name: data.result[key]} as CityStates);
+        this.provinces.push({id: key, name: data.result[key]});
       });
-      this.cities.sort((a, b) => a.name.localeCompare(b.name));
+      this.provinces.sort((a, b) => a.name.localeCompare(b.name));
+      this._cities.emit(this.provinces);
     });
   }
 }

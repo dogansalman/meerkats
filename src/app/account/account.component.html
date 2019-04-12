@@ -47,8 +47,8 @@
       <mat-card fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="45" fxFlex.lg="30" fxFlex.xl="30" class="card-no-shadow">
         <mat-card-content>
           <h2>{{'adress' | translate}}</h2>
-          <app-province></app-province>
-
+          <app-province #provinces></app-province>
+          <app-district  [country_id]="'TR'" [province_id]="provinces.selectedProvince?.id || 0"></app-district>
           <mat-form-field class="full-width-field">
             <input matInput formControlName="adress" #adress maxlength="255" type="text" placeholder="{{'adress' | translate}}">
             <mat-hint align="end">{{adress.value.length}} / 255</mat-hint>
