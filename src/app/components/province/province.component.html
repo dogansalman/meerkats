@@ -1,8 +1,7 @@
 <mat-form-field class="full-width-field">
-  <input type="text" placeholder="{{'province' | translate}}" aria-label="Number" matInput [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option (change)="this.selectedProvince = $event" *ngFor="let p of provinces" [value]="p?.name | translate">
-      {{p?.name| translate}}
+  <mat-select placeholder="{{'province' | translate}}">
+    <mat-option (onSelectionChange)="onSelectedProvince($event)" *ngFor="let p of provinces" [value]="p">
+      {{p?.name}}
     </mat-option>
-  </mat-autocomplete>
+  </mat-select>
 </mat-form-field>

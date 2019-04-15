@@ -1,5 +1,6 @@
 import {Component, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
 import {HttpRequestService} from '../../services/httpRequest/httpRequest.service';
+import {MatOptionSelectionChange} from '@angular/material';
 
 @Component({
   selector: 'app-province',
@@ -12,7 +13,8 @@ export class ProvinceComponent {
   provinces: any[];
   public selectedProvince;
 
-  @Output() _cities = new EventEmitter<any[]>();
+  @Output() _provinces = new EventEmitter<any[]>();
+
 
   // TODO On selection changed do not fire. updateDistricts function in districtComponents
   constructor(private http: HttpRequestService) {
@@ -22,7 +24,13 @@ export class ProvinceComponent {
         this.provinces.push({id: key, name: data.result[key]});
       });
       this.provinces.sort((a, b) => a.name.localeCompare(b.name));
-      this._cities.emit(this.provinces);
+      this._provinces.emit(this.provinces);
     });
+
+  }
+  onSelectedProvince(e: MatOptionSelectionChange): void {
+    console.log(e);
+    if (!e.source._selected) { return; }
+    this.selectedProvince = e.source.value;
   }
 }

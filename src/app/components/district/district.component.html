@@ -1,8 +1,7 @@
 <mat-form-field class="full-width-field">
-  <input type="text" placeholder="{{'district' | translate}}" matInput [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
+  <mat-select placeholder="{{'district' | translate}}" >
     <mat-option *ngFor="let district of districts" [value]="district?.name | translate">
       {{district?.name| translate}}
     </mat-option>
-  </mat-autocomplete>
+  </mat-select>
 </mat-form-field>

@@ -86,6 +86,8 @@ export class AccountComponent implements AfterViewInit, OnInit {
   }
   * */
 
+
+
   public reSendVerifyEmail(): void {
     if (this.auth.afAuth.auth.currentUser.emailVerified) { return; }
     this.spinner.show();
