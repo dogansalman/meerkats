@@ -29,8 +29,7 @@ export class ProvinceComponent {
 
   }
   onSelectedProvince(e: MatOptionSelectionChange): void {
-    console.log(e);
-    if (!e.source._selected) { return; }
+    if (!e.source.selected) { return; }
     this.selectedProvince = e.source.value;
   }
 }

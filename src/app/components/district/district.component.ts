@@ -21,7 +21,7 @@ export class DistrictComponent {
   @Input('province_id')
   set province_id(value: string) {
     this._province_id = value;
-    this.updateDistrict();
+    if (this.province_id) { this.updateDistrict(); }
   }
 
   constructor(private http: HttpRequestService) {}

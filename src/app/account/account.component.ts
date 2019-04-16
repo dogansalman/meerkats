@@ -11,6 +11,8 @@ import {MatSnackBar} from '@angular/material';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AccountService} from '../models/account/account.service';
 import {Account} from '../models/account/account';
+import {Coords} from '../interfaces/coords';
+import {DataMouseEvent, Marker} from '@agm/core/services/google-maps-types';
 
 
 
@@ -26,6 +28,13 @@ export class AccountComponent implements AfterViewInit, OnInit {
   /* Models*/
   business_types: string[];
   cities: any[];
+  cordi: Coords = {
+    latitude: 0,
+    longitude: 0
+  };
+  markers: Marker[];
+  zoom: Number = 8;
+  _marker: Marker;
 
   public frmGroup: FormGroup;
 
@@ -56,37 +65,6 @@ export class AccountComponent implements AfterViewInit, OnInit {
     this.business_types = environment.business_types;
     this.auth.getProfileDetail.subscribe(u => this.frmGroup.patchValue(u));
   }
-
-  // TODO Create map custom component
-  /*
-
-    cordi: Coords = {
-      latitude: 0,
-      longitude: 0
-    };
-    markers: Marker[];
-  zoom: Number = 8;
-
-
-  public getCordinates(name: string) {
-    this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + name + '&key=' + environment.mapKey, {}).subscribe((data => {
-      this.cordi.latitude = data.results[0].geometry.location.lat;
-      this.cordi.longitude = data.results[0].geometry.location.lng;
-      this.zoom = 14;
-    }));
-  }
-  public mapClicked($event: MouseEvent) {
-    // TODO bu event içinde seçili il ilçe sınırları içerisinde olup olmadığıı kontrol edilecek.
-    this.markers = [];
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
-  }
-  * */
-
-
 
   public reSendVerifyEmail(): void {
     if (this.auth.afAuth.auth.currentUser.emailVerified) { return; }
@@ -126,6 +104,18 @@ export class AccountComponent implements AfterViewInit, OnInit {
       if (result) { console.log('Ok!'); }
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
+  }
+
+  public getCordinates(name: string) {
+    this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + name + '&key=' + environment.mapKey, {}).subscribe((data => {
+      this.cordi.latitude = data.results[0].geometry.location.lat;
+      this.cordi.longitude = data.results[0].geometry.location.lng;
+      this.zoom = 14;
+    }));
+  }
+  public mapClicked($event: any) {
+    // TODO bu event içinde seçili il ilçe sınırları içerisinde olup olmadığıı kontrol edilecek.
+   this.markers = [];
   }
   ngAfterViewInit(): void { this.spinner.hide(); }
 
