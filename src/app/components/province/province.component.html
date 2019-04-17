@@ -1,6 +1,6 @@
-<mat-form-field class="full-width-field">
-  <mat-select placeholder="{{'province' | translate}}">
-    <mat-option (onSelectionChange)="onSelectedProvince($event)" *ngFor="let p of provinces" [value]="p">
+<mat-form-field formGroupName="location" class="full-width-field">
+  <mat-select [compareWith]="compareObjects" formControlName="province" placeholder="{{'province' | translate}}">
+    <mat-option  (onSelectionChange)="onSelectedProvince($event)" *ngFor="let p of provinces" [value]="p">
       {{p?.name}}
     </mat-option>
   </mat-select>

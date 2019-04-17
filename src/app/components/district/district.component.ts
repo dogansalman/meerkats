@@ -1,10 +1,12 @@
 import {Component, ViewEncapsulation, Input} from '@angular/core';
 import {HttpRequestService} from '../../services/httpRequest/httpRequest.service';
+import {ControlContainer, FormGroupDirective} from '@angular/forms';
 
 @Component({
   selector: 'app-district',
   templateUrl: 'district.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  viewProviders: [{provide: ControlContainer, useExisting: FormGroupDirective}]
 })
 
 export class DistrictComponent {

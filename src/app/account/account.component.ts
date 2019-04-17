@@ -12,8 +12,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AccountService} from '../models/account/account.service';
 import {Account} from '../models/account/account';
 import {Coords} from '../interfaces/coords';
-import {DataMouseEvent, Marker} from '@agm/core/services/google-maps-types';
-
+import {Marker} from '../interfaces/marker';
 
 
 @Component(
@@ -34,8 +33,6 @@ export class AccountComponent implements AfterViewInit, OnInit {
   };
   markers: Marker[];
   zoom: Number = 8;
-  _marker: Marker;
-
   public frmGroup: FormGroup;
 
   constructor(private spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
@@ -47,23 +44,31 @@ export class AccountComponent implements AfterViewInit, OnInit {
               private translater: TranslatePipe) {
 
     this.frmGroup = this.fb.group({
-      adress: [null, [Validators.maxLength(255)]],
       business_name: [null, [Validators.required, Validators.maxLength(255)]],
       business_type: [null, [Validators.required, Validators.maxLength(255)]],
-      city: [null, [Validators.maxLength(255)]],
-      state: [null, [Validators.maxLength(255)]],
+      location: this.fb.group({
+        adress: [null, [Validators.maxLength(255)]],
+        province: {
+          id: [null],
+          name: [null]
+        },
+        district: [null],
+        coords: {
+          latitude: [null],
+          longitude: [null]
+        }
+      }),
       phone: [null, [Validators.maxLength(255)]],
-      email: [null, [Validators.required, Validators.email, Validators.maxLength(255)]],
-      coords: this.fb.group({
-        latitude: [null],
-        longitude: [null]
-      })
+      email: [null, [Validators.required, Validators.email, Validators.maxLength(255)]]
     });
   }
 
   ngOnInit() {
     this.business_types = environment.business_types;
-    this.auth.getProfileDetail.subscribe(u => this.frmGroup.patchValue(u));
+    this.auth.getProfileDetail.subscribe(u => {
+      console.log(u);
+      this.frmGroup.patchValue(u);
+    });
   }
 
   public reSendVerifyEmail(): void {
@@ -105,17 +110,21 @@ export class AccountComponent implements AfterViewInit, OnInit {
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
+  onChangeMatTabToLocation(index: number): void {
+    /* on tab to location */
+    console.log(this.frmGroup.value);
 
-  public getCordinates(name: string) {
-    this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + name + '&key=' + environment.mapKey, {}).subscribe((data => {
-      this.cordi.latitude = data.results[0].geometry.location.lat;
-      this.cordi.longitude = data.results[0].geometry.location.lng;
-      this.zoom = 14;
-    }));
+    if (index === 1) {
+      this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.frmGroup.value.province.name + ' ' + this.frmGroup.value.district.name + '&key=' + environment.mapKey, {}).subscribe((data => {
+        this.cordi.latitude = data.results[0].geometry.location.lat;
+        this.cordi.longitude = data.results[0].geometry.location.lng;
+        this.zoom = 14;
+      }));
+    }
   }
   public mapClicked($event: any) {
-    // TODO bu event içinde seçili il ilçe sınırları içerisinde olup olmadığıı kontrol edilecek.
    this.markers = [];
+   this.markers.push({lat: $event.coords.lat, lng: $event.coords.lng, draggable: true});
   }
   ngAfterViewInit(): void { this.spinner.hide(); }
 

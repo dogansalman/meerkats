@@ -6,8 +6,7 @@
   </mat-card-content>
 </mat-card>
 <mat-divider></mat-divider>
-<mat-tab-group>
-
+<mat-tab-group (selectedIndexChange)="onChangeMatTabToLocation($event)">
 <mat-tab label="{{'business' | translate}}">
     <form [formGroup]="this.frmGroup">
     <div fxLayout="row wrap" fxLayoutAlign="start center">
@@ -36,25 +35,39 @@
             <mat-hint align="end">{{phone.value.length}} / 255</mat-hint>
           </mat-form-field>
         </mat-card-content>
-        <mat-card-footer>
-          <mat-card class="card-no-shadow no-padding">
-            <mat-card-content style="padding:10px">
-              <button fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="3" fxFlex.xl="5" mat-flat-button  color="primary" (click)="onChangeAccount()">{{'ok_button' | translate}}</button>
-            </mat-card-content>
-          </mat-card>
-        </mat-card-footer>
       </mat-card>
       <mat-card fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="45" fxFlex.lg="30" fxFlex.xl="30" class="card-no-shadow">
         <mat-card-content>
           <h2>{{'adress' | translate}}</h2>
           <app-province #provinces></app-province>
-          <app-district  [country_id]="'TR'" [province_id]="provinces.selectedProvince?.id || 0"></app-district>
-          <mat-form-field class="full-width-field">
-            <input matInput formControlName="adress" #adress maxlength="255" type="text" placeholder="{{'adress' | translate}}">
-            <mat-hint align="end">{{adress.value.length}} / 255</mat-hint>
-          </mat-form-field>
+          <div formGroupName="location">
+            <!--
+            OK.
+            <mat-form-field class="full-width-field">
+              <mat-select  [compareWith]="compareObjects" formControlName="province">
+                <mat-option [value]="{id:1, name: 'Tekirdağ'}">Tekirdağ</mat-option>
+                <mat-option [value]="{id:2, name: 'Çorlu'}">Çorlu</mat-option>
+                <mat-option [value]="{id:3, name: 'İzmir'}">İzmir</mat-option>
+              </mat-select>
+            </mat-form-field>
+            -->
+
+            <app-province #provinces></app-province>
+            <!--
+            <app-district  [country_id]="'TR'" [province_id]="provinces.selectedProvince?.id || 0"></app-district>
+            -->
+            <mat-form-field class="full-width-field">
+              <input matInput formControlName="adress" #adress maxlength="255" type="text" placeholder="{{'adress' | translate}}">
+              <mat-hint align="end">{{adress.value.length}} / 255</mat-hint>
+            </mat-form-field>
+          </div>
      </mat-card-content>
    </mat-card>
+    <mat-card fxFill class="card-no-shadow no-padding">
+      <mat-card-content style="padding:10px">
+        <button fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="3" fxFlex.xl="5" mat-flat-button  color="primary" (click)="onChangeAccount()">{{'ok_button' | translate}}</button>
+      </mat-card-content>
+    </mat-card>
  </div>
  </form>
 

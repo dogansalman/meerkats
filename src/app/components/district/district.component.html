@@ -1,6 +1,6 @@
 <mat-form-field class="full-width-field">
-  <mat-select placeholder="{{'district' | translate}}" >
-    <mat-option *ngFor="let district of districts" [value]="district?.name | translate">
+  <mat-select formControlName="district" placeholder="{{'district' | translate}}" >
+    <mat-option *ngFor="let district of districts" [value]="district">
       {{district?.name| translate}}
     </mat-option>
   </mat-select>

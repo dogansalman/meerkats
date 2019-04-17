@@ -1,11 +1,13 @@
 import {Component, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
 import {HttpRequestService} from '../../services/httpRequest/httpRequest.service';
 import {MatOptionSelectionChange} from '@angular/material';
+import {ControlContainer, FormGroupDirective} from '@angular/forms';
 
 @Component({
   selector: 'app-province',
   templateUrl: 'province.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  viewProviders: [{provide: ControlContainer, useExisting: FormGroupDirective}]
 })
 
 export class ProvinceComponent {
@@ -15,8 +17,6 @@ export class ProvinceComponent {
 
   @Output() _provinces = new EventEmitter<any[]>();
 
-
-  // TODO On selection changed do not fire. updateDistricts function in districtComponents
   constructor(private http: HttpRequestService) {
     this.http.get('http://geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
       this.provinces = [];
@@ -26,7 +26,10 @@ export class ProvinceComponent {
       this.provinces.sort((a, b) => a.name.localeCompare(b.name));
       this._provinces.emit(this.provinces);
     });
+  }
 
+  compareObjects(o1: any, o2: any): boolean {
+    return o1.name === o2.name && o1.id === o2.id;
   }
   onSelectedProvince(e: MatOptionSelectionChange): void {
     if (!e.source.selected) { return; }
