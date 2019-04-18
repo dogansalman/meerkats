@@ -1,7 +1,10 @@
-<mat-form-field class="full-width-field">
-  <mat-select formControlName="district" placeholder="{{'district' | translate}}" >
-    <mat-option *ngFor="let district of districts" [value]="district">
-      {{district?.name| translate}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div [formGroupName]="_FormGroupName">
+  <mat-form-field class="full-width-field">
+    <mat-select #districtSelection [compareWith]="compareObjects" [formControlName]="_FormControlName" placeholder="{{'district' | translate}}" >
+      <mat-option *ngFor="let d of districts" [value]="d">
+        {{d?.name| translate}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>

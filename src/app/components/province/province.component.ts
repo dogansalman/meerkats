@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
+import {Component, ViewEncapsulation, Output, Input, EventEmitter} from '@angular/core';
 import {HttpRequestService} from '../../services/httpRequest/httpRequest.service';
 import {MatOptionSelectionChange} from '@angular/material';
 import {ControlContainer, FormGroupDirective} from '@angular/forms';
@@ -16,6 +16,9 @@ export class ProvinceComponent {
   public selectedProvince;
 
   @Output() _provinces = new EventEmitter<any[]>();
+  @Output() _selectedChange = new EventEmitter<any>();
+  @Input()  _FormGroupName: string;
+  @Input()  _FormControlName: string;
 
   constructor(private http: HttpRequestService) {
     this.http.get('http://geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
@@ -32,7 +35,11 @@ export class ProvinceComponent {
     return o1.name === o2.name && o1.id === o2.id;
   }
   onSelectedProvince(e: MatOptionSelectionChange): void {
-    if (!e.source.selected) { return; }
-    this.selectedProvince = e.source.value;
+    if (e.source.value !== this.selectedProvince && this.selectedProvince) {
+      this._selectedChange.emit(e.source.value);
+    }
+    if (e.source.selected) {
+      this.selectedProvince = e.source.value;
+    }
   }
 }

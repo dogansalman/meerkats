@@ -65,13 +65,10 @@ export class AccountComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.business_types = environment.business_types;
-    this.auth.getProfileDetail.subscribe(u => {
-      console.log(u);
-      this.frmGroup.patchValue(u);
-    });
+    this.auth.getProfileDetail.subscribe(u => this.frmGroup.patchValue(u));
   }
 
-  public reSendVerifyEmail(): void {
+  reSendVerifyEmail(): void {
     if (this.auth.afAuth.auth.currentUser.emailVerified) { return; }
     this.spinner.show();
     this.auth.afAuth.auth.currentUser.sendEmailVerification().then(() => {
@@ -82,7 +79,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
       this.snack.open(err.message || this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
     });
   }
-  public onChangeAccount(): void {
+  onChangeAccount(): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '450px',
       data: {message: this.translater.transform('account_approve_message'), title: this.translater.transform('sure_message_title') }
@@ -100,7 +97,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
-  public onChangePassword(): void {
+  onChangePassword(): void {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '450px',
       data: {message: this.translater.transform('sure_message'), title: this.translater.transform('sure_message_title') }
@@ -110,19 +107,20 @@ export class AccountComponent implements AfterViewInit, OnInit {
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
-  onChangeMatTabToLocation(index: number): void {
+  onChangeMatTab(index: number): void {
     /* on tab to location */
-    console.log(this.frmGroup.value);
-
     if (index === 1) {
-      this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.frmGroup.value.province.name + ' ' + this.frmGroup.value.district.name + '&key=' + environment.mapKey, {}).subscribe((data => {
+      this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.frmGroup.value.location.province.name + ' ' + this.frmGroup.value.location.district.name + '&key=' + environment.mapKey, {}).subscribe((data => {
         this.cordi.latitude = data.results[0].geometry.location.lat;
         this.cordi.longitude = data.results[0].geometry.location.lng;
         this.zoom = 14;
       }));
     }
   }
-  public mapClicked($event: any) {
+  onSelectChangeProvince(e: any): void {
+    this.frmGroup.patchValue({location: {district: null}});
+  }
+  mapClicked($event: any) {
    this.markers = [];
    this.markers.push({lat: $event.coords.lat, lng: $event.coords.lng, draggable: true});
   }
