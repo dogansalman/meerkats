@@ -17,4 +17,10 @@ export class AccountService {
   update(data: Account, uid: string): Promise<any> {
     return this.db.object('account/' + uid).update(data);
   }
+  setLocation(data: any, uid: string): Promise<any> {
+    console.log(data);
+    delete data['adress'];
+    return this.db.database.ref('account/' + uid).child('location').set(data);
+   // return this.db.object('account/' + uid + '/location/coords').update(data);
+  }
 }

@@ -35,7 +35,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
   zoom: Number = 8;
   public frmGroup: FormGroup;
 
-  constructor(private spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
+  constructor(public spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
               private http: HttpRequestService, private dialog: MatDialog,
               public auth: AuthService,
               private snack: MatSnackBar,
@@ -65,7 +65,10 @@ export class AccountComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     this.business_types = environment.business_types;
-    this.auth.getProfileDetail.subscribe(u => this.frmGroup.patchValue(u));
+    this.auth.getProfileDetail.subscribe(u => {
+      this.frmGroup.patchValue(u);
+      this.addMarker(this.frmGroup.value.location.coords.latitude, this.frmGroup.value.location.coords.longitude);
+    });
   }
 
   reSendVerifyEmail(): void {
@@ -110,6 +113,9 @@ export class AccountComponent implements AfterViewInit, OnInit {
   onChangeMatTab(index: number): void {
     /* on tab to location */
     if (index === 1) {
+      if (this.frmGroup.value) {
+
+      }
       this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.frmGroup.value.location.province.name + ' ' + this.frmGroup.value.location.district.name + '&key=' + environment.mapKey, {}).subscribe((data => {
         this.cordi.latitude = data.results[0].geometry.location.lat;
         this.cordi.longitude = data.results[0].geometry.location.lng;
@@ -119,10 +125,40 @@ export class AccountComponent implements AfterViewInit, OnInit {
   }
   onSelectChangeProvince(e: any): void {
     this.frmGroup.patchValue({location: {district: null}});
+    this.clearMarkerWithCoords();
+  }
+  onSelectChangeDistrict(e: any): void {
+    this.clearMarkerWithCoords();
+  }
+  clearMarkerWithCoords(): void {
+    this.markers = [];
+    this.frmGroup.patchValue({location: {coords: { latitude: null, longitude: null }}});
+  }
+  onUpdateLocation(): void {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '450px',
+      data: {message: this.translater.transform('account_approve_message'), title: this.translater.transform('sure_message_title') }
+    });
+    dialogRef.componentInstance.onSelect.subscribe(result => {
+      if (!result) { return; }
+      this.spinner.show();
+      this.accService.setLocation(this.frmGroup.value.location, this.auth.afAuth.auth.currentUser.uid).then(() => {
+        this.spinner.hide();
+        this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
+      }).catch(err => {
+        this.spinner.hide();
+        this.snack.open(err.message || this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
+      });
+    });
+    dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
   mapClicked($event: any) {
-   this.markers = [];
-   this.markers.push({lat: $event.coords.lat, lng: $event.coords.lng, draggable: true});
+    this.addMarker($event.coords.lat, $event.coords.lng);
+  }
+  addMarker(lat: number, lng: number): void {
+    this.markers = [];
+    this.markers.push({lat: lat, lng: lng, draggable: true});
+    this.frmGroup.patchValue({location: {coords: {latitude: lat, longitude: lng}}});
   }
   ngAfterViewInit(): void { this.spinner.hide(); }
 

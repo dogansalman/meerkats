@@ -40,8 +40,8 @@
         <mat-card-content>
           <h2>{{'adress' | translate}}</h2>
           <div formGroupName="location">
-            <app-province #provinces (_selectedChange)="onSelectChangeProvince($event)" [_FormControlName]="'province'" [_FormGroupName]="'location'" ></app-province>
-            <app-district [_FormControlName]="'district'" [_FormGroupName]="'location'" [country_id]="'TR'" [province_id]="provinces.selectedProvince?.id || 0"></app-district>
+            <app-province #provinces (_loadEnd)="this.spinner.hide();" (_selectedChange)="onSelectChangeProvince($event)" [_FormControlName]="'province'" [_FormGroupName]="'location'" ></app-province>
+            <app-district (_selectedChange)="onSelectChangeDistrict($event)" (_loadEnd)="this.spinner.hide();" [_FormControlName]="'district'" [_FormGroupName]="'location'" [country_id]="'TR'" [province_id]="provinces.selectedProvince?.id || 0"></app-district>
             <mat-form-field class="full-width-field">
               <input matInput formControlName="adress" #adress maxlength="255" type="text" placeholder="{{'adress' | translate}}">
               <mat-hint align="end">{{adress.value.length}} / 255</mat-hint>
@@ -75,6 +75,7 @@
          [markerDraggable]="m.draggable">
        </agm-marker>
      </agm-map>
+     <button mat-fab class="fab-btn" color="primary" (click)="onUpdateLocation()"> <i class="material-icons"> save </i></button>
       </mat-card-content>
     </mat-card>
   </mat-tab>
