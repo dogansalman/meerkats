@@ -48,6 +48,9 @@ export class AuthService {
   forgot(email: string): Promise<any> {
     return this.afAuth.auth.sendPasswordResetEmail(email);
   }
+  resetPassword(password: string): Promise<any> {
+    return this.afAuth.auth.currentUser.updatePassword(password);
+  }
 
 }
 
