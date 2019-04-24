@@ -8,9 +8,11 @@
   "account_navbar": "Hesap",
   "logout_navbar": "Çıkış",
   "languages_navbar": "Dil Seçin",
+  "change_pass_navbar": "Şifre Değiştir",
 
   "business_code": "İşletme Kodu",
   "password": "Şifre",
+  "char": "Karakter",
   "login": "Oturum Aç",
   "login_failed": "E-posta veya şifreniz hatalı.",
   "register": "Kayıt Ol",

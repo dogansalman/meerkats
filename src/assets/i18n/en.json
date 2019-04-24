@@ -8,9 +8,11 @@
   "account_navbar": "Account",
   "logout_navbar": "Logout",
   "languages_navbar": "Languages",
+  "change_pass_navbar": "Change Password",
 
   "business_code": "Business Code",
   "password": "Password",
+  "char": "Char.",
   "login": "Login",
   "login_failed": "E-mail or password has been wrong.",
   "register": "Register",

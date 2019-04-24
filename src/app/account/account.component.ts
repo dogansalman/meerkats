@@ -34,6 +34,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
   markers: Marker[];
   zoom: Number = 8;
   public frmGroup: FormGroup;
+  public frmGroupPassword: FormGroup;
 
   constructor(public spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
               private http: HttpRequestService, private dialog: MatDialog,
@@ -60,6 +61,10 @@ export class AccountComponent implements AfterViewInit, OnInit {
       }),
       phone: [null, [Validators.maxLength(255)]],
       email: [null, [Validators.required, Validators.email, Validators.maxLength(255)]]
+    });
+    this.frmGroupPassword = this.fb.group({
+      password: [null, [Validators.required, Validators.maxLength(255), Validators.minLength(6)]],
+      password_reply: [null, [Validators.required, Validators.maxLength(255), Validators.minLength(6)]],
     });
   }
 
@@ -105,8 +110,19 @@ export class AccountComponent implements AfterViewInit, OnInit {
       width: '450px',
       data: {message: this.translater.transform('sure_message'), title: this.translater.transform('sure_message_title') }
     });
+
     dialogRef.componentInstance.onSelect.subscribe(result => {
-      if (result) { console.log('Ok!'); }
+      if (result && this.frmGroupPassword.valid && this.frmGroupPassword.value.password === this.frmGroupPassword.value.password_reply) {
+        this.spinner.show();
+        this.auth.resetPassword(this.frmGroupPassword.value.password).then(() => {
+          this.spinner.hide();
+          this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
+        }).catch((err) => {
+          this.spinner.hide();
+          console.log(err);
+          this.snack.open(this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
+        });
+      }
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
