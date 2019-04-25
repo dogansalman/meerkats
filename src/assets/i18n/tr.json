@@ -8,7 +8,6 @@
   "account_navbar": "Hesap",
   "logout_navbar": "Çıkış",
   "languages_navbar": "Dil Seçin",
-  "change_pass_navbar": "Şifre Değiştir",
 
   "business_code": "İşletme Kodu",
   "password": "Şifre",
@@ -41,6 +40,10 @@
   "delete_button": "Sil",
   "delete_selected_photo": "Fotoğrafı Kaldır",
 
+  "change_password": "Şifre Değiştir",
+  "change_password_desc": "Şifreniz en az 6 karakterden oluşmalıdır.  Şifrenizi değiştirmek için düzenle seçeneğini kullanabilirsiniz.",
+  "change_email": "Eposta Değiştir",
+  "change_email_desc": "Bildirim ve iletiler yeni e-posta adresinize gönderilecek. Yeniden onay gerektirir",
   "business": "İşletme",
   "location": "Konum",
   "approve": "Onay",

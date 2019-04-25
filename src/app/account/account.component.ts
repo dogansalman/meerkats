@@ -13,6 +13,7 @@ import {AccountService} from '../models/account/account.service';
 import {Account} from '../models/account/account';
 import {Coords} from '../interfaces/coords';
 import {Marker} from '../interfaces/marker';
+import {PasswordComponent} from './password/password.component';
 
 
 @Component(
@@ -34,7 +35,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
   markers: Marker[];
   zoom: Number = 8;
   public frmGroup: FormGroup;
-  public frmGroupPassword: FormGroup;
+
 
   constructor(public spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
               private http: HttpRequestService, private dialog: MatDialog,
@@ -59,12 +60,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
           longitude: [null]
         }
       }),
-      phone: [null, [Validators.maxLength(255)]],
-      email: [null, [Validators.required, Validators.email, Validators.maxLength(255)]]
-    });
-    this.frmGroupPassword = this.fb.group({
-      password: [null, [Validators.required, Validators.maxLength(255), Validators.minLength(6)]],
-      password_reply: [null, [Validators.required, Validators.maxLength(255), Validators.minLength(6)]],
+      phone: [null, [Validators.maxLength(255)]]
     });
   }
 
@@ -75,7 +71,6 @@ export class AccountComponent implements AfterViewInit, OnInit {
       this.addMarker(this.frmGroup.value.location.coords.latitude, this.frmGroup.value.location.coords.longitude);
     });
   }
-
   reSendVerifyEmail(): void {
     if (this.auth.afAuth.auth.currentUser.emailVerified) { return; }
     this.spinner.show();
@@ -104,40 +99,6 @@ export class AccountComponent implements AfterViewInit, OnInit {
       });
     });
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
-  }
-  onChangePassword(): void {
-    const dialogRef = this.dialog.open(ConfirmComponent, {
-      width: '450px',
-      data: {message: this.translater.transform('sure_message'), title: this.translater.transform('sure_message_title') }
-    });
-
-    dialogRef.componentInstance.onSelect.subscribe(result => {
-      if (result && this.frmGroupPassword.valid && this.frmGroupPassword.value.password === this.frmGroupPassword.value.password_reply) {
-        this.spinner.show();
-        this.auth.resetPassword(this.frmGroupPassword.value.password).then(() => {
-          this.spinner.hide();
-          this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
-        }).catch((err) => {
-          this.spinner.hide();
-          console.log(err);
-          this.snack.open(this.translater.transform('unsuccessful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_error'});
-        });
-      }
-    });
-    dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
-  }
-  onChangeMatTab(index: number): void {
-    /* on tab to location */
-    if (index === 1) {
-      if (this.frmGroup.value) {
-
-      }
-      this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.frmGroup.value.location.province.name + ' ' + this.frmGroup.value.location.district.name + '&key=' + environment.mapKey, {}).subscribe((data => {
-        this.cordi.latitude = data.results[0].geometry.location.lat;
-        this.cordi.longitude = data.results[0].geometry.location.lng;
-        this.zoom = 14;
-      }));
-    }
   }
   onSelectChangeProvince(e: any): void {
     this.frmGroup.patchValue({location: {district: null}});
@@ -177,5 +138,22 @@ export class AccountComponent implements AfterViewInit, OnInit {
     this.frmGroup.patchValue({location: {coords: {latitude: lat, longitude: lng}}});
   }
   ngAfterViewInit(): void { this.spinner.hide(); }
-
+  onResetPassword(): void {
+    this.dialog.open(PasswordComponent, {width: '550px', height: '375px'});
+  }
 }
+
+/*
+onChangeMatTab(index: number): void {
+  if (index === 1) {
+    if (this.frmGroup.value) {
+
+    }
+    this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.frmGroup.value.location.province.name + ' ' + this.frmGroup.value.location.district.name + '&key=' + environment.mapKey, {}).subscribe((data => {
+      this.cordi.latitude = data.results[0].geometry.location.lat;
+      this.cordi.longitude = data.results[0].geometry.location.lng;
+      this.zoom = 14;
+    }));
+  }
+}
+*/

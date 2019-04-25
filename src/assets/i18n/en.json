@@ -8,7 +8,6 @@
   "account_navbar": "Account",
   "logout_navbar": "Logout",
   "languages_navbar": "Languages",
-  "change_pass_navbar": "Change Password",
 
   "business_code": "Business Code",
   "password": "Password",
@@ -41,6 +40,10 @@
   "delete_button": "Delete",
   "delete_selected_photo": "Remove Selected Photo",
 
+  "change_password": "Change Password",
+  "change_password_desc": "Your password must be at least 6 characters long. You can use the edit option to change your password.",
+  "change_email": "Change Email",
+  "change_email_desc": "Notifications and messages will be sent to your new e-mail address. Requires re-approval",
   "business": "Business",
   "location": "Location",
   "approve": "Approve",

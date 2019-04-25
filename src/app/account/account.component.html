@@ -6,23 +6,15 @@
   </mat-card-content>
 </mat-card>
 <mat-divider></mat-divider>
-<mat-tab-group (selectedIndexChange)="onChangeMatTab($event)">
-<mat-tab label="{{'business' | translate}}">
-  <div fxLayout="row wrap" fxLayoutAlign="start middle">
-    <mat-card>
-      <mat-card-content>
-        <mat-card-title>Account's Email</mat-card-title>
-        <p>Kayıtlı eposta adresi değiştirildiğinde yeniden onaylanması gerekmektedir.</p>
-        <p>Email is: <label>dogan.salman@yahoo.com</label> </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Değiştir</button>
-      </mat-card-actions>
-    </mat-card>
-    <form [formGroup]="this.frmGroup">
-      <mat-card>
-        <mat-card-content>
-          <h2>{{'business' | translate}}</h2>
+
+<div fxLayout="row wrap" fxFill fxLayoutAlign="start" fxLayoutGap="20px">
+
+  <mat-card class="card-no-shadow" fxFlex="50" fxFlex.xl="50" fxFlex.lg="50" fxFlex.md="60" fxFlex.sm="100" fxFlex.xs="100">
+    <mat-card-content>
+      <form [formGroup]="this.frmGroup">
+
+        <div>
+          <mat-card-title>{{'business' | translate}}</mat-card-title>
           <mat-form-field class="full-width-field">
             <input matInput #name maxlength="255" formControlName="business_name" placeholder="{{'business_name' | translate}}">
             <mat-hint align="end">{{name.value.length}} / 255</mat-hint>
@@ -36,19 +28,16 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field class="full-width-field">
-            <input matInput #email maxlength="255" formControlName="email" type="email" placeholder="{{'email' | translate}}">
-            <mat-hint align="end">{{email.value.length}} / 255</mat-hint>
-          </mat-form-field>
-          <mat-form-field class="full-width-field">
             <input matInput #phone maxlength="255" formControlName="phone" type="number" placeholder="{{'phone' | translate}}">
             <mat-hint>Ülke kodu ile birlikte. +90</mat-hint>
             <mat-hint align="end">{{phone.value.length}} / 255</mat-hint>
           </mat-form-field>
-        </mat-card-content>
-      </mat-card>
-      <mat-card>
-        <mat-card-content>
-          <h2>{{'adress' | translate}}</h2>
+        </div>
+
+        <mat-divider style="display: block; position: inherit; margin-top: 25px; margin-bottom: 25px;"></mat-divider>
+
+        <div>
+          <mat-card-title>{{'adress' | translate}}</mat-card-title>
           <div formGroupName="location">
             <app-province #provinces (_loadEnd)="this.spinner.hide();" (_selectedChange)="onSelectChangeProvince($event)" [_FormControlName]="'province'" [_FormGroupName]="'location'" ></app-province>
             <app-district (_selectedChange)="onSelectChangeDistrict($event)" (_loadEnd)="this.spinner.hide();" [_FormControlName]="'district'" [_FormGroupName]="'location'" [country_id]="'TR'" [province_id]="provinces.selectedProvince?.id || 0"></app-district>
@@ -57,22 +46,33 @@
               <mat-hint align="end">{{adress.value.length}} / 255</mat-hint>
             </mat-form-field>
           </div>
-          <mat-card-actions>
-            asd
-          </mat-card-actions>
-        </mat-card-content>
-      </mat-card>
-      <mat-card>
-        <mat-card-content style="padding:10px">
-          <button fxFlex.xs="100" [disabled]="!this.frmGroup.valid" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="3" fxFlex.xl="5" mat-flat-button  color="primary" (click)="onChangeAccount()">{{'ok_button' | translate}}</button>
-        </mat-card-content>
-      </mat-card>
-    </form>
-  </div>
+        </div>
 
 
 
-</mat-tab>
+      </form>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-card-actions>
+        <mat-card class="card-no-shadow">
+          <mat-card-content>
+            <div fxFlex="50" fxFlex.sm="100" fxFlex.xs="100" fxFlexAlign="start">
+              <button [disabled]="!this.frmGroup.valid" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="3" fxFlex.xl="5" mat-flat-button  color="primary" (click)="onChangeAccount()">{{'ok_button' | translate}}</button>
+            </div>
+            <div fxFlex="50" fxFlex.sm="100" fxFlex.xs="100" fxFlexAlign="end end" align="right">
+              <button  mat-raised-button> {{'change_email' | translate}}</button>
+              <button (click)="onResetPassword()" mat-raised-button> {{'change_password' | translate}}</button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+
+</div>
+
+
+<!--
 <mat-tab [disabled]="!this.frmGroup.value.location.province?.id || !this.frmGroup.value.location.district?.id" label="{{'location' | translate}}">
  <mat-card class="card-no-shadow no-padding">
    <mat-card-content>
@@ -95,36 +95,5 @@
       </mat-card-content>
     </mat-card>
   </mat-tab>
-<mat-tab label="{{'password_reset' | translate}}">
-  <form [formGroup]="this.frmGroupPassword" (ngSubmit)="onChangePassword()">
-    <mat-card fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="30" fxFlex.lg="20" fxFlex.xl="15"  class="card-no-shadow">
-      <mat-card-content>
-        <mat-form-field class="full-width-field">
-          <input matInput #newpass maxlength="255" formControlName="password" type="password" placeholder="{{'new_password' | translate}}"/>
-          <mat-hint align="start">Min. 6 {{'char' | translate}}</mat-hint>
-          <mat-hint align="end">{{newpass.value.length}} / 255</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field class="full-width-field">
-          <input matInput #replypass maxlength="255" formControlName="password_reply" type="password" placeholder="{{'reply_password' | translate}}"/>
-          <mat-hint align="start">Min. 6 {{'char' | translate}}</mat-hint>
-          <mat-hint align="end">{{replypass.value.length}} / 255</mat-hint>
-        </mat-form-field>
-
-      </mat-card-content>
-      <mat-card-footer>
-        <mat-card class="card-no-shadow no-padding">
-          <mat-card-content style="padding:10px">
-            <button type="submit" [disabled]="!this.frmGroupPassword.valid || this.frmGroupPassword.value.password !== this.frmGroupPassword.value.password_reply" fxFlex.xs="100" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="3" fxFlex.xl="5" mat-flat-button  color="primary">{{'ok_button' | translate}}</button>
-          </mat-card-content>
-        </mat-card>
-      </mat-card-footer>
-    </mat-card>
-  </form>
-  </mat-tab>
-
-</mat-tab-group>
-
-
-
+-->
 

@@ -16,6 +16,8 @@ import {ProvinceComponent} from '../components/province/province.component';
 import {DistrictComponent} from '../components/district/district.component';
 import {ProvinceModule} from '../components/province/province.module';
 import {DistrictModule} from '../components/district/district.module';
+import {PasswordComponent} from './password/password.component';
+import {PasswordModule} from './password/password.module';
 
 @NgModule(
   {
@@ -30,12 +32,13 @@ import {DistrictModule} from '../components/district/district.module';
       FormsModule,
       ReactiveFormsModule,
       ProvinceModule,
-      DistrictModule
+      DistrictModule,
+      PasswordModule
     ],
     declarations: [AccountComponent, ProvinceComponent, DistrictComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [BussinessTypeServices, HttpRequestService],
-    entryComponents: [ConfirmComponent]
+    entryComponents: [ConfirmComponent, PasswordComponent]
   }
 )
 export class AccountModule { }
