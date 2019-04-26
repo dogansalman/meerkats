@@ -14,7 +14,7 @@ import {Account} from '../models/account/account';
 import {Coords} from '../interfaces/coords';
 import {Marker} from '../interfaces/marker';
 import {PasswordComponent} from './password/password.component';
-
+import {EmailComponent} from './email/email.component';
 
 @Component(
   {
@@ -140,6 +140,9 @@ export class AccountComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void { this.spinner.hide(); }
   onResetPassword(): void {
     this.dialog.open(PasswordComponent, {width: '550px', height: '375px'});
+  }
+  onChangeEmail(): void {
+    this.dialog.open(EmailComponent, {width: '550px', height: '375px'});
   }
 }
 

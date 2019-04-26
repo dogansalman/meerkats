@@ -18,6 +18,8 @@ import {ProvinceModule} from '../components/province/province.module';
 import {DistrictModule} from '../components/district/district.module';
 import {PasswordComponent} from './password/password.component';
 import {PasswordModule} from './password/password.module';
+import {EmailModule} from './email/email.module';
+import {EmailComponent} from './email/email.component';
 
 @NgModule(
   {
@@ -33,12 +35,13 @@ import {PasswordModule} from './password/password.module';
       ReactiveFormsModule,
       ProvinceModule,
       DistrictModule,
-      PasswordModule
+      PasswordModule,
+      EmailModule
     ],
     declarations: [AccountComponent, ProvinceComponent, DistrictComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [BussinessTypeServices, HttpRequestService],
-    entryComponents: [ConfirmComponent, PasswordComponent]
+    entryComponents: [ConfirmComponent, PasswordComponent, EmailComponent]
   }
 )
 export class AccountModule { }
