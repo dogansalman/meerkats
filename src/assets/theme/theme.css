@@ -6,6 +6,14 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.mat-card-header-text{
+  margin:0px !important;
+}
+.mat-card-avatar {
+  margin: 0px 10px 10px 0px !important;
+}
+
 .hide {
   display:none !important;
 }
@@ -21,27 +29,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .fab-btn.mat-fab{
   position:  fixed !important;
-}
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #bdc3c7;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #dadbdc;
 }
 
 .button-table-row:hover{
