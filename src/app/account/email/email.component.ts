@@ -8,6 +8,7 @@ import {ConfirmComponent} from '../../components/confirm/confirm.component';
 
 @Component({
   templateUrl: 'email.component.html',
+  selector: 'account-email',
   providers: [AuthService, TranslatePipe]
 })
 

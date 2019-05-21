@@ -5,9 +5,8 @@ import {MatDialog} from '@angular/material';
 
 
 @Component({
-  selector: 'app-home',
+  selector: 'meerkats-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent implements OnInit, AfterContentInit {

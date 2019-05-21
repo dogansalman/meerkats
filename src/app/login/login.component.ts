@@ -10,10 +10,10 @@ import {MatSnackBar} from '@angular/material';
 import {TranslatePipe} from '../services/translate/translate.pipe';
 
 @Component({
-  selector: 'app-login',
+  selector: 'meerkats-login',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   providers: [AuthService, TranslatePipe]
 })
 export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
@@ -51,11 +51,11 @@ export class LoginComponent implements OnInit, AfterContentInit, OnDestroy {
     });
   }
   ngOnInit() {
-    this.renderer.addClass(document.body, 'app-login');
+    this.renderer.addClass(document.body, 'meerkats-login');
     this.spinner.show();
   }
   ngOnDestroy() {
-    this.renderer.removeClass(document.body, 'app-login');
+    this.renderer.removeClass(document.body, 'meerkats-login');
   }
   ngAfterContentInit() {  this.spinner.hide(); }
 }

@@ -4,7 +4,7 @@ import {ControlContainer, FormGroupDirective} from '@angular/forms';
 import {MatOptionSelectionChange, MatSelect} from '@angular/material';
 
 @Component({
-  selector: 'app-district',
+  selector: 'component-district',
   templateUrl: 'district.component.html',
   encapsulation: ViewEncapsulation.None,
   viewProviders: [{provide: ControlContainer, useExisting: FormGroupDirective}]

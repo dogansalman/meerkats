@@ -6,35 +6,23 @@
 
 <mat-tab-group>
   <mat-tab *ngFor="let category of categories" label="{{category}}">
-    <mat-card>
+    <mat-card class="card-no-shadow product">
       <mat-card-content>
-        <div fxLayout="row wrap"  fxLayoutGap="10px">
-          <table mat-table [dataSource]="products | async | filter: 'category' : category" fxFlex="100">
-              <ng-container matColumnDef="image">
-                <th mat-header-cell *matHeaderCellDef> {{'image' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> <img  (click)="onProduct()" src="{{element.image || '../../assets/img/no-photo.png'}}" style="height: 50px;"> </td>
-              </ng-container>
-              <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-              </ng-container>
-              <ng-container matColumnDef="category">
-                <th mat-header-cell *matHeaderCellDef> {{'category' | translate}}</th>
-                <td mat-cell *matCellDef="let element"> {{element.category}} </td>
-              </ng-container>
-              <ng-container matColumnDef="price">
-                <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} ({{'tax_included' | translate}}) </th>
-                <td mat-cell *matCellDef="let element">  <mat-label> {{element.price | currency: true : ''}} ₺</mat-label> </td>
-              </ng-container>
-              <ng-container matColumnDef="actionsColumn">
-                  <th mat-header-cell *matHeaderCellDef> </th>
-                  <td mat-cell *matCellDef="let element" class="right-text">
-                    <button (click)="onDelete(element)"  rel="delete_btn" mat-button color="warn">{{'delete_button' | translate}}</button>
-                  </td>
-              </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr (click)="onProduct(row)" mat-row class="button-table-row" *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+            <mat-card *ngFor="let product of products | async | filter: 'category' : category" style="max-width: 200px; text-align: center;">
+                <mat-card-header style="width: 100%; text-align: center">
+                  <mat-card-title>{{product.name}}</mat-card-title>
+                  <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="{{product.image || '../../assets/img/no-photo.png'}}">
+                <mat-card-content>
+                    <h3>{{product.price | currency: true : ''}} ₺</h3>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button (click)="onProduct(product)" mat-button color="primary">{{'edit_button' | translate}}</button>
+                  <button (click)="onDelete(product)" mat-button color="warn">{{'delete_button' | translate}}</button>
+                </mat-card-actions>
+              </mat-card>
         </div>
       </mat-card-content>
     </mat-card>

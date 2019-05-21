@@ -9,7 +9,7 @@
     <mat-card>
       <mat-card-title>{{location}}</mat-card-title>
       <mat-card-content>
-        <div fxLayout="row wrap"  fxLayoutGap="10px" fxLayoutAlign="space-around center">
+        <div fxLayout="row wrap"  fxLayoutGap="10px" fxLayoutAlign="start center">
           <mat-card *ngFor="let table_ of tables | async | filter : 'location' : location" class="table-card" (click)="onTableDetail(table_)" fxFlex.xs="100" fxFlex.sm="45">
             <mat-card-header>
               <mat-card-title><h2>{{'table' | translate}}: {{table_.no}} </h2></mat-card-title>
@@ -21,7 +21,7 @@
             <mat-card-actions>
               <button mat-button color="primary" (click)="onTableDetail(table_)">{{'edit_button' | translate}}</button>
               <div fxFlex></div>
-              <button (click)="onDelete(table_)"  rel="delete_btn" mat-button color="warn">{{'delete_button' | translate}}</button>
+              <button (click)="onDelete(table_)" mat-button color="warn">{{'delete_button' | translate}}</button>
             </mat-card-actions>
             <mat-card-footer></mat-card-footer>
           </mat-card>

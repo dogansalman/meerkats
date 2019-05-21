@@ -7,9 +7,9 @@ import {AuthService} from '../../services/auth/auth.service';
 import {Account} from '../../models/account/account';
 
 @Component({
-  selector: 'app-navbar-layout',
+  selector: 'meerkats-navbar-layout',
   templateUrl: 'navbarLayout.component.html',
-  styleUrls: ['navbarLayout.component.css'],
+  styleUrls: ['navbarLayout.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 

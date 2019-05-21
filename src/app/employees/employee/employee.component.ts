@@ -8,6 +8,7 @@ import {PermissionKeys} from '../../services/permissionsGuard/permissionGuard.se
 
 @Component({
   templateUrl: 'employee.component.html',
+  selector: 'employees-employee',
   providers: [EmployeeService]
 })
 

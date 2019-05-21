@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-empty-layout',
-  styleUrls: ['emptyLayout.component.css'],
+  selector: 'meerkats-empty-layout',
   templateUrl: 'emptyLayout.component.html'
 })
 

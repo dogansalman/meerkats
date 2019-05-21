@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
+    selector: 'login-register',
     templateUrl: './register.component.html',
     providers: [BussinessTypeServices, HttpRequestService, AccountService, TranslatePipe]
 })

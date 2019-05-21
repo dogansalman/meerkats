@@ -9,6 +9,7 @@ import {MatSnackBar} from '@angular/material';
 
 @Component({
   templateUrl: 'password.component.html',
+  selector: 'account-password',
   providers: [TranslatePipe, AuthService]
 })
 

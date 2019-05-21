@@ -1,9 +1,9 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: 'app-numbers-com',
+  selector: 'component-numpad',
   templateUrl: 'numbers.component.html',
-  styleUrls: ['numbers.component.css'],
+  styleUrls: ['numbers.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 

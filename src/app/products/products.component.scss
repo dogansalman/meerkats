@@ -1,0 +1,14 @@
+meerkats-products
+{
+   
+.mat-card-header, .mat-card-header-text, .mat-card-title {
+    width: 100%; text-align: center !important;
+    }
+    .mat-card{
+        margin-bottom:20px !important;
+
+        .mat-card-image {
+            object-fit: cover; height: 90px; width: 90px;
+        }
+    }
+}

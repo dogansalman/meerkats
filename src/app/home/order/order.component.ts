@@ -27,6 +27,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   templateUrl: 'order.component.html',
   styleUrls: ['order.component.scss'],
+  selector: 'home-order',
   encapsulation: ViewEncapsulation.None,
   providers: [TranslatePipe],
 })

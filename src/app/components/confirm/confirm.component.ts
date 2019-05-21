@@ -7,7 +7,8 @@ export interface DialogData {
 }
 
 @Component({
-  templateUrl: 'confirm.component.html'
+  templateUrl: 'confirm.component.html',
+  selector: 'component-confirm'
 })
 
 export class ConfirmComponent {

@@ -12,9 +12,9 @@ import {keyVal} from '../operators/keyVal/keyVal';
 
 
 @Component({
-  selector: 'app-tables',
+  selector: 'meerkats-tables',
   templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.css'],
+  styleUrls: ['./tables.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [TranslatePipe, TableService]
 })

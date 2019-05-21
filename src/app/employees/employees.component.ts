@@ -13,7 +13,7 @@ import {tap} from 'rxjs/operators';
 import {keyVal} from '../operators/keyVal/keyVal';
 
 @Component({
-  selector: 'app-employees',
+  selector: 'meerkats-employees',
   templateUrl: './employees.component.html',
   encapsulation: ViewEncapsulation.None,
   providers: [EmployeeService, TranslatePipe]

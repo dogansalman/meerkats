@@ -1,4 +1,4 @@
-import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {Component, OnInit, AfterViewInit, ViewEncapsulation} from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {MatDialog} from '@angular/material';
 import {ProductComponent} from './product/product.component';
@@ -13,15 +13,16 @@ import {ConfirmComponent} from '../components/confirm/confirm.component';
 
 @Component({
   templateUrl: 'products.component.html',
-  providers: [ProductService, TranslatePipe]
+  styleUrls: ['products.component.scss'],
+  selector: "meerkats-products",
+  providers: [ProductService, TranslatePipe],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductsComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['image', 'name', 'category', 'price', 'actionsColumn'];
   products: Observable<Product[]>;
   public openedProductDetail = false;
   categories: any[];
-
 
   constructor(private spinner: NgxSpinnerService, private dialog: MatDialog, private productServ: ProductService, private snack: MatSnackBar, private translater: TranslatePipe) { }
 

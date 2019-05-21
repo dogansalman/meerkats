@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
+  selector: 'login-forgot',
   templateUrl: 'forgot.component.html',
   providers: [TranslatePipe, AuthService]
   })

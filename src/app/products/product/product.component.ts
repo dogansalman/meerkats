@@ -8,6 +8,7 @@ import {StorageService} from '../../services/storage/storage.service';
 import {AuthService} from '../../services/auth/auth.service';
 
 @Component({
+  selector: 'products-product',
   templateUrl: 'product.component.html',
   providers: [ProductService, StorageService]
 })

@@ -18,7 +18,7 @@ import {EmailComponent} from './email/email.component';
 
 @Component(
   {
-    selector: 'app-account',
+    selector: 'meerkats-account',
     templateUrl: 'account.component.html',
     providers: [TranslatePipe, AuthService, AccountService],
   }
