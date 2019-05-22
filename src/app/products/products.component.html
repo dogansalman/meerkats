@@ -8,13 +8,13 @@
   <mat-tab *ngFor="let category of categories" label="{{category}}">
     <mat-card class="card-no-shadow product">
       <mat-card-content>
-        <div fxLayout="row wrap" fxLayoutGap="10px">
+        <div fxLayout="row wrap" fxLayoutGap="10px" lazy-load-images>
             <mat-card *ngFor="let product of products | async | filter: 'category' : category" style="max-width: 200px; text-align: center;">
                 <mat-card-header style="width: 100%; text-align: center">
                   <mat-card-title>{{product.name}}</mat-card-title>
                   <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image src="{{product.image || '../../assets/img/no-photo.png'}}">
+                <img src="assets/icon/add.svg" style="color:red" mat-card-image [attr.data-src]="product.image || '../../assets/img/no-photo.png'">
                 <mat-card-content>
                     <h3>{{product.price | currency: true : ''}} ₺</h3>
                 </mat-card-content>
