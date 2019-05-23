@@ -52,8 +52,8 @@
               <button [disabled]="!this.frmGroup.valid" fxFlex.sm="100" fxFlex.md="10" fxFlex.lg="3" fxFlex.xl="5" mat-flat-button  color="primary" (click)="onChangeAccount()">{{'ok_button' | translate}}</button>
             </div>
             <div fxFlex="50" fxFlex.sm="100" fxFlex.xs="100" fxFlexAlign="end end" align="right">
-              <button  (click)="onChangeEmail()" mat-raised-button> {{'change_email' | translate}}</button>
-              <button (click)="onResetPassword()" mat-raised-button> {{'change_password' | translate}}</button>
+              <button  (click)="onChangeEmail()" mat-stroked-button style="margin-right: 10px;"> {{'change_email' | translate}}</button>
+              <button (click)="onResetPassword()" mat-stroked-button> {{'change_password' | translate}}</button>
             </div>
           </mat-card-content>
         </mat-card>
