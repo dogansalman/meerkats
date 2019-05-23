@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {BussinessTypeServices} from '../models/bussinessType/bussinessType.services';
-import {HttpRequestService} from '../services/httpRequest/httpRequest.service';
 import {environment} from '../../environments/environment.prod';
 import {ConfirmComponent} from '../components/confirm/confirm.component';
 import {MatDialog} from '@angular/material';
@@ -11,11 +10,9 @@ import {MatSnackBar} from '@angular/material';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AccountService} from '../models/account/account.service';
 import {Account} from '../models/account/account';
-import {Coords} from '../interfaces/coords';
-import {Marker} from '../interfaces/marker';
 import {PasswordComponent} from './password/password.component';
 import {EmailComponent} from './email/email.component';
-
+import {LocationComponent} from './location/location.component';
 @Component(
   {
     selector: 'meerkats-account',
@@ -28,17 +25,11 @@ export class AccountComponent implements AfterViewInit, OnInit {
   /* Models*/
   business_types: string[];
   cities: any[];
-  cordi: Coords = {
-    latitude: 0,
-    longitude: 0
-  };
-  markers: Marker[];
-  zoom: Number = 8;
   public frmGroup: FormGroup;
 
 
   constructor(public spinner: NgxSpinnerService, private bustypeService: BussinessTypeServices,
-              private http: HttpRequestService, private dialog: MatDialog,
+              private dialog: MatDialog,
               public auth: AuthService,
               private snack: MatSnackBar,
               private fb: FormBuilder,
@@ -64,12 +55,14 @@ export class AccountComponent implements AfterViewInit, OnInit {
     });
   }
 
+  openLocation(): void {
+    const dialogRef =  this.dialog.open(LocationComponent, {panelClass: 'fullscreen'});
+    dialogRef.afterClosed().subscribe(result => { });
+  }
+
   ngOnInit() {
     this.business_types = environment.business_types;
-    this.auth.getProfileDetail.subscribe(u => {
-      this.frmGroup.patchValue(u);
-      this.addMarker(this.frmGroup.value.location.coords.latitude, this.frmGroup.value.location.coords.longitude);
-    });
+    this.auth.getProfileDetail.subscribe(u => this.frmGroup.patchValue(u));
   }
   reSendVerifyEmail(): void {
     if (this.auth.afAuth.auth.currentUser.emailVerified) { return; }
@@ -102,40 +95,6 @@ export class AccountComponent implements AfterViewInit, OnInit {
   }
   onSelectChangeProvince(e: any): void {
     this.frmGroup.patchValue({location: {district: null}});
-    this.clearMarkerWithCoords();
-  }
-  onSelectChangeDistrict(e: any): void {
-    this.clearMarkerWithCoords();
-  }
-  clearMarkerWithCoords(): void {
-    this.markers = [];
-    this.frmGroup.patchValue({location: {coords: { latitude: null, longitude: null }}});
-  }
-  onUpdateLocation(): void {
-    const dialogRef = this.dialog.open(ConfirmComponent, {
-      width: '450px',
-      data: {message: this.translater.transform('account_approve_message'), title: this.translater.transform('sure_message_title') }
-    });
-    dialogRef.componentInstance.onSelect.subscribe(result => {
-      if (!result) { return; }
-      this.spinner.show();
-      this.accService.setLocation(this.frmGroup.value.location, this.auth.afAuth.auth.currentUser.uid).then(() => {
-        this.spinner.hide();
-        this.snack.open(this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
-      }).catch(err => {
-        this.spinner.hide();
-        this.snack.open(err.message || this.translater.transform('successful'), this.translater.transform('ok_button'), {duration: 3000, panelClass: 'snack_success'});
-      });
-    });
-    dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
-  }
-  mapClicked($event: any) {
-    this.addMarker($event.coords.lat, $event.coords.lng);
-  }
-  addMarker(lat: number, lng: number): void {
-    this.markers = [];
-    this.markers.push({lat: lat, lng: lng, draggable: true});
-    this.frmGroup.patchValue({location: {coords: {latitude: lat, longitude: lng}}});
   }
   ngAfterViewInit(): void { this.spinner.hide(); }
   onResetPassword(): void {
@@ -146,17 +105,3 @@ export class AccountComponent implements AfterViewInit, OnInit {
   }
 }
 
-/*
-onChangeMatTab(index: number): void {
-  if (index === 1) {
-    if (this.frmGroup.value) {
-
-    }
-    this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.frmGroup.value.location.province.name + ' ' + this.frmGroup.value.location.district.name + '&key=' + environment.mapKey, {}).subscribe((data => {
-      this.cordi.latitude = data.results[0].geometry.location.lat;
-      this.cordi.longitude = data.results[0].geometry.location.lng;
-      this.zoom = 14;
-    }));
-  }
-}
-*/

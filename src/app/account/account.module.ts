@@ -20,7 +20,8 @@ import {PasswordComponent} from './password/password.component';
 import {PasswordModule} from './password/password.module';
 import {EmailModule} from './email/email.module';
 import {EmailComponent} from './email/email.component';
-
+import {LocationComponent} from './location/location.component';
+import {LocationModule} from './location/location.module';
 @NgModule(
   {
     imports: [AppMaterialModule,
@@ -36,12 +37,13 @@ import {EmailComponent} from './email/email.component';
       ProvinceModule,
       DistrictModule,
       PasswordModule,
-      EmailModule
+      EmailModule,
+      LocationModule
     ],
     declarations: [AccountComponent, ProvinceComponent, DistrictComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [BussinessTypeServices, HttpRequestService],
-    entryComponents: [ConfirmComponent, PasswordComponent, EmailComponent]
+    entryComponents: [ConfirmComponent, PasswordComponent, EmailComponent, LocationComponent]
   }
 )
 export class AccountModule { }
