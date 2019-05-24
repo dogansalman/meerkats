@@ -56,7 +56,7 @@ export class AccountComponent implements AfterViewInit, OnInit {
   }
 
   openLocation(): void {
-    const dialogRef =  this.dialog.open(LocationComponent, {panelClass: 'fullscreen'});
+    const dialogRef =  this.dialog.open(LocationComponent, {panelClass: 'fullscreen', data: this.frmGroup.value.location});
     dialogRef.afterClosed().subscribe(result => { });
   }
 
@@ -94,7 +94,10 @@ export class AccountComponent implements AfterViewInit, OnInit {
     dialogRef.afterClosed().subscribe(() => dialogRef.componentInstance.onSelect.unsubscribe());
   }
   onSelectChangeProvince(e: any): void {
-    this.frmGroup.patchValue({location: {district: null}});
+    this.frmGroup.patchValue({location: {district: null, coords: null}});
+  }
+  onSelectChangeDistrict(e: any): void {
+    this.frmGroup.patchValue({location: {coords: null}});
   }
   ngAfterViewInit(): void { this.spinner.hide(); }
   onResetPassword(): void {

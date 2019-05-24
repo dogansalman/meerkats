@@ -11,9 +11,9 @@
     <div mat-dialog-content style="max-height: 100vh; padding:0px; margin:0px;position: relative;">
             <agm-map
             (mapClick)="this.addMarker($event)"
-            [zoom]="16"
-            [latitude]="41.15917"
-            [longitude]="27.8"
+            [zoom]="this.zoom"
+            [latitude]="this.cordi.latitude"
+            [longitude]="this.cordi.longitude"
             [streetViewControl]="false"
             style="display: block;  width: 100%; height: calc(100vh - 200px)">
             <agm-marker *ngFor="let m of markers; let i = index"
@@ -23,18 +23,6 @@
                 [markerDraggable]="m.draggable">
              </agm-marker>
           </agm-map>
-
-          <button style="margin-top:20px;" mat-flat-button  color="primary">{{'ok_button' | translate}}</button>
+          <button style="margin-top:20px;" mat-flat-button (click)="onUpdateLocation();"  color="primary">{{'ok_button' | translate}}</button>
     </div>
-    
 </div>
-
-<!--
-    <agm-marker
-              *ngFor="let m of markers; let i = index"
-              [latitude]="m.lat"
-              [longitude]="m.lng"
-              [label]="m.label"
-              [markerDraggable]="m.draggable">
-            </agm-marker>
--->

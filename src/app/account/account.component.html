@@ -40,7 +40,10 @@
               <input matInput formControlName="adress" #adress maxlength="255" type="text" placeholder="{{'adress' | translate}}">
               <mat-hint align="end">{{adress.value.length}} / 255</mat-hint>
             </mat-form-field>
-            <button (click)="openLocation();" [disabled]="!this.frmGroup.value.location.province?.id || !this.frmGroup.value.location.district?.id" mat-stroked-button> {{'add_location' | translate}}</button>
+
+            <button (click)="openLocation();" [disabled]="!this.frmGroup.value.location.province?.id || !this.frmGroup.value.location.district?.id" mat-stroked-button> {{'add_location' | translate}}
+              <mat-icon  *ngIf="this.frmGroup.value.location.province?.id && this.frmGroup.value.location.district?.id && this.frmGroup.value.location.coords" style="color: darkgreen; padding: 4px 0px 0px 0px; vertical-align: top;" matSuffix>check</mat-icon>
+            </button>
           </div>
         </div>
       </form>
