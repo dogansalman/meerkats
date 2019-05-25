@@ -67,7 +67,7 @@ export class LocationComponent{
             this.zoom = 16;
             return;
         }
-        this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.data.province.name + ' ' + this.data.district.name + '&key=' + environment.mapKey, {}).subscribe((geoResult => {
+        this.http.get('https://maps.google.com/maps/api/geocode/json?address=' + this.data.province.name + ' ' + this.data.district.name + '&key=' + environment.mapKey, {}).subscribe(( (geoResult : any) => {
             this.cordi.latitude = geoResult.results[0].geometry.location.lat;
             this.cordi.longitude = geoResult.results[0].geometry.location.lng;
             this.zoom = 14;
