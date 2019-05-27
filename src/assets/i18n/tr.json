@@ -72,6 +72,9 @@
   "price": "Fiyat",
   "tax": "Kdv",
   "tax_included": "Vergi Dahil",
+  "unlimited_stock": "Limitsiz Stok",
+  "show_in_menu": "Menude Göster",
+  "show_in_menu_desc":"Eğer menüde gizlerseniz, ürün sipariş edilemez.",
 
   "order": "Sipariş",
   "payment": "Ödeme",
@@ -84,7 +87,7 @@
   "discount": "İndirim",
   "percent": "Yüzde",
   "value": "Değer",
-  "unit": "Adet",
+  "unit": "Birim",
   "account_approve_message": "Hesabınızın bilgilerini değiştirdiğinizde profilinizin onaylaması gerekir, bu durumda tüm işlevleri kullanamazsınız",
 
   "successful": "İşlem başarılı.",
@@ -116,6 +119,13 @@
   "payment_sodexo": "Sodexo",
   "payment_metropol": "Metropol",
   "payment_glovo": "Glovo",
+
+  "unit_kilogram": "Kilogram",
+  "unit_litre": "Litre",
+  "unit_adet": "Adet",
+  "unit_metre": "Metre",
+  "unit_porsiyon": "Porsiyon",
+  "unit_gram": "Gram",
 
   "verify_email_message": "Hesabınızın eposta adresi henüz doğrulanmamış. Lütfen eposta adresinizi doğrulayın.",
   "verify_email_message_title": "Eposta adresinizi doğrulayın.",

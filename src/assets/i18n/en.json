@@ -72,7 +72,11 @@
   "price": "Price",
   "tax": "Tax",
   "tax_included": "Tax Included",
+  "unlimited_stock": "Unlimited Stock",
+  "show_in_menu": "Show in Menu",
+  "show_in_menu_desc":"If you hide it in the menu, the product cannot be ordered.",
 
+  
   "order": "Order",
   "payment": "Payment",
   "payment_detail": "Payment Detail",
@@ -116,6 +120,13 @@
   "payment_sodexo": "Sodexo",
   "payment_metropol": "Metropol",
   "payment_glovo": "Glovo",
+
+  "unit_kilogram": "Kilogram",
+  "unit_litre": "Litre",
+  "unit_adet": "Piece",
+  "unit_metre": "Meter",
+  "unit_porsiyon": "Portion",
+  "unit_gram": "Gram",
 
   "verify_email_message": "Your account's email not verified. Please verify your account's email address.",
   "verify_email_message_title": "Verify email address",

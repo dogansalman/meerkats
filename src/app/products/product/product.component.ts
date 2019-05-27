@@ -6,6 +6,7 @@ import {ProductService} from '../../models/product/product.service';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {StorageService} from '../../services/storage/storage.service';
 import {AuthService} from '../../services/auth/auth.service';
+import {environment} from '../../../environments/environment'
 
 @Component({
   selector: 'products-product',
@@ -19,7 +20,7 @@ export class ProductComponent implements OnInit {
   public _categories: any[];
   public _file: File;
   public _image: any = null;
-
+  public _units: any = environment.units;
 
   constructor(private dialogRef: MatDialogRef<ProductComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -37,6 +38,9 @@ export class ProductComponent implements OnInit {
         tax: [null, [Validators.pattern('[0-9]*')]],
         category: [null, [Validators.required, Validators.maxLength(120), Validators.pattern('^[a-züğışçöA-ZİĞÜŞÇÖ0-9 ]*$')]],
         image: [null],
+        unit: [null, [Validators.required]],
+        unlimited_stock: [false, [Validators.required]],
+        show_in_menu: [true, [Validators.required]]
       }
     );
 

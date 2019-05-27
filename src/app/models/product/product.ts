@@ -5,4 +5,7 @@ export class Product {
   tax: number;
   category: string;
   image: string;
+  unit: string;
+  unlimited_stock: boolean;
+  show_in_menu: boolean;
 }

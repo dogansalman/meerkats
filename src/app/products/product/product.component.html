@@ -41,9 +41,25 @@
           </mat-form-field>
 
           <mat-form-field class="full-width-field">
+              <mat-select formControlName="unit" placeholder="{{'unit' | translate}}">
+                  <mat-option *ngFor="let u of _units" [value]="u | translate">
+                      {{ 'unit_' + u.toLowerCase() | translate}}
+                  </mat-option>
+              </mat-select>
+          </mat-form-field>
+       
+          <mat-form-field class="full-width-field">
             <input type="number" formControlName="tax" matInput  placeholder="{{'tax' | translate}} (%)">
           </mat-form-field>
 
+          <div class="full-width-field">
+            <mat-checkbox color="primary" formControlName="unlimited_stock" >{{ 'unlimited_stock' | translate}}</mat-checkbox>
+          </div>
+          <div class="full-width-field">
+            <mat-checkbox color="primary" formControlName="show_in_menu" >{{ 'show_in_menu' | translate}}</mat-checkbox>
+            <p>{{'show_in_menu_desc' | translate}}</p>
+          </div>
+        
         </mat-card-content>
 
       </mat-card>

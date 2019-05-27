@@ -39,7 +39,7 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   onProduct(product: Product = null): void {
     if (this.openedProductDetail) { return; }
     this.openedProductDetail = true;
-    const dialogRef = this.dialog.open(ProductComponent, {width: '450px', height: '600px', data: {product: product, categories: this.categories}});
+    const dialogRef = this.dialog.open(ProductComponent, {width: '500px', height: '750px', data: {product: product, categories: this.categories}});
 
     dialogRef.afterClosed().subscribe(result => {
       this.openedProductDetail = false;
