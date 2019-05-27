@@ -53,7 +53,7 @@ export class ProductService {
           })
         ).subscribe();
       }
-
+      resolve(p);
     });
 
 
