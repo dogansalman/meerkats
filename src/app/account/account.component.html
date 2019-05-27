@@ -20,7 +20,7 @@
             <!–– TODO dil seçeneği değiştirildiğinde burdaki durumda değiştirilmeli firebase'den gelen veri sabit bu durumda  düşünülmeli––>
             <mat-select formControlName="business_type" placeholder="{{'business_type' | translate}}">
               <mat-option *ngFor="let type of business_types" [value]="type | translate">
-                {{type | translate}}
+                  {{ 'type_' + type.toLowerCase() | translate}}
               </mat-option>
             </mat-select>
           </mat-form-field>
