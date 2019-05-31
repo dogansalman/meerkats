@@ -29,10 +29,10 @@
         <mat-hint align="end">{{password.value.length}} / 255</mat-hint>
       </mat-form-field>
       <mat-form-field class="full-width-field">
-        <input matInput #passwordreply maxlength="255" type="password" placeholder="{{'password' | translate}}">
+        <input formControlName="passwordreply" matInput #passwordreply maxlength="255" type="password" placeholder="{{'password' | translate}}">
         <mat-hint align="end">{{passwordreply.value.length}} / 255</mat-hint>
       </mat-form-field>
-      <button type="submit" mat-flat-button color="primary" >{{'ok_button' | translate}}</button>
+      <button type="submit" [disabled]="!this.formGrp.valid || this.formGrp.value.password !== this.formGrp.value.passwordreply"  mat-flat-button color="primary" >{{'ok_button' | translate}}</button>
       </form>
     </mat-card-content>
 

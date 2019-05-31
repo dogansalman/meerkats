@@ -24,20 +24,20 @@ export class RegisterComponent implements OnInit {
 
   constructor(public db: AngularFireDatabase,
               public dialogRef: MatDialogRef<RegisterComponent>,
-              private bustypeService: BussinessTypeServices,
               private translater: TranslatePipe,
               private snack: MatSnackBar,
               private fb: FormBuilder,
               private router: Router,
               private spinner: NgxSpinnerService,
-              private http: HttpRequestService, private accServ: AccountService) { }
+              private accServ: AccountService) { }
 
   ngOnInit() {
     this.formGrp = this.fb.group({
       business_name: [null, [Validators.required, Validators.maxLength(255)]],
       email: [null, [Validators.required, Validators.email, Validators.maxLength(255)]],
       business_type: [null, [Validators.required, Validators.maxLength(120)]],
-      password: [null, [Validators.required, Validators.maxLength(255)]]
+      password: [null, [Validators.required, Validators.maxLength(255)]],
+      passwordreply: [null, [Validators.required, Validators.maxLength(255)]]
     });
     this.BusinessTypeList = environment.business_types;
   }
