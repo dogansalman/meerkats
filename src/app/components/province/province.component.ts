@@ -26,7 +26,7 @@ export class ProvinceComponent implements OnInit {
     this.renderer.addClass(this.select._elementRef.nativeElement, 'loading');
     this.select.disabled = true;
 
-    this.http.get('http://geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
+    this.http.get('//geodata.solutions/api/api.php?type=getStates&countryId=TR', {}).subscribe(data => {
       this.provinces = [];
       Object.keys(data.result).forEach(key => {
         this.provinces.push({id: key, name: data.result[key]});

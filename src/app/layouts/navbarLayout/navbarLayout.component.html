@@ -9,7 +9,7 @@
         <button mat-button [matMenuTriggerFor]="menu">
           <i class="material-icons">
             perm_identity
-          </i> {{accountInfoDetail?.email}}
+          </i> <span fxShow.xs="false">{{accountInfoDetail?.email}}</span> 
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="/account"> <mat-icon>assignment_ind</mat-icon> {{'account_navbar' | translate}}</button>

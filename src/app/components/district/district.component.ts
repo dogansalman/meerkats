@@ -49,7 +49,7 @@ export class DistrictComponent implements OnInit {
   public updateDistrict(): void {
     this.renderer.addClass(this.select._elementRef.nativeElement, 'loading');
     this.select.disabled = true;
-    this.http.get('http://geodata.solutions/api/api.php?type=getCities&countryId=' + this.country_id + '&stateId=' + this.province_id, {}).subscribe(data => {
+    this.http.get('//geodata.solutions/api/api.php?type=getCities&countryId=' + this.country_id + '&stateId=' + this.province_id, {}).subscribe(data => {
       this.districts = [];
       Object.keys(data.result).forEach(key => {
         this.districts.push({id: key, name: data.result[key]});
