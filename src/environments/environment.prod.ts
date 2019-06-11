@@ -10,5 +10,6 @@ export const environment = {
   },
   mapKey: 'AIzaSyBArrMAt0tnZeQpylNvAQFyQpbuspIQW40',
   business_types: ['Kafe', 'Bistro', 'Restoran', 'Brasserie', 'Fast Food'],
-  payment_types:  ['Nakit', 'Kredi Kartı', 'Multinet', 'Smart Ticket', 'Set Kart', 'Sodexo', 'Metropol', 'Glovo']
+  payment_types:  ['Nakit', 'Kredi Kartı', 'Multinet', 'Smart Ticket', 'Set Kart', 'Sodexo', 'Metropol', 'Glovo'],
+  units:  ['Kilogram', 'Litre', 'Adet', 'Metre', 'Porsiyon', 'Gram']
 };
