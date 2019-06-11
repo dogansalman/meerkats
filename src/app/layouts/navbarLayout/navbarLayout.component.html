@@ -29,7 +29,7 @@
         <mat-card class="main-logo-btn" fxShow.xs="false" routerLink="/home">
           <mat-card-header>
           <img mat-card-avatar src="https://via.placeholder.com/150x150"/>
-          <mat-card-title>{{accountInfoDetail?.business_name}} -  {{accountInfoDetail?.business_type}}</mat-card-title>
+          <mat-card-title>{{accountInfoDetail?.business_name}} -  {{ 'type_' + accountInfoDetail?.business_type.toLowerCase() | translate}}</mat-card-title>
           <mat-card-subtitle>{{accountInfoDetail?.email}}</mat-card-subtitle>
         </mat-card-header>
          </mat-card>
