@@ -9,7 +9,7 @@
     <mat-card class="card-no-shadow product">
       <mat-card-content>
         <div fxLayout="row wrap" fxLayoutGap="10px" lazy-load-images>
-            <mat-card *ngFor="let product of products | async | filter: 'category' : category" style="max-width: 200px; text-align: center;">
+            <mat-card fxFlex.xs="100" *ngFor="let product of products | async | filter: 'category' : category" style="text-align: center;">
                 <mat-card-header style="width: 100%; text-align: center">
                   <mat-card-title>{{product.name}}</mat-card-title>
                   <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
