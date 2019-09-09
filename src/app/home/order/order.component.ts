@@ -1,14 +1,20 @@
-import {Component, ViewEncapsulation, Output, EventEmitter} from '@angular/core';
+import {Component, ViewEncapsulation, Output, EventEmitter, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {QuantityComponent} from '../../components/quantity/quantity.component';
 import {ConfirmComponent} from '../../components/confirm/confirm.component';
 import {TranslatePipe} from '../../services/translate/translate.pipe';
+import {Product} from '../../models/product/product';
+import {ProductService} from '../../models/product/product.service';
+import {Observable} from 'rxjs/internal/Observable';
+import {keyVal} from '../../operators/keyVal/keyVal';
+import {tap} from 'rxjs/operators';
 
 export interface PeriodicElement {
   unit: number;
   name: string;
   price: number;
 }
+
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {unit: 1, name: 'Sıcak Çikolata', price: 15.00},
@@ -23,17 +29,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {unit: 1, name: 'Limonata', price: 20.50},
 ];
 
-
 @Component({
+
   templateUrl: 'order.component.html',
   styleUrls: ['order.component.scss'],
   selector: 'home-order',
   encapsulation: ViewEncapsulation.None,
-  providers: [TranslatePipe],
+  providers: [TranslatePipe, ProductService],
+
 })
 
 
-export class OrderComponent {
+export class OrderComponent implements OnInit{
+
+  products: Observable<Product[]>;
+  categories: any[];
 
   @Output() onSelect = new EventEmitter();
 
@@ -42,10 +52,17 @@ export class OrderComponent {
   displayedColumns: string[] = ['name', 'unit', 'price', 'process' ];
   dataSource = ELEMENT_DATA;
 
-  constructor(private dialog: MatDialog, private translater: TranslatePipe) { }
+  constructor(private dialog: MatDialog, private translater: TranslatePipe, private productServ: ProductService) { }
+
+  ngOnInit(): void {
+    /* Get categories */
+    this.productServ.get().snapshotChanges().pipe(keyVal(), tap(a => this.categories = this.productServ.getCategories(a))).subscribe();
+    /* Get products */
+    this.products  = this.productServ.get().snapshotChanges().pipe(keyVal());
+  }
 
   onQuantityModal(): void {
-    this.dialog.open(QuantityComponent, {width: '300px', height: '300px'});
+    this.dialog.open(QuantityComponent, {width: '350px', height: '350px'});
   }
   onChangePriceDown(): void {
     this.showPriceDown = this.showPriceDown ? false : true;

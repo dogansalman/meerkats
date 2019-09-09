@@ -4,4 +4,9 @@ export class Table {
   chair: number;
   no: string;
   qr: string;
+  is_open: boolean;
+
+  constructor() {
+    this.is_open = false;
+  }
 }

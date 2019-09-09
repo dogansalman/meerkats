@@ -18,8 +18,8 @@
             <mat-card-content></mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions></mat-card-actions>
-            <mat-card-footer class="closed">
-              <div>{{'closed_table' | translate}}</div>
+            <mat-card-footer [ngClass]="table.is_open ? 'no_appropriate': 'appropriate'">
+              <div>{{(table.is_open ? 'open_table': 'closed_table') | translate}}</div>
               <div fxFlex></div>
               <div>0.0 TL</div>
             </mat-card-footer>

@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, AfterContentInit {
   public tables: Observable<Table[]>;
   public locations: any;
 
-  constructor(private spinner: NgxSpinnerService, private dialog: MatDialog, private tableService: TableService ) { }
+  constructor(private spinner: NgxSpinnerService, private dialog: MatDialog, private tableService: TableService) { }
 
   ngOnInit() {
     /* Get locations */

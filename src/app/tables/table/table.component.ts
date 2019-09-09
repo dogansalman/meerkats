@@ -63,8 +63,9 @@ export class TableComponent implements  OnInit {
       return;
     }
 
+
     /* Create */
-    this.tableServ.create(this.frmGrp.value as Table).then(() => this.dialogRef.close(true)).catch((e) => this.dialogRef.close(e));
+    this.tableServ.create(this.frmGrp.value as Table).then(() => this.dialogRef.close(true)).catch((e) =>   this.dialogRef.close(e));
   }
 
   onPrintQRCode(element: QRCodeComponent): void {

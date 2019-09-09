@@ -58,7 +58,7 @@
   "table": "Table",
   "employee": "Employee",
   "product": "Product",
-  "open_table": "Opened",
+  "open_table": "Open",
   "closed_table": "Closed",
   "add_location": "Set The Location",
 
@@ -76,7 +76,7 @@
   "show_in_menu": "Show in Menu",
   "show_in_menu_desc":"If you hide it in the menu, the product cannot be ordered.",
 
-  
+
   "order": "Order",
   "payment": "Payment",
   "payment_detail": "Payment Detail",

@@ -13,72 +13,20 @@
       <mat-tab label="{{'order' | translate}}">
         <mat-card class="no-padding">
           <mat-card-content>
-          <mat-tab-group>
-            <mat-tab label="Sıcak İçeçekler">
-              <mat-card>
-                <mat-card-title>Sıcak İçeçekler</mat-card-title>
-                <mat-card-content>
-                  <mat-chip-list>
-                    <mat-chip (click)="onQuantityModal()" >Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Demleme Çay-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Demleme Çay-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Sıcak Çikolata<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Demleme Çay-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip (click)="onQuantityModal()">Türk Kahvesi- <b>(5.0 TL)</b></mat-chip>
-                  </mat-chip-list>
-                </mat-card-content>
-              </mat-card>
-            </mat-tab>
-            <mat-tab label="Tatlılar">
-              <mat-card>
-                <mat-card-title>Tatlılar</mat-card-title>
-                <mat-card-content>
-                  <mat-chip-list>
-                    <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Cheesecake-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Elmalı Tart- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Tiremusu<b>(8.0 TL)</b></mat-chip>
-                  </mat-chip-list>
-
-                </mat-card-content>
-              </mat-card>
-
-            </mat-tab>
-            <mat-tab label="Alkollü İçecekler">
-              <mat-card>
-                <mat-card-title>Alkollü İçecekler</mat-card-title>
-                <mat-card-content>
-                  <mat-chip-list>
-                    <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Bira 30cc<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip>Bira 50cc-<b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Viski- <b>(5.0 TL)</b></mat-chip>
-                    <mat-chip>Vodka<b>(8.0 TL)</b></mat-chip>
-                    <mat-chip>Yeni Rakı 30cc-<b>(5.0 TL)</b></mat-chip>
-                  </mat-chip-list>
-
-                </mat-card-content>
-              </mat-card>
-            </mat-tab>
-          </mat-tab-group>
+            <mat-tab-group>
+              <mat-tab *ngFor="let category of categories" label="{{category}}">
+                <mat-card>
+                  <mat-card-title>{{category}}</mat-card-title>
+                  <mat-card-content>
+                    <mat-chip-list>
+                      <mat-chip  *ngFor="let product of products | async | filter: 'category' : category"  (click)="onQuantityModal()" >{{product.name}}<b>(  {{product.price | currency}})</b></mat-chip>
+                    </mat-chip-list>
+                  </mat-card-content>
+                </mat-card>
+              </mat-tab>
+            </mat-tab-group>
           </mat-card-content>
-          </mat-card>
+        </mat-card>
       </mat-tab>
       <mat-tab label="{{'addition' | translate}}">
         <mat-card>
@@ -137,120 +85,120 @@
 
       </mat-tab>
       <mat-tab label="{{'payment' | translate}}">
-          <mat-card class="no-padding">
-             <mat-card-content>
-               <mat-accordion >
-                 <mat-expansion-panel [expanded]="false">
-                   <mat-expansion-panel-header>
-                     <mat-panel-title>
-                       {{'order' | translate}}
-                     </mat-panel-title>
-                     <mat-panel-description></mat-panel-description>
-                   </mat-expansion-panel-header>
-                   <table mat-table [dataSource]="dataSource" fxFill="100">
+        <mat-card class="no-padding">
+          <mat-card-content>
+            <mat-accordion >
+              <mat-expansion-panel [expanded]="false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{'order' | translate}}
+                  </mat-panel-title>
+                  <mat-panel-description></mat-panel-description>
+                </mat-expansion-panel-header>
+                <table mat-table [dataSource]="dataSource" fxFill="100">
 
-                     <ng-container matColumnDef="unit">
-                       <th mat-header-cell *matHeaderCellDef></th>
-                       <td mat-cell *matCellDef="let element;  let i = index">
-                         <div fxLayout="row inline">
-                           <div fxFlex="auto" fxFlexOrder="1">
-                             <button (click)="onUpdatePaymentItem(+1,i)"   color="primary" class="min-with_0" style="margin:5px;" mat-flat-button>
-                               <i class="material-icons">add</i>
-                             </button>
-                           </div>
-                           <div fxFlex="auto" fxFlexOrder="2">
-                             <button class="min-with_0" style="margin:5px; background-color: transparent;" mat-flat-button>
-                               <span style="font-size:29px; color:#000000">{{element.unit}}</span>
-                             </button>
-                           </div>
-                           <div fxFlex="auto" fxFlexOrder="3">
-                             <button (click)="onUpdatePaymentItem(-1,i)" color="warn" class="min-with_0" style="margin:5px" mat-flat-button>
-                               <i class="material-icons">remove</i>
-                             </button>
-                           </div>
-                         </div>
-                       </td>
-                     </ng-container>
-                     <ng-container matColumnDef="name">
-                       <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
-                       <td mat-cell *matCellDef="let element" ngClass="{{element.unit === 0 ? 'no-select' : ''}}"> {{element.name}} </td>
-                     </ng-container>
-                     <ng-container matColumnDef="price">
-                       <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} </th>
-                       <td mat-cell *matCellDef="let element"  ngClass="{{element.unit === 0 ? 'no-select' : ''}}"> <h2>{{element.price}} TL.</h2>  </td>
-                     </ng-container>
-                     <ng-container matColumnDef="process">
-                       <th mat-header-cell *matHeaderCellDef></th>
-                       <td mat-cell *matCellDef="let element">
-                         <button color="warn" (click)="onConfirm(element)"  class="min-with_0" style="margin:5px" mat-flat-button>
-                           <i class="material-icons">delete</i>
-                         </button>
-                       </td>
-                     </ng-container>
+                  <ng-container matColumnDef="unit">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element;  let i = index">
+                      <div fxLayout="row inline">
+                        <div fxFlex="auto" fxFlexOrder="1">
+                          <button (click)="onUpdatePaymentItem(+1,i)"   color="primary" class="min-with_0" style="margin:5px;" mat-flat-button>
+                            <i class="material-icons">add</i>
+                          </button>
+                        </div>
+                        <div fxFlex="auto" fxFlexOrder="2">
+                          <button class="min-with_0" style="margin:5px; background-color: transparent;" mat-flat-button>
+                            <span style="font-size:29px; color:#000000">{{element.unit}}</span>
+                          </button>
+                        </div>
+                        <div fxFlex="auto" fxFlexOrder="3">
+                          <button (click)="onUpdatePaymentItem(-1,i)" color="warn" class="min-with_0" style="margin:5px" mat-flat-button>
+                            <i class="material-icons">remove</i>
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </ng-container>
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> {{'name' | translate}} </th>
+                    <td mat-cell *matCellDef="let element" ngClass="{{element.unit === 0 ? 'no-select' : ''}}"> {{element.name}} </td>
+                  </ng-container>
+                  <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> {{'price' | translate}} </th>
+                    <td mat-cell *matCellDef="let element"  ngClass="{{element.unit === 0 ? 'no-select' : ''}}"> <h2>{{element.price}} TL.</h2>  </td>
+                  </ng-container>
+                  <ng-container matColumnDef="process">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element">
+                      <button color="warn" (click)="onConfirm(element)"  class="min-with_0" style="margin:5px" mat-flat-button>
+                        <i class="material-icons">delete</i>
+                      </button>
+                    </td>
+                  </ng-container>
 
-                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                   </table>
-                 </mat-expansion-panel>
-                 <mat-expansion-panel>
-                   <mat-expansion-panel-header>
-                     <mat-panel-title>
-                       {{'payment' | translate}}
-                     </mat-panel-title>
-                     <mat-panel-description></mat-panel-description>
-                   </mat-expansion-panel-header>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </mat-expansion-panel>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{'payment' | translate}}
+                  </mat-panel-title>
+                  <mat-panel-description></mat-panel-description>
+                </mat-expansion-panel-header>
 
-                   <div fxLayout="column" fxLayoutGap="20px">
-                     <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
-                       <mat-form-field>
-                         <mat-select placeholder="{{'payment_type' | translate}}">
-                           <mat-option value="Nakit">Nakit</mat-option>
-                           <mat-option value="Kredi Kartı">Kredi Kartı</mat-option>
-                           <mat-option value="Ticket">Ticket</mat-option>
-                         </mat-select>
-                       </mat-form-field>
-                     </div>
-                     <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
-                       <mat-checkbox (change)="onChangePriceDown()" formControlName="hideRequired">{{'discount' | translate}}</mat-checkbox>
-                     </div>
-                     <div *ngIf="showPriceDown"  fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
-                       <mat-form-field>
-                         <mat-select placeholder="{{'discount' | translate}}">
-                           <mat-option value="0">{{'percent' | translate}}</mat-option>
-                           <mat-option value="1">{{'price' | translate}}</mat-option>
-                         </mat-select>
-                       </mat-form-field>
-                     </div>
-                     <div *ngIf="showPriceDown" fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
-                       <mat-form-field style="width: 400px">
-                         <input matInput placeholder="{{'value' | translate}}" type="number" value="0">
-                       </mat-form-field>
-                     </div>
+                <div fxLayout="column" fxLayoutGap="20px">
+                  <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                    <mat-form-field>
+                      <mat-select placeholder="{{'payment_type' | translate}}">
+                        <mat-option value="Nakit">Nakit</mat-option>
+                        <mat-option value="Kredi Kartı">Kredi Kartı</mat-option>
+                        <mat-option value="Ticket">Ticket</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                    <mat-checkbox (change)="onChangePriceDown()" formControlName="hideRequired">{{'discount' | translate}}</mat-checkbox>
+                  </div>
+                  <div *ngIf="showPriceDown"  fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                    <mat-form-field>
+                      <mat-select placeholder="{{'discount' | translate}}">
+                        <mat-option value="0">{{'percent' | translate}}</mat-option>
+                        <mat-option value="1">{{'price' | translate}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div *ngIf="showPriceDown" fxFlex="50" fxFlex.xs="100" fxFlex.sm="70">
+                    <mat-form-field style="width: 400px">
+                      <input matInput placeholder="{{'value' | translate}}" type="number" value="0">
+                    </mat-form-field>
+                  </div>
 
-                     <div fxLayout="row">
-                       <div fxFlex="auto">
-                         {{'payment' | translate}} : <h2>35.99 TL</h2>
-                       </div>
-                       <div fxFlex="auto">
-                         {{'discount' | translate}} : <h2 class="mat-primary">0.0 TL</h2>
-                       </div>
-                     </div>
+                  <div fxLayout="row">
+                    <div fxFlex="auto">
+                      {{'payment' | translate}} : <h2>35.99 TL</h2>
+                    </div>
+                    <div fxFlex="auto">
+                      {{'discount' | translate}} : <h2 class="mat-primary">0.0 TL</h2>
+                    </div>
+                  </div>
 
-                     <div fxFlex="100" style="margin-top:30px;"></div>
+                  <div fxFlex="100" style="margin-top:30px;"></div>
 
-                     <div  fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="15px">
-                       <div>
-                         <button color="primary" mat-flat-button>{{'ok_button' | translate}}</button>
-                       </div>
-                       <div>
-                        <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
-                       </div>
-                     </div>
-                   </div>
-                 </mat-expansion-panel>
-               </mat-accordion>
-             </mat-card-content>
-          </mat-card>
+                  <div  fxLayout="row" fxLayoutAlign="start end" fxLayoutGap="15px">
+                    <div>
+                      <button color="primary" mat-flat-button>{{'ok_button' | translate}}</button>
+                    </div>
+                    <div>
+                      <button mat-button [mat-dialog-close]="true">{{'cancel_button' | translate}}</button>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-card-content>
+        </mat-card>
       </mat-tab>
     </mat-tab-group>
   </div>

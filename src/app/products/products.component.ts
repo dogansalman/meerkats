@@ -27,9 +27,9 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   constructor(private spinner: NgxSpinnerService, private dialog: MatDialog, private productServ: ProductService, private snack: MatSnackBar, private translater: TranslatePipe) { }
 
   ngOnInit(): void {
-    /* Get locations */
+    /* Get categories */
     this.productServ.get().snapshotChanges().pipe(keyVal(), tap(a => this.categories = this.productServ.getCategories(a))).subscribe();
-    /* Get tables */
+    /* Get products */
     this.products  = this.productServ.get().snapshotChanges().pipe(keyVal(), tap(() => this.spinner.hide()));
   }
   ngAfterViewInit(): void {

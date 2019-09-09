@@ -13,6 +13,9 @@ input[type=number]::-webkit-outer-spin-button {
 .mat-card-avatar {
   margin: 0px 10px 10px 0px !important;
 }
+.mat-dialog-content {
+  max-height: 100vh !important;
+}
 
 .hide {
   display:none !important;
@@ -110,10 +113,10 @@ input[type=number]::-webkit-outer-spin-button {
   font-size:14px;
   padding:5px;
 }
-.table-card .mat-card-footer.closed{
+.table-card .mat-card-footer.no_appropriate{
   background:#FF7D7D;
 }
-.table-card .mat-card-footer.opened{
+.table-card .mat-card-footer.appropriate{
   background:#80CBC4;
 }
 .table-card .mat-card-title .busy-time{
